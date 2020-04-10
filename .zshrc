@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export GOPATH="$HOME/go"
-export PATH=$PATH:/usr/local/bin/:$HOME/go/bin:$HOME/flutter/bin
+export PATH=$PATH:/usr/local/bin/:$HOME/go/bin:$HOME/flutter/bin:/usr/local/opt/helm@2/bin
 export GH_BASE_DIR="$HOME/go/src"
 export LANG=C
 export ANDROID_SDK_ROOT="/Users/alex/Library/Android/sdk"
