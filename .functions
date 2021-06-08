@@ -138,3 +138,7 @@ dcup() {
 dclog() {
 	docker-compose logs -f
 }
+
+delallevicted() {
+    kubectl get po --all-namespaces -o json | jq  '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "kubectl delete po \(.metadata.name) --namespace \(.metadata.namespace)"' | xargs -n 1 bash -c
+}
