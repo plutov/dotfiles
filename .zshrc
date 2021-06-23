@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 export GOPATH="$HOME/go"
-export PATH=/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/bin/:$HOME/go/bin:$PATH
+export PATH=/usr/local/lib/ruby/gems/2.7.0/bin:/usr/local/bin/:$HOME/go/bin:/usr/local/go/bin:$PATH
 export GH_BASE_DIR="$HOME/go/src"
 export LANG=C
 export ANDROID_SDK_ROOT="/Users/alex/Library/Android/sdk"
