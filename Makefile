@@ -1,10 +1,10 @@
 .PHONY: all
-all: zsh dotfiles brew vim iterm2
+all: zsh dotfiles brew vim
 
 .PHONY: brew
 
 BREW_PROGRAMS = jq kubectl nodejs bat telnet hugo kubernetes-helm httpie watch gotop lazydocker
-CASC_PROGRAMS = flux iterm2 firefox google-chrome visual-studio-code
+CASC_PROGRAMS = flux google-chrome visual-studio-code
 brew: ## Install programs with brew
 	if [ ! -f "/usr/local/bin/brew" ]; then \
     	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby; \
@@ -65,8 +65,3 @@ vim: ## Set up vim
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	\cp -R .vim $(HOME)/; \
 	\cp .vimrc $(HOME)/.vimrc; \
-
-.PHONY: iterm2
-iterm2: ## Set up iterm2
-	defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$(CURDIR)/iterm2"; \
-	defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true; \
