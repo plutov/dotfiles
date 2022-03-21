@@ -3,16 +3,14 @@ all: zsh dotfiles brew vim
 
 .PHONY: brew
 
-BREW_PROGRAMS = jq kubectl nodejs bat telnet hugo kubernetes-helm httpie watch gotop lazydocker
-CASC_PROGRAMS = flux google-chrome visual-studio-code
+BREW_PROGRAMS = zsh jq
+CASC_PROGRAMS = flux
 brew: ## Install programs with brew
 	if [ ! -f "/usr/local/bin/brew" ]; then \
-    	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | ruby; \
+    	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; \
 	fi
 
 	brew update
-	brew tap cjbassi/gotop
-	brew tap jesseduffield/lazydocker
 
 	$(foreach program,$(BREW_PROGRAMS),brew install $(program) || brew upgrade $(program);)
 	$(foreach program,$(CASC_PROGRAMS),brew cask install $(program) || echo "$(program) already installed";)
@@ -42,12 +40,14 @@ brew: ## Install programs with brew
 .PHONY: dotfiles
 dotfiles: ## Copy dotfiles to HOME folder
 	for file in $(shell find $(CURDIR) -name ".*" -not -name ".git" -not -name ".DS_Store" -not -name ".swp"); do \
-		\cp $$file $(HOME)/$$f; \
+		\cp -r $$file $(HOME)/$$f; \
 	done; \
-	\cp settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
+	\cp -r settings.json $(HOME)/Library/Application\ Support/Code/User/settings.json
 
 .PHONY: zsh
 zsh: ## Install zsh plugins
+	mkdir -p $(HOME)/.oh-my-zsh/custom/plugins/
+
 	if [ ! -d "$(HOME)/gh" ]; then \
 		git clone git@github.com:jdxcode/gh.git $(HOME)/gh; \
 	fi
