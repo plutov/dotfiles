@@ -3,7 +3,7 @@ all: zsh dotfiles brew
 
 .PHONY: brew
 
-BREW_PROGRAMS = zsh jq
+BREW_PROGRAMS = zsh jq node
 CASC_PROGRAMS = flux
 brew: ## Install programs with brew
 	if [ ! -f "/usr/local/bin/brew" ]; then \
