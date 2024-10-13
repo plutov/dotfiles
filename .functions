@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# clean local branches
+dellocalbranches() {
+  git fetch --prune
+  git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv) | awk '{print $1}' | xargs git branch -D
+}
+
+# git add git commit git push to current branch
+push() {
+  b=$(git branch | grep \* | cut -d ' ' -f2)
+  git add --all
+  git commit -m "$@"
+  git push origin $b
+}
+
+dev() {
+  git fetch
+  git checkout develop
+  git pull origin develop
+}
+
+master() {
+  git fetch
+  git checkout master
+  git pull origin master
+}
+
+main() {
+  git fetch
+  git checkout main
+  git pull origin main
+}
+
+tags() {
+  git push origin master --tags
+}
+
+latest() {
+  git describe --tags $(git rev-list --tags --max-count=1)
+}
+
+flushdns() {
+  sudo killall -HUP mDNSResponder
+  sudo killall mDNSResponderHelper
+  sudo dscacheutil -flushcache
+}
+
+dcup() {
+  docker-compose up -d --build
+}
+
+dclog() {
+  docker-compose logs -f
+}
