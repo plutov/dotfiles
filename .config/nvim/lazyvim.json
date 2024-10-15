@@ -1,9 +1,5 @@
 {
-  "extras": [
-    "lazyvim.plugins.extras.lang.go",
-    "lazyvim.plugins.extras.lang.json",
-    "lazyvim.plugins.extras.lang.yaml"
-  ],
+  "extras": [],
   "news": {
     "NEWS.md": "6520"
   },

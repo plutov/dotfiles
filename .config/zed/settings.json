@@ -55,5 +55,16 @@
     "quick_actions": false,
     // Whether to show the Selections menu in the editor toolbar
     "selections_menu": false
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "schemaStore": {
+            "enable": false
+          }
+        }
+      }
+    }
   }
 }

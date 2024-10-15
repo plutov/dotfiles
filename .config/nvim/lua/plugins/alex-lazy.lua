@@ -17,9 +17,31 @@ return {
         }
     },
     {
+        "b0o/SchemaStore.nvim",
+        enable = false
+    },
+    {
         "neovim/nvim-lspconfig",
         opts = {
             inlay_hints = { enabled = false },
+            servers = {
+                yamlls = {
+                    settings = {
+                        yaml = {
+                            keyOrdering = false,
+                            format = {
+                                enable = true,
+                            },
+                            validate = false,
+                            schemaStore = {
+                                -- disable schemas
+                                enable = false,
+                                url = "",
+                            },
+                        },
+                    },
+                },
+            }
         },
     },
     {
