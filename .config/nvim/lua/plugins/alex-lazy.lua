@@ -14,11 +14,22 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
-        }
+        },
+        opts = {
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                    show_hidden_count = true,
+                    hide_dotfiles = false,
+                    hide_gitignored = false,
+                    never_show = {},
+                },
+            },
+        },
     },
     {
         "b0o/SchemaStore.nvim",
-        enable = false
+        enable = false,
     },
     {
         "neovim/nvim-lspconfig",
@@ -41,7 +52,7 @@ return {
                         },
                     },
                 },
-            }
+            },
         },
     },
     {
@@ -106,5 +117,5 @@ return {
 
             return opts
         end,
-    }
+    },
 }
