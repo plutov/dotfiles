@@ -1,82 +1,82 @@
 return {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    {
-        "LazyVim/LazyVim",
-        opts = {
-            colorscheme = "catppuccin",
-        },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
     },
-    -- Make sure to install https://www.nerdfonts.com first
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
+  },
+  -- Make sure to install https://www.nerdfonts.com first
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          show_hidden_count = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          never_show = {},
         },
-        opts = {
-            filesystem = {
-                filtered_items = {
-                    visible = true,
-                    show_hidden_count = true,
-                    hide_dotfiles = false,
-                    hide_gitignored = false,
-                    never_show = {},
-                },
+      },
+    },
+  },
+  {
+    "b0o/SchemaStore.nvim",
+    enable = false,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = { enabled = false },
+      servers = {
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+              format = {
+                enable = true,
+              },
+              validate = false,
+              schemaStore = {
+                -- disable schemas
+                enable = false,
+                url = "",
+              },
             },
+          },
         },
+      },
     },
-    {
-        "b0o/SchemaStore.nvim",
-        enable = false,
-    },
-    {
-        "neovim/nvim-lspconfig",
-        opts = {
-            inlay_hints = { enabled = false },
-            servers = {
-                yamlls = {
-                    settings = {
-                        yaml = {
-                            keyOrdering = false,
-                            format = {
-                                enable = true,
-                            },
-                            validate = false,
-                            schemaStore = {
-                                -- disable schemas
-                                enable = false,
-                                url = "",
-                            },
-                        },
-                    },
-                },
-            },
+  },
+  {
+    "nvimdev/dashboard-nvim",
+    opts = function()
+      local opts = {
+        theme = "doom",
+        hide = {
+          statusline = false,
         },
-    },
-    {
-        "nvimdev/dashboard-nvim",
-        opts = function()
-            local opts = {
-                theme = "doom",
-                hide = {
-                    statusline = false,
-                },
-                config = {
-                    header = {
-                        [[]],
-                        [[]],
-                        [[]],
-                        [[]],
-                        [[]],
-                        [[NEOVIM]],
-                        [[]],
-                        [[]],
-                        [[]],
-                        [[]],
-                        [[]],
-                    },
+        config = {
+          header = {
+            [[]],
+            [[]],
+            [[]],
+            [[]],
+            [[]],
+            [[NEOVIM]],
+            [[]],
+            [[]],
+            [[]],
+            [[]],
+            [[]],
+          },
                     -- stylua: ignore
                     center = {
                         { action = 'lua LazyVim.pick()()', desc = " Find File", icon = " ", key = "f" },
@@ -89,33 +89,33 @@ return {
                         { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
                         { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
                     },
-                    footer = function()
-                        local stats = require("lazy").stats()
-                        local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                        return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
-                    end,
-                },
-            }
+          footer = function()
+            local stats = require("lazy").stats()
+            local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          end,
+        },
+      }
 
-            for _, button in ipairs(opts.config.center) do
-                button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-                button.key_format = "  %s"
-            end
+      for _, button in ipairs(opts.config.center) do
+        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+        button.key_format = "  %s"
+      end
 
-            -- open dashboard after closing lazy
-            if vim.o.filetype == "lazy" then
-                vim.api.nvim_create_autocmd("WinClosed", {
-                    pattern = tostring(vim.api.nvim_get_current_win()),
-                    once = true,
-                    callback = function()
-                        vim.schedule(function()
-                            vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
-                        end)
-                    end,
-                })
-            end
+      -- open dashboard after closing lazy
+      if vim.o.filetype == "lazy" then
+        vim.api.nvim_create_autocmd("WinClosed", {
+          pattern = tostring(vim.api.nvim_get_current_win()),
+          once = true,
+          callback = function()
+            vim.schedule(function()
+              vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
+            end)
+          end,
+        })
+      end
 
-            return opts
-        end,
-    },
+      return opts
+    end,
+  },
 }
