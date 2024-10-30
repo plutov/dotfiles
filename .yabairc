@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# global settings
+yabai -m config layout stack
+yabai -m config top_padding                  25
+yabai -m config bottom_padding               25
+yabai -m config left_padding                 25
+yabai -m config right_padding                25
+yabai -m config window_gap                   10
+yabai -m config external_bar                 all:25:0
