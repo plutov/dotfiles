@@ -21,12 +21,12 @@ function install {
     brew install golang
 
     # install yabai
-    # brew install koekeishiya/formulae/yabai
-    # yabai --restart-service
+    brew install koekeishiya/formulae/yabai
+    yabai --start-service
 
     # install simple-bar
     mkdir -p ~/code/widgets
-    # git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
+    git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
 
     # Set git config author details
     git config --global user.email "a.pliutau@gmail.com"
