@@ -17,16 +17,22 @@ function install {
     curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
     ~/.local/bin/getnf
 
-    # install golang
-    brew install golang
+    # install homebrew packages
+    brew install golang neovim koekeishiya/formulae/yabai
 
-    # install yabai
-    brew install koekeishiya/formulae/yabai
+    # start yabai
     yabai --start-service
 
-    # install simple-bar
+    # install simple-bar, install Übersicht first - https://tracesof.net/uebersicht/
     mkdir -p ~/code/widgets
-    git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
+    if [ -d "~/code/widgets/simple-bar" ]
+    then
+    	git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
+    else
+    	cd ~/code/widgets/simple-bar
+     	git fetch
+      	git pull
+    fi
 
     # Set git config author details
     git config --global user.email "a.pliutau@gmail.com"

@@ -1,14 +1,13 @@
-Install Nerd Font using the following command:
+## dotfiles
 
-```
-curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
-~/.local/bin/getnf
-```
+Install:
 
-Install oh-my-zsh:
-
-```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```bash
+./dotfiles.sh -i
 ```
 
-Install neovim.
+Save:
+
+```bash
+./dotfiles.sh -s
+```
