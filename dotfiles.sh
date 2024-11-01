@@ -27,11 +27,11 @@ function install {
     mkdir -p ~/code/widgets
     if [ -d "~/code/widgets/simple-bar" ]
     then
-    	git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
+   		cd ~/code/widgets/simple-bar
+    	git fetch
+     	git pull
     else
-    	cd ~/code/widgets/simple-bar
-     	git fetch
-      	git pull
+    	git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
     fi
 
     # Set git config author details
