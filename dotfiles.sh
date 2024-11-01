@@ -17,6 +17,9 @@ function install {
     curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
     ~/.local/bin/getnf
 
+    # install homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
     # install homebrew packages
     brew install golang neovim koekeishiya/formulae/yabai
 
