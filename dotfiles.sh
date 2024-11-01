@@ -21,7 +21,7 @@ function install {
     brew install golang neovim koekeishiya/formulae/yabai
 
     # start yabai
-    yabai --start-service
+    # yabai --start-service
 
     # install simple-bar, install Übersicht first - https://tracesof.net/uebersicht/
     mkdir -p ~/code/widgets
