@@ -62,7 +62,7 @@
 	"buffer_font_size": 18,
 	"theme": {
 		"mode": "system",
-		"light": "Catppuccin Latte",
+		"light": "Catppuccin Mocha",
 		"dark": "Catppuccin Mocha"
 	},
 	"preview_tabs": {
