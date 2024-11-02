@@ -1,44 +1,60 @@
 #!/bin/bash
 
+EMAIL="a.pliutau@gmail.com"
+
 function install {
-	rm -rf $HOME/.zshrc
-	rm -rf $HOME/.env
-	rm -rf $HOME/.config
-	rm -rf $HOME/.yabairc
 	cp -a ./.zshrc $HOME/
   	cp -a ./.env $HOME/
     cp -a ./.yabairc $HOME/
     cp -aR ./.config $HOME/
 
     # install ohmyzsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    if [ ! -d "$HOME/.oh-my-zsh" ]; then
+        echo "Installing oh-my-zsh"
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    fi
 
     # install nerdfont
     curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
-    ~/.local/bin/getnf
+    ~/.local/bin/getnf -i GeistMono
 
     # install homebrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if [[ $(command -v brew) == "" ]]; then
+        echo "Installing Hombrew"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    else
+        echo "Updating Homebrew"
+        brew update
+    fi
 
     # install homebrew packages
+    echo "Installing Homebrew packages"
     brew install golang neovim koekeishiya/formulae/yabai
 
     # start yabai
     # yabai --start-service
 
     # install simple-bar, install Übersicht first - https://tracesof.net/uebersicht/
-    mkdir -p ~/code/widgets
-    if [ -d "~/code/widgets/simple-bar" ]
+    mkdir -p $HOME/code/widgets
+    if [ -d "$HOME/code/widgets/simple-bar" ]
     then
+        echo "Updating simple-bar"
    		cd ~/code/widgets/simple-bar
     	git fetch
      	git pull
     else
+        echo "Installing simple-bar"
     	git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
     fi
 
-    # Set git config author details
-    git config --global user.email "a.pliutau@gmail.com"
+    if [ ! -f "$HOME/.ssh/id_ed25519" ]
+    then
+        echo "Generating ssh key"
+        ssh-keygen -t ed25519 -N "" -C "$EMAIL" -f $HOME/.ssh/id_ed25519
+    fi
+
+    echo "Configuring git"
+    git config --global user.email "$EMAIL"
     git config --global user.name "plutov"
 
     echo "dotfiles installed."
