@@ -62,7 +62,6 @@ function install {
     fi
 
     echo "Configuring git"
-    # TODO: generate GPG key
     git config --global user.email "$EMAIL"
     git config --global user.name "plutov"
     git config --global gpg.format ssh
