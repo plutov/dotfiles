@@ -65,7 +65,9 @@ function install {
     # TODO: generate GPG key
     git config --global user.email "$EMAIL"
     git config --global user.name "plutov"
+    git config --global gpg.format ssh
     git config --global commit.gpgsign true
+    git config --global user.signingkey $HOME/.ssh/id_ed25519.pub
 
     echo "dotfiles installed."
 }

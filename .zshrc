@@ -9,5 +9,3 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
 alias vi="nvim"
-
-export GPG_TTY=$(tty)
