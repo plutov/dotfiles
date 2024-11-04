@@ -29,7 +29,15 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang neovim koekeishiya/formulae/yabai
+    brew install golang protobuf kubectl neovim koekeishiya/formulae/yabai
+    brew install --cask chromium
+    brew install --cask google-cloud-sdk
+    gcloud components install gke-gcloud-auth-plugin
+
+    # install dev tools
+    go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 
     # start yabai
     # yabai --start-service
@@ -54,8 +62,10 @@ function install {
     fi
 
     echo "Configuring git"
+    # TODO: generate GPG key
     git config --global user.email "$EMAIL"
     git config --global user.name "plutov"
+    git config --global commit.gpgsign true
 
     echo "dotfiles installed."
 }
