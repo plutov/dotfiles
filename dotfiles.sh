@@ -29,10 +29,13 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang protobuf kubectl neovim koekeishiya/formulae/yabai
+    brew install golang protobuf kubectl neovim postgresql koekeishiya/formulae/yabai
     brew install --cask chromium
     brew install --cask google-cloud-sdk
     gcloud components install gke-gcloud-auth-plugin
+
+    # installs nvm (Node Version Manager)
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
     # install dev tools
     go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
