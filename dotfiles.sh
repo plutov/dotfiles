@@ -29,7 +29,7 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang protobuf kubectl neovim postgresql koekeishiya/formulae/yabai
+    brew install golang vegeta protobuf kubectl neovim postgresql koekeishiya/formulae/yabai
     brew install --cask chromium
     brew install --cask google-cloud-sdk
     gcloud components install gke-gcloud-auth-plugin
