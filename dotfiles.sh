@@ -29,7 +29,9 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang vegeta protobuf kubectl neovim postgresql koekeishiya/formulae/yabai
+    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql
+    brew install koekeishiya/formulae/yabai
+    brew install derailed/k9s/k9s
     brew install --cask chromium
     brew install --cask google-cloud-sdk
     gcloud components install gke-gcloud-auth-plugin
@@ -41,6 +43,8 @@ function install {
     go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+    go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
+    go install github.com/dadav/helm-schema/cmd/helm-schema@latest
 
     # start yabai
     # yabai --start-service
