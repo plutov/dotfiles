@@ -5,7 +5,6 @@ EMAIL="a.pliutau@gmail.com"
 function install {
 	cp -a ./.zshrc $HOME/
   	cp -a ./.env $HOME/
-    cp -a ./.yabairc $HOME/
     cp -aR ./.config $HOME/
 
     # install ohmyzsh
@@ -29,12 +28,13 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql
-    brew install koekeishiya/formulae/yabai
-    brew install derailed/k9s/k9s
-    brew install --cask chromium
-    brew install --cask google-cloud-sdk
-    gcloud components install gke-gcloud-auth-plugin
+    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql derailed/k9s/k9s chart-testing yamllint golangci-lint
+    if [[ $(command -v brew) == "" ]]; then
+        brew install --cask google-cloud-sdk
+        gcloud components install gke-gcloud-auth-plugin
+    else
+        gcloud components update
+    fi
 
     # installs nvm (Node Version Manager)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
@@ -45,22 +45,6 @@ function install {
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
     go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
     go install github.com/dadav/helm-schema/cmd/helm-schema@latest
-
-    # start yabai
-    # yabai --start-service
-
-    # install simple-bar, install Übersicht first - https://tracesof.net/uebersicht/
-    mkdir -p $HOME/code/widgets
-    if [ -d "$HOME/code/widgets/simple-bar" ]
-    then
-        echo "Updating simple-bar"
-   		cd ~/code/widgets/simple-bar
-    	git fetch
-     	git pull
-    else
-        echo "Installing simple-bar"
-    	git clone https://github.com/Jean-Tinland/simple-bar ~/code/widgets/simple-bar
-    fi
 
     if [ ! -f "$HOME/.ssh/id_ed25519" ]
     then
@@ -81,7 +65,6 @@ function install {
 function save {
 	cp -a $HOME/.zshrc ./
 	cp -a $HOME/.env ./
-	cp -a $HOME/.yabairc ./
 	cp -aR $HOME/.config ./
 	echo "dotfiles saved."
 }
