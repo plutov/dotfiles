@@ -31,7 +31,12 @@
   },
   "soft_wrap": "editor_width",
   "inline_completions": {
-    "disabled_globs": [".env", "test.go", ".md", "diagram.dsl"]
+    "disabled_globs": [
+      ".env",
+      "test.go",
+      ".md",
+      "diagram.dsl"
+    ]
   },
   "scrollbar": {
     "git_diff": false,
@@ -93,7 +98,8 @@
     // Whether the assistant is enabled.
     "enabled": false
   },
-  // "formatter": "prettier",
+  "formatter": "language_server",
+  "format_on_save": "off",
   "outline_panel": {
     "button": false
   },
