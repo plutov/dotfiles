@@ -4,9 +4,8 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc $HOME/
-    cp -aR ./.config $HOME/
+    cp -a ./zed.json $HOME/.config/zed/settings.json
 
-    # install ohmyzsh
     if [ ! -f "$HOME/.env" ]; then
         cp -a ./.env $HOME/
     fi
@@ -70,7 +69,7 @@ function install {
 
 function save {
 	cp -a $HOME/.zshrc ./
-	cp -aR $HOME/.config ./
+	cp -a $HOME/.config/zed/settings.json ./zed.json
 	echo "dotfiles saved."
 }
 
