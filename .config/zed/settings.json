@@ -4,6 +4,65 @@
     "enabled": true,
     "coloring": "indent_aware"
   },
+  "languages": {
+    "JavaScript": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
+        }
+      }
+    },
+    "TypeScript": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
+        }
+      }
+    },
+    "Go": {
+      "hard_tabs": true
+    }
+  },
+  "lsp": {
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "keyOrdering": false,
+          "format": {
+            "singleQuote": false
+          },
+          "schemas": {
+            // "http://json.schemastore.org/composer": ["/*"],
+          }
+        }
+      }
+    }
+  },
+  "file_types": {
+    "Helm": [
+      "**/templates/*.yaml",
+      "**/templates/*.yml"
+    ]
+  },
+  "hard_tabs": false,
+  "formatter": "language_server",
+  "format_on_save": "off",
+  "project_panel": {
+    "auto_fold_dirs": false,
+    "button": true,
+    "dock": "right",
+    "git_status": true
+  },
   "centered_layout": {
     "left_padding": 0.15,
     "right_padding": 0.15
@@ -13,21 +72,6 @@
   },
   "features": {
     "inline_completion_provider": "none"
-  },
-  "languages": {
-    "Markdown-Inline": {
-      "show_inline_completions": false
-    },
-    "Markdown": {
-      "show_inline_completions": true
-    }
-  },
-  "hard_tabs": false,
-  "project_panel": {
-    "auto_fold_dirs": false,
-    "button": true,
-    "dock": "right",
-    "git_status": true
   },
   "soft_wrap": "editor_width",
   "inline_completions": {
@@ -89,17 +133,12 @@
     // Whether to show the Selections menu in the editor toolbar
     "selections_menu": false
   },
-  "lsp": {
-    "yaml-language-server": {}
-  },
   "assistant": {
     // Version of this setting.
     "version": "2",
     // Whether the assistant is enabled.
     "enabled": false
   },
-  "formatter": "language_server",
-  "format_on_save": "off",
   "outline_panel": {
     "button": false
   },

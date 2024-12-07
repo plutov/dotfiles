@@ -32,7 +32,8 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql derailed/k9s/k9s chart-testing yamllint golangci-lint sqlc yaml-language-server
+    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql derailed/k9s/k9s chart-testing \
+    golangci-lint sqlc yaml-language-server prettier
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
         gcloud components install gke-gcloud-auth-plugin
