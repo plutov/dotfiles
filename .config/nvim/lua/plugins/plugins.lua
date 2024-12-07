@@ -1,5 +1,13 @@
 return {
     {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        keys = {
+            { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find Files", mode = "n" },
+            { "<leader>n", "<cmd>Neotree<cr>",              desc = "Neotree",    mode = "n" },
+        },
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
@@ -16,8 +24,19 @@ return {
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
+        opts = {
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                },
+            },
+        },
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
-            require("neo-tree").setup()
+            require("lualine").setup()
         end,
     },
     {
@@ -35,13 +54,15 @@ return {
 
             mason.setup()
 
-            -- Make sure gopls is installed
             lspconfig.gopls.setup({})
+            lspconfig.yamlls.setup({})
         end,
     },
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.8',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
+    {
+        'fatih/vim-go'
+    }
 }
