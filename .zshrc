@@ -4,6 +4,7 @@ export PATH=/opt/homebrew/lib/ruby/gems/3.2.0/bin:/usr/local/bin:$HOME/go/bin:/o
 source ~/.env
 
 plugins=(git)
+ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
 
