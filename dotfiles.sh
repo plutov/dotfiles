@@ -4,8 +4,12 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc $HOME/
-  	cp -a ./.env $HOME/
     cp -aR ./.config $HOME/
+
+    # install ohmyzsh
+    if [ ! -f "$HOME/.env" ]; then
+        cp -a ./.env $HOME/
+    fi
 
     # install ohmyzsh
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -40,6 +44,7 @@ function install {
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
     # install dev tools
+    go install golang.org/x/tools/gopls@latest
     go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
     go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
@@ -64,7 +69,6 @@ function install {
 
 function save {
 	cp -a $HOME/.zshrc ./
-	cp -a $HOME/.env ./
 	cp -aR $HOME/.config ./
 	echo "dotfiles saved."
 }
