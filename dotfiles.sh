@@ -4,6 +4,7 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc $HOME/
+	cp -aR ./nvim $HOME/.config/
     cp -a ./zed.json $HOME/.config/zed/settings.json
 
     if [ ! -f "$HOME/.env" ]; then
@@ -31,8 +32,10 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install golang vegeta helm kube-linter protobuf kubectl kubescape neovim postgresql derailed/k9s/k9s chart-testing \
-    golangci-lint sqlc yaml-language-server prettier
+    brew install neovim ripgrep \
+    golang vegeta helm kube-linter protobuf kubectl kubescape postgresql derailed/k9s/k9s chart-testing \
+    golangci-lint sqlc \
+    yaml-language-server prettier
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
         gcloud components install gke-gcloud-auth-plugin
@@ -69,6 +72,7 @@ function install {
 
 function save {
 	cp -a $HOME/.zshrc ./
+	cp -aR $HOME/.config/nvim ./
 	cp -a $HOME/.config/zed/settings.json ./zed.json
 	echo "dotfiles saved."
 }
