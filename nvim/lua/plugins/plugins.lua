@@ -2,10 +2,48 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		opts_extend = { "spec" },
+		opts = {
+			defaults = {},
+			spec = {
+				{
+					mode = { "n", "v" },
+					{ "<leader>f", group = "file/find" },
+					{ "<leader>s", group = "search" },
+					{
+						"<leader>b",
+						group = "buffer",
+						proxy = "<c-b>",
+						expand = function()
+							return require("which-key.extras").expand.buf()
+						end,
+					},
+					{
+						"<leader>w",
+						group = "windows",
+						proxy = "<c-w>",
+						expand = function()
+							return require("which-key.extras").expand.win()
+						end,
+					},
+				},
+				{
+					mode = { "n" },
+					{ "<leader>bp", "<cmd>bprevvious<cr>", desc = "Prev Buffer" },
+					{ "<leader>bn", "<cmd>bnext<cr>", desc = "Next Buffer" },
+					{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch to Other Buffer" },
+					{ "<leader>bd", "<cmd>bd<cr>", desc = "Delete Buffer" },
+				},
+			},
+		},
 		keys = {
-			{ "<leader>n", "<cmd>Neotree<cr>", desc = "Neotree", mode = "n" },
-			{ "<leader>f", group = "file", desc = "Files" },
-			{ "<leader>b", group = "buffers", desc = "Buffers" },
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Keymaps (which-key)",
+			},
 		},
 	},
 	{
@@ -27,6 +65,15 @@ return {
 				filtered_items = {
 					visible = true,
 				},
+			},
+		},
+		keys = {
+			{
+				"<leader>fe",
+				function()
+					require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+				end,
+				desc = "NeoTree",
 			},
 		},
 	},
@@ -105,7 +152,6 @@ return {
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete({}),
 				}),
 				sources = {
 					{ name = "nvim_lsp" },
@@ -133,9 +179,9 @@ return {
 			pcall(require("telescope").load_extension, "fzf")
 
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Search Files" })
-			vim.keymap.set("n", "<leader>bg", builtin.live_grep, { desc = "Grep All" })
-			vim.keymap.set("n", "<leader>bo", builtin.buffers, { desc = "Open Buffers" })
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
+			vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
+			vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Open Buffers" })
 			local fk_opts = {
 				cwd = "~/.config/nvim",
 				results_title = "Config",
