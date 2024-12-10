@@ -32,7 +32,7 @@ function install {
 
     # install homebrew packages
     echo "Installing Homebrew packages"
-    brew install neovim ripgrep \
+    brew install neovim ripgrep luarocks \
     golang vegeta helm kube-linter protobuf kubectl kubescape postgresql derailed/k9s/k9s chart-testing \
     golangci-lint sqlc \
     yaml-language-server prettier

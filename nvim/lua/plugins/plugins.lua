@@ -4,7 +4,6 @@ return {
 		event = "VeryLazy",
 		opts_extend = { "spec" },
 		opts = {
-			defaults = {},
 			spec = {
 				{
 					mode = { "n", "v" },
@@ -36,15 +35,6 @@ return {
 				},
 			},
 		},
-		keys = {
-			{
-				"<leader>?",
-				function()
-					require("which-key").show({ global = false })
-				end,
-				desc = "Buffer Keymaps (which-key)",
-			},
-		},
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -60,8 +50,23 @@ return {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
+		cmd = "Neotree",
+		init = function()
+			vim.api.nvim_create_autocmd("BufEnter", {
+				group = vim.api.nvim_create_augroup("NeoTreeInit", { clear = true }),
+				callback = function()
+					local f = vim.fn.expand("%:p")
+					if vim.fn.isdirectory(f) ~= 0 then
+						vim.cmd("Neotree current dir=" .. f)
+						vim.api.nvim_clear_autocmds({ group = "NeoTreeInit" })
+					end
+				end,
+			})
+			-- keymaps
+		end,
 		opts = {
 			filesystem = {
+				hijack_netrw_behavior = "open_current",
 				filtered_items = {
 					visible = true,
 				},
@@ -162,21 +167,17 @@ return {
 		end,
 	},
 	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = function()
-					return vim.fn.executable("make") == 1
-				end,
-			},
 		},
 		config = function()
 			require("telescope").setup({})
-
-			pcall(require("telescope").load_extension, "fzf")
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
