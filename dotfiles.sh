@@ -6,6 +6,7 @@ function install {
 	cp -a ./.zshrc $HOME/
 	cp -aR ./nvim $HOME/.config/
     cp -a ./zed.json $HOME/.config/zed/settings.json
+    cp -a ./ghostty.config $HOME/.config/ghostty/config
 
     if [ ! -f "$HOME/.env" ]; then
         cp -a ./.env $HOME/
@@ -74,6 +75,7 @@ function save {
 	cp -a $HOME/.zshrc ./
 	cp -aR $HOME/.config/nvim ./
 	cp -a $HOME/.config/zed/settings.json ./zed.json
+	cp -a $HOME/.config/ghostty/config ./ghostty.config
 	echo "dotfiles saved."
 }
 
