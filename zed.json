@@ -1,5 +1,9 @@
 {
   "buffer_font_family": "GeistMono Nerd Font",
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
   "indent_guides": {
     "enabled": true,
     "coloring": "indent_aware"
@@ -58,7 +62,8 @@
   "formatter": "language_server",
   "format_on_save": "off",
   "project_panel": {
-    "auto_fold_dirs": false,
+    "indent_size": 20,
+    "auto_fold_dirs": true,
     "button": true,
     "dock": "right",
     "git_status": true
