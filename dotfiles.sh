@@ -34,8 +34,8 @@ function install {
     # install homebrew packages
     echo "Installing Homebrew packages"
     brew install neovim ripgrep luarocks \
-    golang vegeta helm kube-linter protobuf kubectl kubescape postgresql derailed/k9s/k9s chart-testing \
-    golangci-lint sqlc \
+    helm kube-linter protobuf kubectl kubescape postgresql derailed/k9s/k9s chart-testing \
+    golang golangci-lint sqlc zig vegeta \
     yaml-language-server prettier
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
