@@ -93,6 +93,7 @@ return {
 			local servers = {
 				yamlls = {},
 				gopls = {},
+				sqlls = {},
 			}
 			mason.setup()
 		end,
@@ -124,6 +125,7 @@ return {
 				javascript = { "prettier" },
 				json = { "prettier" },
 				go = { "goimports", "gofumpt" },
+				sql = { "sqlfluff" },
 			},
 		},
 	},

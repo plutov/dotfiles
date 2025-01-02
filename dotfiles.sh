@@ -36,7 +36,8 @@ function install {
     brew install neovim ripgrep luarocks \
     helm kube-linter protobuf kubectl kubescape postgresql derailed/k9s/k9s chart-testing \
     golang golangci-lint sqlc zig vegeta \
-    yaml-language-server prettier
+    yaml-language-server prettier \
+    git-lfs
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
         gcloud components install gke-gcloud-auth-plugin
