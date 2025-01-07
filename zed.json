@@ -68,6 +68,10 @@
     "dock": "right",
     "git_status": true
   },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false
+  },
   "centered_layout": {
     "left_padding": 0.15,
     "right_padding": 0.15
