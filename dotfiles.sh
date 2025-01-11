@@ -10,6 +10,8 @@ function install {
     mkdir -p $HOME/.config/ghostty
     cp -a ./ghostty.config $HOME/.config/ghostty/config
 
+    touch ~/.hushlogin
+
     if [ ! -f "$HOME/.env" ]; then
         cp -a ./.env $HOME/
     fi
