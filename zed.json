@@ -217,7 +217,8 @@
     "line_height": "comfortable",
     "toolbar": {
       // Whether to display the terminal title in its toolbar.
-      "title": false
+      "title": false,
+      "breadcrumbs": false
     }
   }
 }
