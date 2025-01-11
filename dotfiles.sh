@@ -4,8 +4,10 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc $HOME/
+	mkdir -p $HOME/.config
 	cp -aR ./nvim $HOME/.config/
     cp -a ./zed.json $HOME/.config/zed/settings.json
+    mkdir -p $HOME/.config/ghostty
     cp -a ./ghostty.config $HOME/.config/ghostty/config
 
     if [ ! -f "$HOME/.env" ]; then
@@ -64,6 +66,7 @@ function install {
     fi
 
     echo "Configuring git"
+    git lfs install
     git config --global user.email "$EMAIL"
     git config --global user.name "plutov"
     git config --global gpg.format ssh
