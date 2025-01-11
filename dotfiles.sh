@@ -38,8 +38,7 @@ function install {
     # install homebrew packages
     echo "Installing Homebrew packages"
     brew install neovim ripgrep luarocks \
-    podman-desktop docker-compose kubectl \
-    helm kube-linter protobuf kubescape postgresql derailed/k9s/k9s chart-testing \
+    kubectl helm kube-linter protobuf kubescape postgresql derailed/k9s/k9s chart-testing \
     golang golangci-lint sqlc zig vegeta \
     yaml-language-server prettier \
     git-lfs btop
