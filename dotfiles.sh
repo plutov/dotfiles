@@ -10,6 +10,7 @@ function install {
     mkdir -p $HOME/.config/ghostty
     cp -a ./ghostty.config $HOME/.config/ghostty/config
 
+    # to prevent Last Login message in terminal
     touch ~/.hushlogin
 
     if [ ! -f "$HOME/.env" ]; then
@@ -39,7 +40,7 @@ function install {
     echo "Installing Homebrew packages"
     brew install neovim ripgrep luarocks \
     kubectl helm kube-linter protobuf kubescape postgresql derailed/k9s/k9s chart-testing \
-    golang golangci-lint sqlc zig vegeta \
+    golang golangci-lint sqlc vegeta \
     yaml-language-server prettier \
     git-lfs btop
     if [[ $(command -v brew) == "" ]]; then
