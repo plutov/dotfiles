@@ -42,7 +42,7 @@ function install {
     kubectl helm kube-linter protobuf kubescape postgresql derailed/k9s/k9s chart-testing \
     golang golangci-lint sqlc vegeta \
     yaml-language-server prettier \
-    git-lfs btop
+    git-lfs btop fastfetch
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
         gcloud components install gke-gcloud-auth-plugin
