@@ -41,13 +41,14 @@ function install {
     brew install neovim ripgrep luarocks \
     kubectl helm kube-linter protobuf kubescape postgresql derailed/k9s/k9s chart-testing \
     golang golangci-lint sqlc vegeta \
+    rust-analyzer \
     yaml-language-server prettier \
     git-lfs btop fastfetch
     if [[ $(command -v brew) == "" ]]; then
         brew install --cask google-cloud-sdk
         gcloud components install gke-gcloud-auth-plugin
     else
-        gcloud components update
+        gcloud components update 
     fi
 
     # installs nvm (Node Version Manager)
