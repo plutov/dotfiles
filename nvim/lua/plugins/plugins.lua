@@ -93,7 +93,7 @@ return {
 			local servers = {
 				yamlls = {},
 				gopls = {},
-				sqlls = {},
+				sqls = {},
 			}
 			mason.setup()
 		end,
@@ -121,6 +121,9 @@ return {
 				}
 			end,
 			formatters_by_ft = {
+				bash = { "shfmt", "shellcheck" },
+				zsh = { "shfmt", "shellcheck" },
+				sh = { "shfmt", "shellcheck" },
 				lua = { "stylua" },
 				javascript = { "prettier" },
 				json = { "prettier" },
