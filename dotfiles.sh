@@ -58,6 +58,8 @@ function install {
 	# installs nvm (Node Version Manager)
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
+	export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
+
 	# install dev tools
 	go install golang.org/x/tools/gopls@latest
 	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
@@ -67,6 +69,7 @@ function install {
 	go install github.com/dadav/helm-schema/cmd/helm-schema@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install mvdan.cc/gofumpt@latest
+	npm install -g sql-formatter
 
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 		echo "Generating ssh key"
