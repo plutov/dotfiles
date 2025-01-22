@@ -23,6 +23,10 @@ function install {
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 	fi
 
+	# install ohmyzsh plugins
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-history-substring-search ~/.oh-my-zsh/plugins/zsh-history-substring-search
+
 	# install nerdfont
 	curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
 	~/.local/bin/getnf -i GeistMono

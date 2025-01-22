@@ -3,10 +3,15 @@ export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
 
 source ~/.env
 
-plugins=(git)
+plugins=(
+	git
+	zsh-history-substring-search
+	zsh-autosuggestion
+)
+
 ZSH_THEME="robbyrussell"
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH"/oh-my-zsh.sh
 
 alias vim="nvim"
 alias vi="nvim"
