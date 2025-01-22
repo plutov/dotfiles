@@ -5,7 +5,6 @@ source ~/.env
 
 plugins=(
 	git
-	zsh-history-substring-search
 	zsh-autosuggestions
 )
 
