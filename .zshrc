@@ -6,7 +6,7 @@ source ~/.env
 plugins=(
 	git
 	zsh-history-substring-search
-	zsh-autosuggestion
+	zsh-autosuggestions
 )
 
 ZSH_THEME="robbyrussell"
