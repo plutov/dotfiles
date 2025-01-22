@@ -51,7 +51,7 @@ function install {
 	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql
 	# workspace
 	brew install btop fastfetch
-	if [[ $(command -v brew) == "" ]]; then
+	if [[ $(command -v gcloud) == "" ]]; then
 		brew install --cask google-cloud-sdk
 		gcloud components install gke-gcloud-auth-plugin
 	else
