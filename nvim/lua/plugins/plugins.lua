@@ -74,7 +74,16 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("lualine").setup()
+			require("lualine").setup({
+				sections = {
+					lualine_a = { "mode" },
+					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_c = { "filename" },
+					lualine_x = { "fileformat", "filetype" },
+					lualine_y = {},
+					lualine_z = { "location" },
+				},
+			})
 		end,
 	},
 	{
@@ -85,17 +94,20 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local mason = require("mason")
-
 			local servers = {
 				yamlls = {},
 				gopls = {},
 				sqls = {},
 			}
-			mason.setup()
+
+			local ensure_installed = vim.tbl_keys(servers or {})
+			require("mason").setup()
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 		end,
 	},
 	{
@@ -113,7 +125,7 @@ return {
 			},
 		},
 		opts = {
-			notify_on_error = false,
+			notify_on_error = true,
 			format_on_save = function(bufnr)
 				return {
 					timeout_ms = 500,
@@ -126,6 +138,7 @@ return {
 				sh = { "shfmt", "shellcheck" },
 				lua = { "stylua" },
 				javascript = { "prettier" },
+				typescript = { "prettier" },
 				json = { "prettier" },
 				go = { "goimports", "gofumpt" },
 				sql = { "sql_formatter" },

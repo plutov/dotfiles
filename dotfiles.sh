@@ -45,7 +45,7 @@ function install {
 	brew install neovim ripgrep luarocks \
 		protobuf stylua shfmt shellcheck \
 		golang golangci-lint sqlc vegeta \
-		rust-analyzer yaml-language-server prettier git-lfs
+		yaml-language-server prettier git-lfs
 
 	# containers
 	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql
