@@ -4,6 +4,7 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc "$HOME"/
+	cp -a ~/.p10k.zsh "$HOME"/
 	mkdir -p "$HOME"/.config
 	cp -aR ./nvim "$HOME"/.config/
 	cp -a ./zed.json "$HOME"/.config/zed/settings.json
@@ -92,6 +93,7 @@ function install {
 
 function save {
 	cp -a "$HOME"/.zshrc ./
+	cp -a "$HOME"/.p10k.zsh ./
 	cp -aR "$HOME"/.config/nvim ./
 	cp -a "$HOME"/.config/zed/settings.json ./zed.json
 	cp -a "$HOME"/.config/ghostty/config ./ghostty.config
