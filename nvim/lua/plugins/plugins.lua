@@ -103,6 +103,7 @@ return {
 				yamlls = {},
 				gopls = {},
 				sqls = {},
+				zls = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -142,6 +143,7 @@ return {
 				json = { "prettier" },
 				go = { "goimports", "gofumpt" },
 				sql = { "sql_formatter" },
+				zig = { "zigfmt" },
 			},
 		},
 	},

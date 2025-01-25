@@ -25,7 +25,7 @@ function install {
 	fi
 
 	# install ohmyzsh plugins
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 	# install nerdfont
@@ -47,7 +47,8 @@ function install {
 	brew install neovim ripgrep luarocks \
 		protobuf stylua shfmt shellcheck \
 		golang golangci-lint sqlc vegeta \
-		yaml-language-server prettier git-lfs
+		yaml-language-server prettier git-lfs \
+		zig
 
 	# containers
 	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql
