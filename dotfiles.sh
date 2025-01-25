@@ -4,7 +4,7 @@ EMAIL="a.pliutau@gmail.com"
 
 function install {
 	cp -a ./.zshrc "$HOME"/
-	cp -a ~/.p10k.zsh "$HOME"/
+	cp -a ./.p10k.zsh "$HOME"/
 	mkdir -p "$HOME"/.config
 	cp -aR ./nvim "$HOME"/.config/
 	cp -a ./zed.json "$HOME"/.config/zed/settings.json
@@ -26,6 +26,7 @@ function install {
 
 	# install ohmyzsh plugins
 	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 	# install nerdfont
 	curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
@@ -50,8 +51,11 @@ function install {
 
 	# containers
 	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql
+
 	# workspace
-	brew install btop fastfetch
+	brew install btop fastfetch bat
+
+	# gcloud
 	if [[ $(command -v gcloud) == "" ]]; then
 		brew install --cask google-cloud-sdk
 		gcloud components install gke-gcloud-auth-plugin
