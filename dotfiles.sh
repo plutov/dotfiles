@@ -48,7 +48,7 @@ function install {
 		protobuf stylua shfmt shellcheck \
 		golang golangci-lint sqlc vegeta \
 		yaml-language-server prettier git-lfs \
-		zig
+		zig fzf
 
 	# containers
 	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql

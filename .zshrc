@@ -13,6 +13,7 @@ source ~/.env
 plugins=(
 	git
 	zsh-autosuggestions
+	fzf
 )
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
