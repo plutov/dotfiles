@@ -7,9 +7,15 @@ function install {
 	cp -a ./.p10k.zsh "$HOME"/
 	mkdir -p "$HOME"/.config
 	cp -aR ./nvim "$HOME"/.config/
+	# zed
+	mkdir -p "$HOME"/.config/zed
 	cp -a ./zed.json "$HOME"/.config/zed/settings.json
+	# ghostty
 	mkdir -p "$HOME"/.config/ghostty
 	cp -a ./ghostty.config "$HOME"/.config/ghostty/config
+	# colima
+	mkdir -p "$HOME"/.colima/default
+	cp -a ./colima.yaml "$HOME"/.colima/default/colima.yaml
 
 	# to prevent Last Login message in terminal
 	touch ~/.hushlogin
@@ -51,7 +57,7 @@ function install {
 		zig fzf
 
 	# containers
-	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
+	brew install colima docker kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
 
 	# workspace
 	brew install btop fastfetch bat
@@ -102,6 +108,7 @@ function save {
 	cp -aR "$HOME"/.config/nvim ./
 	cp -a "$HOME"/.config/zed/settings.json ./zed.json
 	cp -a "$HOME"/.config/ghostty/config ./ghostty.config
+	cp -a "$HOME"/.colima/default/colima.yaml ./colima.yaml
 	echo "dotfiles saved."
 }
 
