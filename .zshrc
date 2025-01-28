@@ -8,6 +8,9 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
 
+# not to use apple git
+alias git=/opt/homebrew/bin/git
+
 source ~/.env
 
 plugins=(

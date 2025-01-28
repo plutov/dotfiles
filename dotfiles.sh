@@ -47,11 +47,11 @@ function install {
 	brew install neovim ripgrep luarocks \
 		protobuf stylua shfmt shellcheck \
 		golang golangci-lint sqlc vegeta \
-		yaml-language-server prettier git-lfs \
+		yaml-language-server prettier git git-lfs \
 		zig fzf
 
 	# containers
-	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql
+	brew install kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
 
 	# workspace
 	brew install btop fastfetch bat
