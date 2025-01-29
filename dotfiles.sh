@@ -16,6 +16,7 @@ function install {
 	# colima
 	mkdir -p "$HOME"/.colima/default
 	cp -a ./colima.yaml "$HOME"/.colima/default/colima.yaml
+	sudo ln -s "$HOME"/.colima/default/docker.sock /var/run/docker.sock
 
 	# to prevent Last Login message in terminal
 	touch ~/.hushlogin

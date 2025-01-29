@@ -4,9 +4,8 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
-
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
-docker context use colima
+export DOCKER_HOST=/var/run/docker.sock
+export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 
 # not to use apple git
 alias git=/opt/homebrew/bin/git
