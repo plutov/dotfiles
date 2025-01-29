@@ -6,11 +6,11 @@ cpu: 2
 # NOTE: value can only be increased after virtual machine has been created.
 #
 # Default: 100
-disk: 50
+disk: 100
 
 # Size of the memory in GiB to be allocated to the virtual machine.
 # Default: 2
-memory: 2
+memory: 4
 
 # Architecture of the virtual machine (x86_64, aarch64, host).
 #
@@ -33,7 +33,7 @@ hostname: colima
 kubernetes:
   # Enable kubernetes.
   # Default: false
-  enabled: false
+  enabled: true
   
   # Kubernetes version to use.
   # This needs to exactly match a k3s version https://github.com/k3s-io/k3s/releases
@@ -140,7 +140,7 @@ nestedVirtualization: false
 #
 # NOTE: value cannot be changed after virtual machine is created.
 # Default: virtiofs (for vz), sshfs (for qemu)
-mountType: sshfs
+mountType: virtiofs
 
 # Propagate inotify file events to the VM.
 # NOTE: this is experimental.
