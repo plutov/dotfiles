@@ -1,16 +1,16 @@
 # Number of CPUs to be allocated to the virtual machine.
 # Default: 2
-cpu: 2
+cpu: 4
 
 # Size of the disk in GiB to be allocated to the virtual machine.
 # NOTE: value can only be increased after virtual machine has been created.
 #
 # Default: 100
-disk: 100
+disk: 150
 
 # Size of the memory in GiB to be allocated to the virtual machine.
 # Default: 2
-memory: 6 
+memory: 8
 
 # Architecture of the virtual machine (x86_64, aarch64, host).
 #
@@ -27,7 +27,7 @@ runtime: docker
 # Set custom hostname for the virtual machine.
 # Default: colima
 #          colima-profile_name for other profiles
-hostname: ""
+hostname: colima
 
 # Kubernetes configuration for the virtual machine.
 kubernetes:
