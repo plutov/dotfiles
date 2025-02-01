@@ -7,9 +7,6 @@ export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
 export DOCKER_HOST=unix:///var/run/docker.sock
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 
-# not to use apple git
-alias git=/opt/homebrew/bin/git
-
 source ~/.env
 
 plugins=(
