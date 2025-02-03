@@ -58,7 +58,7 @@ function install {
 		zig fzf
 
 	# containers
-	brew install colima docker kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
+	brew install colima qemu docker kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
 
 	# workspace
 	brew install btop fastfetch bat
