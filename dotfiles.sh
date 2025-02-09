@@ -85,6 +85,7 @@ function install {
 	go install github.com/dadav/helm-schema/cmd/helm-schema@latest
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install mvdan.cc/gofumpt@latest
+	go install github.com/google/yamlfmt/cmd/yamlfmt@latest
 	npm install -g sql-formatter
 
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then

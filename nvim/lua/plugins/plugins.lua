@@ -144,6 +144,7 @@ return {
 				go = { "goimports", "gofumpt" },
 				sql = { "sql_formatter" },
 				zig = { "zigfmt" },
+				yaml = { "yamlfmt" },
 			},
 		},
 	},
