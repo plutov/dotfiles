@@ -64,7 +64,7 @@ return {
 			{
 				"<leader>fe",
 				function()
-					require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+					require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd(), position = "right" })
 				end,
 				desc = "NeoTree",
 			},
@@ -221,7 +221,7 @@ return {
 	},
 	{
 		"nvimdev/dashboard-nvim",
-		lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
+		lazy = false,
 		opts = function()
 			local logo = [[NEOVIM]]
 
@@ -230,8 +230,6 @@ return {
 			local opts = {
 				theme = "doom",
 				hide = {
-					-- this is taken care of by lualine
-					-- enabling this messes up the actual laststatus setting after loading a file
 					statusline = false,
 				},
 				config = {
