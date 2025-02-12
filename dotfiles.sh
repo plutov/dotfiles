@@ -2,7 +2,7 @@
 
 EMAIL="a.pliutau@gmail.com"
 
-function install {
+function apply {
 	cp -a ./.zshrc "$HOME"/
 	cp -a ./.p10k.zsh "$HOME"/
 	mkdir -p "$HOME"/.config
@@ -24,7 +24,9 @@ function install {
 	if [ ! -f "$HOME/.env" ]; then
 		cp -a ./.env "$HOME"/
 	fi
+}
 
+function install {
 	# install ohmyzsh
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo "Installing oh-my-zsh"
@@ -116,7 +118,8 @@ function save {
 
 function show_help {
 	echo "Usage: $0 [-i] [-s] [-h]"
-	echo "  -i   Install dotfiles"
+	echo "  -i   Install tools"
+	echo "  -a   Apply dotfiles"
 	echo "  -s   Save dotfiles"
 	echo "  -h   Show this help menu"
 }
@@ -130,6 +133,7 @@ while getopts ":ish" opt; do
 	case $opt in
 	i) install ;;
 	s) save ;;
+	a) apply ;;
 	h)
 		show_help
 		exit 0
