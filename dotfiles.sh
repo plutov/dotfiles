@@ -7,12 +7,15 @@ function apply {
 	cp -a ./.p10k.zsh "$HOME"/
 	mkdir -p "$HOME"/.config
 	cp -aR ./nvim "$HOME"/.config/
+
 	# zed
 	mkdir -p "$HOME"/.config/zed
 	cp -a ./zed.json "$HOME"/.config/zed/settings.json
+
 	# ghostty
 	mkdir -p "$HOME"/.config/ghostty
 	cp -a ./ghostty.config "$HOME"/.config/ghostty/config
+
 	# colima
 	mkdir -p "$HOME"/.colima/default
 	cp -a ./colima.yaml "$HOME"/.colima/default/colima.yaml
@@ -129,7 +132,7 @@ if [ $# -eq 0 ]; then
 	exit 0
 fi
 
-while getopts ":ish" opt; do
+while getopts ":isah" opt; do
 	case $opt in
 	i) install ;;
 	s) save ;;
