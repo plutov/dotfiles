@@ -17,8 +17,7 @@
     "**/.DS_Store",
     "**/Thumbs.db",
     "**/.classpath",
-    "**/.settings",
-    "api.gen.go"
+    "**/.settings"
   ],
   "languages": {
     "JavaScript": {
