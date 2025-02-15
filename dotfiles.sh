@@ -2,31 +2,48 @@
 
 EMAIL="a.pliutau@gmail.com"
 
-function apply {
-	cp -a ./.zshrc "$HOME"/
-	cp -a ./.p10k.zsh "$HOME"/
-	mkdir -p "$HOME"/.config
-	cp -aR ./nvim "$HOME"/.config/
+declare -A DOTFILES=(
+	.zshrc="$HOME/.zshrc"
+	.p10k.zsh="$HOME/.p10k.zsh"
+	nvim="$HOME/.config/nvim"
+	zed.json="$HOME/.config/zed/settings.json"
+	ghostty.config="$HOME/.config/ghostty/config"
+	colima.yaml="$HOME/.colima/default/colima.yaml"
+)
 
-	# zed
-	mkdir -p "$HOME"/.config/zed
-	cp -a ./zed.json "$HOME"/.config/zed/settings.json
+copy_with_mkdir() {
+	local source="$1"
+	local destination="$2"
+	local dest_dir=$(dirname "$destination")
 
-	# ghostty
-	mkdir -p "$HOME"/.config/ghostty
-	cp -a ./ghostty.config "$HOME"/.config/ghostty/config
+	mkdir -p "$dest_dir"
+	cp -a "$source" "$destination"
+}
 
-	# colima
-	mkdir -p "$HOME"/.colima/default
-	cp -a ./colima.yaml "$HOME"/.colima/default/colima.yaml
-	sudo ln -s "$HOME"/.colima/default/docker.sock /var/run/docker.sock
+apply() {
+	for source in "${!DOTFILES[@]}"; do
+		destination="${DOTFILES[$source]}"
+		copy_with_mkdir "$source" "$destination"
+	done
 
-	# to prevent Last Login message in terminal
+	# Colima docker socket symlink
+	if [[ ! -e /var/run/docker.sock ]]; then
+		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
+	fi
+
 	touch ~/.hushlogin
 
 	if [ ! -f "$HOME/.env" ]; then
-		cp -a ./.env "$HOME"/
+		copy_with_mkdir ".env" "$HOME/.env"
 	fi
+}
+
+save() {
+	for source in "${!DOTFILES[@]}"; do
+		destination="${DOTFILES[$source]}"
+		copy_with_mkdir "$destination" "$source" # Save back to current dir
+	done
+	echo "Dotfiles saved."
 }
 
 function install {
@@ -109,17 +126,7 @@ function install {
 	echo "dotfiles installed."
 }
 
-function save {
-	cp -a "$HOME"/.zshrc ./
-	cp -a "$HOME"/.p10k.zsh ./
-	cp -aR "$HOME"/.config/nvim ./
-	cp -a "$HOME"/.config/zed/settings.json ./zed.json
-	cp -a "$HOME"/.config/ghostty/config ./ghostty.config
-	cp -a "$HOME"/.colima/default/colima.yaml ./colima.yaml
-	echo "dotfiles saved."
-}
-
-function show_help {
+show_help() {
 	echo "Usage: $0 [-i] [-s] [-h]"
 	echo "  -i   Install tools"
 	echo "  -a   Apply dotfiles"
