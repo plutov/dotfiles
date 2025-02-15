@@ -8,18 +8,22 @@ DOTFILES=(
 	"$HOME/.config/zed/settings.json:zed.json"
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.colima/default/colima.yaml:colima.yaml"
-	"$HOME/.config/nvim/init.lua:nvim/init.lua"
-	"$HOME/.config/nvim/lua/config/lazy.lua:nvim/lua/config/lazy.lua"
-	"$HOME/.config/nvim/lua/plugins/plugins.lua:nvim/lua/plugins/plugins.lua"
+	"$HOME/.config/nvim:nvim"
+	"$HOME/.config/sketchybar:sketchybar"
 )
 
 copy_with_mkdir() {
 	source="$1"
 	destination="$2"
-	dest_dir=$(dirname "$destination")
 
-	mkdir -p "$dest_dir"
-	cp -a "$source" "$destination"
+	if [[ -d "$source" ]]; then
+		mkdir -p "$destination"
+		cp -Ra "$source"/* "$destination"
+	else
+		dest_dir=$(dirname "$destination")
+		mkdir -p "$dest_dir"
+		cp -a "$source" "$destination"
+	fi
 }
 
 apply() {
@@ -28,10 +32,6 @@ apply() {
 		source="${dotfile##*:}"
 		copy_with_mkdir "$source" "$destination"
 	done
-
-	if [[ ! -e /var/run/docker.sock ]]; then
-		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
-	fi
 
 	touch ~/.hushlogin
 
@@ -50,6 +50,10 @@ save() {
 }
 
 install() {
+	if [[ ! -e /var/run/docker.sock ]]; then
+		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
+	fi
+
 	# install ohmyzsh
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo "Installing oh-my-zsh"
@@ -82,28 +86,17 @@ install() {
 	if [[ $(command -v brew) == "" ]]; then
 		echo "Installing Hombrew"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	else
-		echo "Updating Homebrew"
-		brew update
 	fi
 
-	echo "Installing Homebrew packages"
-	PACKAGES=(
-		"neovim" "ripgrep" "luarocks" "protobuf" "stylua" "shfmt" "shellcheck" "golang" "golangci-lint" "sqlc" "vegeta" "yaml-language-server" "prettier" "git" "git-lfs" "zig" "fzf"
-		"colima" "qemu" "docker" "kubectl" "helm" "kube-linter" "kubescape" "derailed/k9s/k9s" "chart-testing" "postgresql" "jesseduffield/lazydocker/lazydocker"
-		"btop" "fastfetch" "bat")
+	echo "Updating Homebrew"
+	brew update
 
-	for package in "${PACKAGES[@]}"; do
-		brew install "$package"
-	done
+	echo "Installing brew packages"
+	brew bundle
 
-	# gcloud
-	if [[ $(command -v gcloud) == "" ]]; then
-		brew install --cask google-cloud-sdk
-		gcloud components install gke-gcloud-auth-plugin
-	else
-		gcloud components update
-	fi
+	echo "Installing gcloud components"
+	gcloud components install gke-gcloud-auth-plugin
+	gcloud components update
 
 	# installs nvm (Node Version Manager)
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
