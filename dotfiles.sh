@@ -2,31 +2,33 @@
 
 EMAIL="a.pliutau@gmail.com"
 
-declare -A DOTFILES=(
-	.zshrc="$HOME/.zshrc"
-	.p10k.zsh="$HOME/.p10k.zsh"
-	nvim="$HOME/.config/nvim"
-	zed.json="$HOME/.config/zed/settings.json"
-	ghostty.config="$HOME/.config/ghostty/config"
-	colima.yaml="$HOME/.colima/default/colima.yaml"
+DOTFILES=(
+	"$HOME/.zshrc:.zshrc"
+	"$HOME/.p10k.zsh:.p10k.zsh"
+	"$HOME/.config/zed/settings.json:zed.json"
+	"$HOME/.config/ghostty/config:ghostty.config"
+	"$HOME/.colima/default/colima.yaml:colima.yaml"
+	"$HOME/.config/nvim/init.lua:nvim/init.lua"
+	"$HOME/.config/nvim/lua/config/lazy.lua:nvim/lua/config/lazy.lua"
+	"$HOME/.config/nvim/lua/plugins/plugins.lua:nvim/lua/plugins/plugins.lua"
 )
 
 copy_with_mkdir() {
-	local source="$1"
-	local destination="$2"
-	local dest_dir=$(dirname "$destination")
+	source="$1"
+	destination="$2"
+	dest_dir=$(dirname "$destination")
 
 	mkdir -p "$dest_dir"
 	cp -a "$source" "$destination"
 }
 
 apply() {
-	for source in "${!DOTFILES[@]}"; do
-		destination="${DOTFILES[$source]}"
+	for dotfile in "${DOTFILES[@]}"; do
+		destination="${dotfile%%:*}"
+		source="${dotfile##*:}"
 		copy_with_mkdir "$source" "$destination"
 	done
 
-	# Colima docker socket symlink
 	if [[ ! -e /var/run/docker.sock ]]; then
 		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
 	fi
@@ -39,14 +41,15 @@ apply() {
 }
 
 save() {
-	for source in "${!DOTFILES[@]}"; do
-		destination="${DOTFILES[$source]}"
-		copy_with_mkdir "$destination" "$source" # Save back to current dir
+	for dotfile in "${DOTFILES[@]}"; do
+		destination="${dotfile%%:*}"
+		source="${dotfile##*:}"
+		copy_with_mkdir "$destination" "$source"
 	done
 	echo "Dotfiles saved."
 }
 
-function install {
+install() {
 	# install ohmyzsh
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo "Installing oh-my-zsh"
@@ -54,8 +57,22 @@ function install {
 	fi
 
 	# install ohmyzsh plugins
-	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+	autosuggestions_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+	powerlevel10k_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+
+	if [ ! -d "$autosuggestions_dir" ]; then
+		git clone https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions_dir"
+	else
+		cd "$autosuggestions_dir" && git pull
+		cd - || exit
+	fi
+
+	if [ ! -d "$powerlevel10k_dir" ]; then
+		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$powerlevel10k_dir"
+	else
+		cd "$powerlevel10k_dir" && git pull
+		cd - || exit
+	fi
 
 	# install nerdfont
 	curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
@@ -70,20 +87,15 @@ function install {
 		brew update
 	fi
 
-	# install homebrew packages
 	echo "Installing Homebrew packages"
-	# coding, lsp
-	brew install neovim ripgrep luarocks \
-		protobuf stylua shfmt shellcheck \
-		golang golangci-lint sqlc vegeta \
-		yaml-language-server prettier git git-lfs \
-		zig fzf
+	PACKAGES=(
+		"neovim" "ripgrep" "luarocks" "protobuf" "stylua" "shfmt" "shellcheck" "golang" "golangci-lint" "sqlc" "vegeta" "yaml-language-server" "prettier" "git" "git-lfs" "zig" "fzf"
+		"colima" "qemu" "docker" "kubectl" "helm" "kube-linter" "kubescape" "derailed/k9s/k9s" "chart-testing" "postgresql" "jesseduffield/lazydocker/lazydocker"
+		"btop" "fastfetch" "bat")
 
-	# containers
-	brew install colima qemu docker kubectl helm kube-linter kubescape derailed/k9s/k9s chart-testing postgresql jesseduffield/lazydocker/lazydocker
-
-	# workspace
-	brew install btop fastfetch bat
+	for package in "${PACKAGES[@]}"; do
+		brew install "$package"
+	done
 
 	# gcloud
 	if [[ $(command -v gcloud) == "" ]]; then
@@ -110,12 +122,11 @@ function install {
 	go install github.com/google/yamlfmt/cmd/yamlfmt@latest
 	npm install -g sql-formatter
 
+	echo "Configuring git and ssh key"
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 		echo "Generating ssh key"
 		ssh-keygen -t ed25519 -N "" -C "$EMAIL" -f "$HOME"/.ssh/id_ed25519
 	fi
-
-	echo "Configuring git"
 	git lfs install
 	git config --global user.email "$EMAIL"
 	git config --global user.name "plutov"
