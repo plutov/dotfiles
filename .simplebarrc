@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/Jean-Tinland/simple-bar/refs/heads/master/lib/schemas/config.json",
   "global": {
-    "theme": "auto",
-    "compactMode": false,
-    "floatingBar": false,
+    "theme": "dark",
+    "compactMode": true,
+    "floatingBar": true,
     "noBarBg": false,
     "noColorInData": false,
     "bottomBar": false,
@@ -53,10 +53,10 @@
     "centered": false,
     "showCurrentSpaceMode": false,
     "hideWindowTitle": false,
-    "displayOnlyIcon": false,
+    "displayOnlyIcon": true,
     "expandAllProcesses": false,
     "displaySkhdMode": false,
-    "displayStackIndex": true,
+    "displayStackIndex": false,
     "displayOnlyCurrentStack": false
   },
   "spacesDisplay": {
@@ -68,7 +68,7 @@
     "displayAllSpacesOnAllScreens": false,
     "hideDuplicateAppsInSpaces": false,
     "displayStickyWindowsSeparately": false,
-    "hideCreateSpaceButton": false,
+    "hideCreateSpaceButton": true,
     "hideEmptySpaces": false,
     "showOptionsOnHover": true,
     "switchSpacesWithoutYabai": false,
