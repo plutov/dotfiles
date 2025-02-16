@@ -25,12 +25,12 @@ yabai -m config mouse_drop_action swap
 yabai -m config window_animation_duration 0.1
 
 # general space settings
-yabai -m config layout float
-yabai -m config top_padding 12
-yabai -m config bottom_padding 12
-yabai -m config left_padding 12
-yabai -m config right_padding 12
-yabai -m config window_gap 12
+yabai -m config layout bsp
+yabai -m config top_padding 44
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 8
 
 yabai -m config --space 2 layout bsp
 yabai -m config --space 3 layout bsp

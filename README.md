@@ -1,5 +1,7 @@
 ## dotfiles
 
+Alex's dotfiles and setup code for his macos.
+
 Apply:
 
 ```bash

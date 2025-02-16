@@ -11,10 +11,10 @@
     "inlineSpacesOptions": false,
     "spacesBackgroundColorAsForeground": false,
     "widgetsBackgroundColorAsForeground": false,
-    "widgetMaxWidth": "160px",
+    "widgetMaxWidth": "100px",
     "slidingAnimationPace": 4,
-    "font": "JetBrains Mono, Monaco, Menlo, monospace",
-    "fontSize": "11px",
+    "font": "GeistMono Nerd Font Mono",
+    "fontSize": "12px",
     "yabaiPath": "/user/local/bin/yabai",
     "aerospacePath": "/opt/homebrew/bin/aerospace",
     "windowManager": "yabai",
@@ -30,7 +30,7 @@
   },
   "themes": {
     "lightTheme": "NightShiftLight",
-    "darkTheme": "TokyoNight",
+    "darkTheme": "RosePine",
     "colorMain": "",
     "colorMainAlt": "",
     "colorMinor": "",
@@ -95,7 +95,7 @@
     "cryptoWidget": false,
     "stockWidget": false,
     "youtubeMusicWidget": false,
-    "musicWidget": true,
+    "musicWidget": false,
     "mpdWidget": false,
     "browserTrackWidget": false
   },
@@ -110,7 +110,7 @@
   "netstatsWidgetOptions": {
     "refreshFrequency": 2000,
     "showOnDisplay": "",
-    "displayAsGraph": false
+    "displayAsGraph": true
   },
   "cpuWidgetOptions": {
     "refreshFrequency": 2000,
@@ -132,7 +132,7 @@
   "batteryWidgetOptions": {
     "refreshFrequency": 10000,
     "showOnDisplay": "",
-    "toggleCaffeinateOnClick": true,
+    "toggleCaffeinateOnClick": false,
     "caffeinateOption": ""
   },
   "networkWidgetOptions": {
@@ -152,8 +152,8 @@
   "zoomWidgetOptions": {
     "refreshFrequency": 5000,
     "showOnDisplay": "",
-    "showVideo": true,
-    "showMic": true
+    "showVideo": false,
+    "showMic": false
   },
   "soundWidgetOptions": {
     "refreshFrequency": 20000,
@@ -174,7 +174,7 @@
     "refreshFrequency": 1000,
     "showOnDisplay": "",
     "hour12": false,
-    "dayProgress": true,
+    "dayProgress": false,
     "showSeconds": false
   },
   "keyboardWidgetOptions": {
