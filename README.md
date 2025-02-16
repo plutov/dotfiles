@@ -17,3 +17,8 @@ Save:
 ```bash
 ./dotfiles.sh -s
 ```
+
+## macos
+
+Manual settings:
+- Automatically hide and show the menu bar -> Always

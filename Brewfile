@@ -1,6 +1,5 @@
 tap "jesseduffield/lazydocker"
 tap "derailed/k9s"
-tap "felixkratz/formulae"
 
 # Packages
 brew "neovim"
@@ -32,7 +31,9 @@ brew "lazydocker"
 brew "btop"
 brew "fastfetch"
 brew "bat"
-brew "felixkratz/formulae/sketchybar"
+brew "koekeishiya/formulae/yabai"
 
 # Casks
 cask "google-cloud-sdk" 
+cask "ubersicht"
+

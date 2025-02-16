@@ -1,0 +1,96 @@
+#!/usr/bin/env sh
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# global settings
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
+yabai -m config window_placement second_child
+#yabai -m config window_topmost               off
+yabai -m config window_shadow off
+yabai -m config window_opacity off
+yabai -m config window_opacity_duration 0.0
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.90
+
+yabai -m config insert_feedback_color 0xffd75f5f
+yabai -m config split_ratio 0.50
+yabai -m config auto_balance on
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
+
+yabai -m config window_animation_duration 0.1
+
+# general space settings
+yabai -m config layout float
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+yabai -m config --space 2 layout bsp
+yabai -m config --space 3 layout bsp
+yabai -m config --space 5 layout stack
+yabai -m config --space 7 layout float
+yabai -m config --space 9 layout float
+
+# terminal
+yabai -m rule --add app="^Alacritty$" space=1
+yabai -m rule --add app="^kitty$" space=1
+yabai -m rule --add app="^iTerm$" space=1
+yabai -m rule --add app="^Terminal$" space=1
+yabai -m rule --add app="^Hyper$" space=1
+
+# web browser
+yabai -m rule --add app="^Brave Browser$" space=2
+yabai -m rule --add app="^Firefox$" space=2
+yabai -m rule --add app="^Tor Browser$" space=2
+
+# productivity/programming tools
+yabai -m rule --add app="^Notability$" manage=off layer=normal space=3
+yabai -m rule --add app="^NordVPN$" space=3 manage=off layer=normal
+yabai -m rule --add app="^Code$" space=3
+yabai -m rule --add app="^VSCodium$" space=3
+yabai -m rule --add app="Sublime Text" space=3 manage=off layer=normal
+yabai -m rule --add app="^IntelliJ IDEA Ultimate$" space=3
+yabai -m rule --add app="^PyCharm Professional$" space=3
+yabai -m rule --add app="^Calendar$" space=3
+yabai -m rule --add app="^Reminders$" space=3
+yabai -m rule --add app="^Emacs$" space=3 manage=on
+yabai -m rule --add app="^VimR$" space=3 manage=on
+yabai -m rule --add app="^XCode$" space=3 manage=off layer=normal
+yabai -m rule --add app="^Kindle$" space=3
+
+# social media/communication
+yabai -m rule --add app="^Skype$" space=4
+yabai -m rule --add app="^Pronto$" space=4
+yabai -m rule --add app="^Messages$" space=4
+yabai -m rule --add app="zoom" manage=off layer=normal space=4
+yabai -m rule --add app="^FaceTime$" space=4
+yabai -m rule --add app="^Signal$" space=4
+yabai -m rule --add app="^WhatsApp Desktop$" space=4
+yabai -m rule --add app="^Slack$" space=4
+yabai -m rule --add app="^Adobe Connect$" space=4
+
+# virtualization
+yabai -m rule --add app="VMware" manage=off layer=normal space=5
+
+# music applications
+yabai -m rule --add app="YouTube Music" manage=on space=6
+yabai -m rule --add app="Music" manage=on space=6
+yabai -m rule --add app="Podcasts" manage=on space=6
+
+# settings
+yabai -m rule --add app="^System Settings$" manage=off layer=normal space=7
+
+yabai -m rule --add app="^Discord$" space=8
+
+# video
+yabai -m rule --add app="OBS" manage=off layer=normal space=9
+yabai -m rule --add app="^Photo Booth$" manage=off layer=normal space=9
+
+echo "yabai configuration loaded.."

@@ -9,7 +9,7 @@ DOTFILES=(
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.colima/default/colima.yaml:colima.yaml"
 	"$HOME/.config/nvim:nvim"
-	"$HOME/.config/sketchybar:sketchybar"
+	"$HOME/.config/yabai/yabairc:yabairc"
 )
 
 copy_with_mkdir() {
@@ -66,16 +66,10 @@ install() {
 
 	if [ ! -d "$autosuggestions_dir" ]; then
 		git clone https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions_dir"
-	else
-		cd "$autosuggestions_dir" && git pull
-		cd - || exit
 	fi
 
 	if [ ! -d "$powerlevel10k_dir" ]; then
 		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$powerlevel10k_dir"
-	else
-		cd "$powerlevel10k_dir" && git pull
-		cd - || exit
 	fi
 
 	# install nerdfont
@@ -93,6 +87,13 @@ install() {
 
 	echo "Installing brew packages"
 	brew bundle
+	yabai --restart-service
+
+	echo "Installing simple-bar"
+	if [ ! -d "$HOME"/.config/widgets/simple-bar ]; then
+		mkdir -p "$HOME"/.config/widgets
+		git clone https://github.com/Jean-Tinland/simple-bar "$HOME"/.config/widgets/simple-bar
+	fi
 
 	echo "Installing gcloud components"
 	gcloud components install gke-gcloud-auth-plugin
