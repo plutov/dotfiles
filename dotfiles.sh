@@ -9,8 +9,6 @@ DOTFILES=(
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.colima/default/colima.yaml:colima.yaml"
 	"$HOME/.config/nvim:nvim"
-	"$HOME/.config/yabai/yabairc:yabairc"
-	"$HOME/.simplebarrc:.simplebarrc"
 )
 
 copy_with_mkdir() {
@@ -88,7 +86,6 @@ install() {
 
 	echo "Installing brew packages"
 	brew bundle
-	yabai --restart-service
 
 	echo "Installing simple-bar"
 	if [ ! -d "$HOME"/.config/widgets/simple-bar ]; then

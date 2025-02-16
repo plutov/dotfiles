@@ -1,7 +1,5 @@
 ## dotfiles
 
-Alex's dotfiles and setup code for his macos.
-
 Apply:
 
 ```bash
@@ -19,8 +17,3 @@ Save:
 ```bash
 ./dotfiles.sh -s
 ```
-
-## macos
-
-Manual settings:
-- Automatically hide and show the menu bar -> Always

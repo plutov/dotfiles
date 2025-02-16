@@ -31,9 +31,7 @@ brew "lazydocker"
 brew "btop"
 brew "fastfetch"
 brew "bat"
-brew "koekeishiya/formulae/yabai"
 
 # Casks
 cask "google-cloud-sdk" 
-cask "ubersicht"
 
