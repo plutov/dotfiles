@@ -10,6 +10,7 @@ DOTFILES=(
 	"$HOME/.colima/default/colima.yaml:colima.yaml"
 	"$HOME/.config/nvim:nvim"
 	"$HOME/.config/yabai/yabairc:yabairc"
+	"$HOME/.simplebarrc:.simplebarrc"
 )
 
 copy_with_mkdir() {
