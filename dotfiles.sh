@@ -112,6 +112,7 @@ install() {
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install mvdan.cc/gofumpt@latest
 	go install github.com/google/yamlfmt/cmd/yamlfmt@latest
+	go install golang.org/x/vuln/cmd/govulncheck@latest
 	npm install -g sql-formatter
 
 	echo "Configuring git and ssh key"
