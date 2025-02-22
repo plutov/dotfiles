@@ -162,7 +162,29 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local lspconfig = require("lspconfig")
-			lspconfig.yamlls.setup({})
+			lspconfig.yamlls.setup({
+				settings = {
+					yaml = {
+						validate = true,
+						hover = true,
+						completion = true,
+						format = {
+							enable = true,
+							singleQuote = false,
+							bracketSpacing = true,
+						},
+						editor = {
+							tabSize = 2,
+						},
+						schemaStore = {
+							enable = false,
+						},
+					},
+					editor = {
+						tabSize = 2,
+					},
+				},
+			})
 			lspconfig.gopls.setup({})
 			lspconfig.sqls.setup({})
 			lspconfig.zls.setup({})
