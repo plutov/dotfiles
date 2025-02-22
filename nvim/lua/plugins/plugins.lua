@@ -77,7 +77,7 @@ return {
 			require("lualine").setup({
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_b = {},
 					lualine_c = { "filename" },
 					lualine_x = { "fileformat", "filetype" },
 					lualine_y = {},
@@ -99,16 +99,74 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(event)
+					local map = function(keys, func, desc, mode)
+						mode = mode or "n"
+						vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
+
+					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+					map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+					map(
+						"<leader>ws",
+						require("telescope.builtin").lsp_dynamic_workspace_symbols,
+						"[W]orkspace [S]ymbols"
+					)
+					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				end,
+			})
+
+			vim.diagnostic.config({
+				severity_sort = true,
+				float = { border = "rounded", source = "if_many" },
+				underline = { severity = vim.diagnostic.severity.ERROR },
+				signs = vim.g.have_nerd_font and {
+					text = {
+						[vim.diagnostic.severity.ERROR] = "󰅚 ",
+						[vim.diagnostic.severity.WARN] = "󰀪 ",
+						[vim.diagnostic.severity.INFO] = "󰋽 ",
+						[vim.diagnostic.severity.HINT] = "󰌶 ",
+					},
+				} or {},
+				virtual_text = {
+					source = "if_many",
+					spacing = 2,
+					format = function(diagnostic)
+						local diagnostic_message = {
+							[vim.diagnostic.severity.ERROR] = diagnostic.message,
+							[vim.diagnostic.severity.WARN] = diagnostic.message,
+							[vim.diagnostic.severity.INFO] = diagnostic.message,
+							[vim.diagnostic.severity.HINT] = diagnostic.message,
+						}
+						return diagnostic_message[diagnostic.severity]
+					end,
+				},
+			})
+
 			local servers = {
 				yamlls = {},
 				gopls = {},
 				sqls = {},
 				zls = {},
+				ts_ls = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			require("mason").setup()
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			local lspconfig = require("lspconfig")
+			lspconfig.yamlls.setup({})
+			lspconfig.gopls.setup({})
+			lspconfig.sqls.setup({})
+			lspconfig.zls.setup({})
+			lspconfig.ts_ls.setup({})
 		end,
 	},
 	{
@@ -134,14 +192,14 @@ return {
 				}
 			end,
 			formatters_by_ft = {
-				bash = { "shfmt", "shellcheck" },
-				zsh = { "shfmt", "shellcheck" },
-				sh = { "shfmt", "shellcheck" },
+				bash = { "shfmt" },
+				zsh = { "shfmt" },
+				sh = { "shfmt" },
 				lua = { "stylua" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
-				go = { "goimports", "gofumpt" },
+				go = { "goimports", "gofmt" },
 				sql = { "sql_formatter" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
@@ -230,7 +288,7 @@ return {
 						{
 							action = "Lazy",
 							desc = " Lazy",
-							icon = "󰒲 ",
+							icon = "",
 							key = "l",
 						},
 						{
@@ -238,7 +296,7 @@ return {
 								vim.api.nvim_input("<cmd>qa<cr>")
 							end,
 							desc = " Quit",
-							icon = " ",
+							icon = "",
 							key = "q",
 						},
 					},
