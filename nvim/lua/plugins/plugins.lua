@@ -222,6 +222,7 @@ return {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
+				html = { "prettier" },
 				go = { "goimports", "gofmt" },
 				sql = { "sql_formatter" },
 				zig = { "zigfmt" },
@@ -229,6 +230,7 @@ return {
 			},
 		},
 	},
+	{ "zapling/mason-conform.nvim" },
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
