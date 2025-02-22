@@ -93,14 +93,10 @@ install() {
 	export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
 
 	# install dev tools
-	go install golang.org/x/tools/gopls@latest
 	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	go install golang.org/x/tools/cmd/goimports@latest
-	go install github.com/google/yamlfmt/cmd/yamlfmt@latest
 	go install golang.org/x/vuln/cmd/govulncheck@latest
-	npm install -g sql-formatter
 
 	echo "Configuring git and ssh key"
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
