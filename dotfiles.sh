@@ -87,17 +87,7 @@ install() {
 	echo "Installing brew packages"
 	brew bundle
 
-	echo "Installing simple-bar"
-	if [ ! -d "$HOME"/.config/widgets/simple-bar ]; then
-		mkdir -p "$HOME"/.config/widgets
-		git clone https://github.com/Jean-Tinland/simple-bar "$HOME"/.config/widgets/simple-bar
-	fi
-
-	echo "Installing gcloud components"
-	gcloud components install gke-gcloud-auth-plugin
-	gcloud components update
-
-	# installs nvm (Node Version Manager)
+	# installs nvm
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
 	export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
@@ -107,10 +97,7 @@ install() {
 	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	go install github.com/norwoodj/helm-docs/cmd/helm-docs@latest
-	go install github.com/dadav/helm-schema/cmd/helm-schema@latest
 	go install golang.org/x/tools/cmd/goimports@latest
-	go install mvdan.cc/gofumpt@latest
 	go install github.com/google/yamlfmt/cmd/yamlfmt@latest
 	go install golang.org/x/vuln/cmd/govulncheck@latest
 	npm install -g sql-formatter
@@ -120,6 +107,7 @@ install() {
 		echo "Generating ssh key"
 		ssh-keygen -t ed25519 -N "" -C "$EMAIL" -f "$HOME"/.ssh/id_ed25519
 	fi
+
 	git lfs install
 	git config --global user.email "$EMAIL"
 	git config --global user.name "plutov"

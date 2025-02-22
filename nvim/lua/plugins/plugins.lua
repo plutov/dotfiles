@@ -296,7 +296,7 @@ return {
 		"nvimdev/dashboard-nvim",
 		lazy = false,
 		opts = function()
-			local logo = [[NEOVIM]]
+			local logo = vim.fn.getcwd()
 
 			logo = string.rep("\n", 8) .. logo .. "\n\n"
 
