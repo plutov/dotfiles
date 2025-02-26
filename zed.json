@@ -120,8 +120,8 @@
     "folds": true
   },
   "vim_mode": false,
-  "ui_font_size": 22,
-  "buffer_font_size": 22,
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
   "theme": {
     "mode": "system",
     "light": "Catppuccin Mocha",
