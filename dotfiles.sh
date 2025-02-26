@@ -7,7 +7,6 @@ DOTFILES=(
 	"$HOME/.p10k.zsh:.p10k.zsh"
 	"$HOME/.config/zed/settings.json:zed.json"
 	"$HOME/.config/ghostty/config:ghostty.config"
-	"$HOME/.colima/default/colima.yaml:colima.yaml"
 	"$HOME/.config/nvim:nvim"
 )
 
