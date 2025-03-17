@@ -30,6 +30,9 @@
             "{buffer_path}"
           ]
         }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
       }
     },
     "TypeScript": {
@@ -42,6 +45,9 @@
             "{buffer_path}"
           ]
         }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
       }
     },
     "Go": {

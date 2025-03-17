@@ -157,6 +157,7 @@ return {
 				gopls = {},
 				zls = {},
 				ts_ls = {},
+				eslint = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -190,6 +191,7 @@ return {
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
+			lspconfig.eslint.setup({})
 		end,
 	},
 	{
@@ -219,8 +221,8 @@ return {
 				zsh = { "shfmt" },
 				sh = { "shfmt" },
 				lua = { "stylua" },
-				javascript = { "prettier" },
-				typescript = { "prettier" },
+				javascript = {},
+				typescript = {},
 				json = { "prettier" },
 				html = { "prettier" },
 				go = { "goimports", "gofmt" },
