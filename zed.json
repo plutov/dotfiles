@@ -89,10 +89,10 @@
     "enabled": false
   },
   "features": {
-    "inline_completion_provider": "none"
+    "edit_prediction_provider": "none"
   },
   "soft_wrap": "editor_width",
-  "inline_completions": {
+  "edit_predictions": {
     "disabled_globs": []
   },
   "scrollbar": {
@@ -161,7 +161,7 @@
   },
   "chat_panel": {
     // Whether to show the chat panel button in the status bar.
-    "button": false
+    "button": "never"
   },
   "notification_panel": {
     // Whether to show the notification panel button in the status bar.

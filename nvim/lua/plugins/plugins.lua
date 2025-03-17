@@ -37,11 +37,11 @@ return {
 		},
 	},
 	{
-		"craftzdog/solarized-osaka.nvim",
+		"catppuccin/nvim",
 		lazy = true,
 		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme("solarized-osaka")
+			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
 	{
@@ -81,7 +81,7 @@ return {
 					lualine_a = { "mode" },
 					lualine_b = {},
 					lualine_c = { "filename" },
-					lualine_x = { "fileformat", "filetype" },
+					lualine_x = { "filetype" },
 					lualine_y = {},
 					lualine_z = { "location" },
 				},
@@ -155,7 +155,6 @@ return {
 			local servers = {
 				yamlls = {},
 				gopls = {},
-				sqls = {},
 				zls = {},
 				ts_ls = {},
 			}
@@ -189,7 +188,6 @@ return {
 				},
 			})
 			lspconfig.gopls.setup({})
-			lspconfig.sqls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
 		end,
