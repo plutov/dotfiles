@@ -293,10 +293,6 @@ return {
 		opts = {},
 	},
 	{
-		"nvim-pack/nvim-spectre",
-		name = "nvim-spectre",
-	},
-	{
 		"nvimdev/dashboard-nvim",
 		lazy = false,
 		opts = function()
