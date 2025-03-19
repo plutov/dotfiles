@@ -1,4 +1,12 @@
 {
+  "vim_mode": true,
+  "ui_font_size": 20,
+  "buffer_font_size": 20,
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Mocha",
+    "dark": "Catppuccin Mocha"
+  },
   "buffer_font_family": "GeistMono Nerd Font",
   "tabs": {
     "file_icons": true,
@@ -124,14 +132,6 @@
     "runnables": false,
     // Whether to show fold buttons in the gutter.
     "folds": true
-  },
-  "vim_mode": false,
-  "ui_font_size": 20,
-  "buffer_font_size": 20,
-  "theme": {
-    "mode": "system",
-    "light": "Catppuccin Mocha",
-    "dark": "Catppuccin Mocha"
   },
   "preview_tabs": {
     "enabled": false,
