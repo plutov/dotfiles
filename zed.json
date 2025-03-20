@@ -85,13 +85,22 @@
   "formatter": "language_server",
   "format_on_save": "off",
   "project_panel": {
-    "indent_size": 25,
+    "indent_size": 30,
+    "default_width": 200,
+    "entry_spacing": "standard",
+    "file_icons": true,
+    "folder_icons": false,
     "auto_fold_dirs": true,
+    "auto_reveal_entries": true,
     "button": true,
     "dock": "right",
-    "git_status": true
+    "git_status": true,
+    "indent_guides": {
+      "show": "never"
+    }
   },
   "tab_bar": {
+    "show_tab_bar_buttons": false,
     "show": true,
     "show_nav_history_buttons": false
   },
@@ -115,22 +124,27 @@
     "selected_symbol": false,
     "diagnostics": "error"
   },
+  "search": {
+    "case_sensitive": true
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
   "diagnostics": {
-    // Whether to show warnings or not by default.
+    "inline": {
+      "enabled": true,
+      "update_debounce_ms": 150,
+      "padding": 4,
+      "min_column": 0,
+      "max_severity": null
+    },
     "include_warnings": false
   },
   "gutter": {
-    // Whether to show line numbers in the gutter.
     "line_numbers": true,
-    // Whether to show code action buttons in the gutter.
     "code_actions": false,
-    // Whether to show runnables buttons in the gutter.
     "runnables": false,
-    // Whether to show fold buttons in the gutter.
     "folds": true
   },
   "preview_tabs": {
@@ -145,36 +159,27 @@
     }
   },
   "toolbar": {
-    // Whether to show breadcrumbs.
     "breadcrumbs": false,
-    // Whether to show quick action buttons.
     "quick_actions": false,
-    // Whether to show the Selections menu in the editor toolbar
     "selections_menu": false
   },
   "assistant": {
-    // Version of this setting.
     "version": "2",
-    // Whether the assistant is enabled.
     "enabled": false
   },
   "outline_panel": {
     "button": false
   },
   "collaboration_panel": {
-    // Whether to show the collaboration panel button in the status bar.
     "button": false
   },
   "chat_panel": {
-    // Whether to show the chat panel button in the status bar.
     "button": "never"
   },
   "notification_panel": {
-    // Whether to show the notification panel button in the status bar.
     "button": false
   },
   "task": {
-    // Whether to show task status indicator in the status bar. Default: true
     "show_status_indicator": false
   },
   "line_indicator_format": "short",
