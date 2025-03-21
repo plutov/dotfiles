@@ -32,10 +32,6 @@ apply() {
 	done
 
 	touch ~/.hushlogin
-
-	if [ ! -f "$HOME/.env" ]; then
-		copy_with_mkdir ".env" "$HOME/.env"
-	fi
 }
 
 save() {
