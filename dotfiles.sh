@@ -85,14 +85,6 @@ install() {
 	# installs nvm
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
-	export PATH=/usr/local/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH
-
-	# install dev tools
-	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@latest
-	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-	go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	go install golang.org/x/vuln/cmd/govulncheck@latest
-
 	echo "Configuring git and ssh key"
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 		echo "Generating ssh key"
