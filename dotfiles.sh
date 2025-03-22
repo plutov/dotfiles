@@ -71,10 +71,16 @@ install() {
 	~/.local/bin/getnf -i GeistMono
 
 	# install homebrew
-	if [[ $(command -v brew) == "" ]]; then
-		echo "Installing Hombrew"
-		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	if [ ! -d "$HOME/brew" ]; then
+		echo "Installing Homebrew..."
+		mkdir "$HOME/brew"
+		curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "$HOME/brew"
+		echo "Homebrew installed successfully in $HOME/brew"
+	else
+		echo "Homebrew already exists in $HOME/brew"
 	fi
+
+	export PATH=/usr/local/bin:$HOME/go/bin:$HOME/brew/bin
 
 	echo "Updating Homebrew"
 	brew update

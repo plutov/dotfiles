@@ -4,7 +4,7 @@ fi
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-export PATH=/usr/local/bin:$HOME/go/bin:$HOME/brew/bin:/opt/homebrew/bin:$PATH
+export PATH=/usr/local/bin:$HOME/go/bin:$HOME/brew/bin:$PATH
 export DOCKER_HOST=unix:///var/run/docker.sock
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 export GOPROXY="https://proxy.golang.org,direct"
