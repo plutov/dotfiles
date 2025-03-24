@@ -239,7 +239,7 @@ return {
 				typescript = {},
 				json = { "prettier" },
 				html = { "prettier" },
-				go = { "goimports", "gofmt" },
+				go = { "gofumpt" },
 				sql = { "sql_formatter" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
