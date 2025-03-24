@@ -2,7 +2,6 @@ tap "jesseduffield/lazydocker"
 tap "derailed/k9s"
 
 # Packages
-brew "asdf"
 brew "neovim"
 brew "ripgrep"
 brew "luarocks"
