@@ -102,7 +102,6 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -163,7 +162,7 @@ return {
 				zls = {},
 				ts_ls = {},
 				eslint = {},
-				rust_analyzer = {}
+				rust_analyzer = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -250,32 +249,26 @@ return {
 	},
 	{ "zapling/mason-conform.nvim" },
 	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-buffer",
+		"saghen/blink.cmp",
+		dependencies = { "rafamadriz/friendly-snippets" },
+		version = "1.*",
+		opts = {
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "select_and_accept" },
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+			},
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = { documentation = { auto_show = false } },
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
-		config = function()
-			local cmp = require("cmp")
-
-			cmp.setup({
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
-				}),
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-					{ name = "path" },
-				},
-			})
-		end,
+		opts_extend = { "sources.default" },
 	},
 	{
 		"windwp/nvim-autopairs",
