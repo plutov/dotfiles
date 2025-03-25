@@ -163,6 +163,7 @@ return {
 				zls = {},
 				ts_ls = {},
 				eslint = {},
+				rust_analyzer = {}
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
@@ -206,6 +207,7 @@ return {
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
 			lspconfig.eslint.setup({})
+			lspconfig.rust_analyzer.setup({})
 		end,
 	},
 	{
