@@ -60,6 +60,9 @@
     },
     "Go": {
       "hard_tabs": true
+    },
+    "Make": {
+      "hard_tabs": true
     }
   },
   "lsp": {
