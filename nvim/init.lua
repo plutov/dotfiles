@@ -4,9 +4,9 @@ vim.wo.number = true
 vim.api.nvim_set_option("clipboard", "unnamed")
 vim.opt.listchars = { space = "·", tab = "  " }
 vim.opt.list = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
