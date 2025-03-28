@@ -58,6 +58,14 @@
         "source.fixAll.eslint": true
       }
     },
+    "SQL": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "sql-formatter"
+        }
+      }
+    },
     "Go": {
       "hard_tabs": true
     },
