@@ -8,6 +8,7 @@ DOTFILES=(
 	"$HOME/.config/zed/settings.json:zed.json"
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.config/nvim:nvim"
+	"$HOME/.config/zellij:zellij"
 )
 
 copy_with_mkdir() {
