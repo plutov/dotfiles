@@ -28,6 +28,14 @@
     "**/.settings"
   ],
   "languages": {
+    "SQL": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "sql-formatter"
+        }
+      }
+    },
     "JavaScript": {
       "tab_size": 2,
       "formatter": {
