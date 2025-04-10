@@ -4,8 +4,8 @@
   "buffer_font_size": 20,
   "theme": {
     "mode": "system",
-    "light": "Catppuccin Mocha",
-    "dark": "Catppuccin Mocha"
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night"
   },
   "buffer_font_family": "GeistMono Nerd Font",
   "tabs": {

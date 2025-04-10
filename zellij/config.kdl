@@ -1,7 +1,7 @@
 simplified_ui true
 default_shell "zsh"
 pane_frames false
-theme "catppuccin-mocha"
+theme "tokyo-night-dark"
 default_layout "default"
 show_release_notes false
 show_startup_tips false
