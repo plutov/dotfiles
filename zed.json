@@ -101,7 +101,7 @@
     "entry_spacing": "standard",
     "file_icons": true,
     "folder_icons": false,
-    "auto_fold_dirs": true,
+    "auto_fold_dirs": false,
     "auto_reveal_entries": true,
     "button": true,
     "dock": "right",
