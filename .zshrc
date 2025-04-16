@@ -11,7 +11,7 @@ plugins=(
 	fzf
 )
 
-ZSH_THEME="wuffers"
+ZSH_THEME="theunraveler"
 
 source "$ZSH"/oh-my-zsh.sh
 source "$HOME/.env"
