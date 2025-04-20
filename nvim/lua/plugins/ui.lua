@@ -133,18 +133,9 @@ return {
 			ccc.output.hex.setup({ uppercase = true })
 			ccc.output.hex_short.setup({ uppercase = true })
 
-			local colored_fts = {
-				"cfg",
-				"css",
-				"conf",
-				"lua",
-				"scss",
-			}
-
 			return {
 				highlighter = {
 					auto_enable = true,
-					filetypes = colored_fts,
 					lsp = false,
 				},
 			}
