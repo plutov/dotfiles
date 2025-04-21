@@ -17,7 +17,11 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
-	{ "towolf/vim-helm", ft = "helm" },
+	{
+		"L3MON4D3/LuaSnip",
+		version = "v2.*",
+		build = "make install_jsregexp",
+	},
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -79,7 +83,6 @@ return {
 
 			local servers = {
 				yamlls = {},
-				helm_ls = {},
 				gopls = {},
 				zls = {},
 				ts_ls = {},
@@ -92,15 +95,6 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local lspconfig = require("lspconfig")
-			lspconfig.helm_ls.setup({
-				settings = {
-					["helm-ls"] = {
-						yamlls = {
-							path = "yaml-language-server",
-						},
-					},
-				},
-			})
 			lspconfig.yamlls.setup({
 				settings = {
 					yaml = {
