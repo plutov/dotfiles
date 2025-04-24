@@ -66,10 +66,6 @@ install() {
 		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$powerlevel10k_dir"
 	fi
 
-	# install nerdfont
-	curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash
-	~/.local/bin/getnf -i GeistMono
-
 	# install homebrew
 	if [ ! -d "$HOME/brew" ]; then
 		echo "Installing Homebrew..."

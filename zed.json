@@ -7,7 +7,7 @@
     "light": "Tokyo Night Light",
     "dark": "Tokyo Night"
   },
-  "buffer_font_family": "GeistMono Nerd Font",
+  "buffer_font_family": "JetBrains Mono",
   "tabs": {
     "file_icons": true,
     "git_status": true
@@ -41,10 +41,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
       "code_actions_on_format": {
@@ -56,10 +53,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
       "code_actions_on_format": {
@@ -87,10 +81,7 @@
     }
   },
   "file_types": {
-    "Helm": [
-      "**/templates/*.yaml",
-      "**/templates/*.yml"
-    ]
+    "Helm": ["**/templates/*.yaml", "**/templates/*.yml"]
   },
   "hard_tabs": false,
   "formatter": "language_server",
