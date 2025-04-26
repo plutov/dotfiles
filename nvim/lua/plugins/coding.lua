@@ -156,7 +156,7 @@ return {
 				typescript = {},
 				json = { "prettier" },
 				html = { "prettier" },
-				go = { "goimport", "gofumpt" },
+				go = { "goimports", "gofumpt" },
 				sql = { "sql_formatter" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
