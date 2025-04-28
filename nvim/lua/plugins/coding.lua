@@ -157,7 +157,7 @@ return {
 				json = { "prettier" },
 				html = { "prettier" },
 				go = { "goimports", "gofumpt" },
-				sql = { "sql_formatter" },
+				sql = { "pg_format" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
 			},
