@@ -33,7 +33,7 @@
       "tab_size": 2,
       "formatter": {
         "external": {
-          "command": "sql-formatter"
+          "command": "pg_format"
         }
       }
     },
