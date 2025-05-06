@@ -21,7 +21,8 @@ plugins=(
 	fzf
 )
 
-ZSH_THEME="theunraveler"
+PROMPT='%F{220} pluto@earth [%c]%{$reset_color%} '
+RPROMPT=''
 
 source "$ZSH"/oh-my-zsh.sh
 source "$HOME/.env"
