@@ -44,10 +44,6 @@ save() {
 }
 
 install() {
-	if [[ ! -e /var/run/docker.sock ]]; then
-		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
-	fi
-
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo "Installing oh-my-zsh"
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -62,6 +58,7 @@ install() {
 	if [[ $(command -v brew) == "" ]]; then
 		echo "Installing Hombrew"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+		PATH="/opt/homebrew/bin:$PATH"
 	else
 		echo "Updating Homebrew"
 		brew update
