@@ -1,9 +1,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-export PATH="$HOME/brew/opt/openjdk/bin:$PATH"
-export PATH="$HOME/brew/opt/libpq/bin:$PATH"
-export PATH="$HOME/brew/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 

@@ -48,56 +48,44 @@ install() {
 		sudo ln -sf "$HOME"/.colima/default/docker.sock /var/run/docker.sock
 	fi
 
-	# install ohmyzsh
 	if [ ! -d "$HOME/.oh-my-zsh" ]; then
 		echo "Installing oh-my-zsh"
 		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 	fi
 
-	# install ohmyzsh plugins
 	autosuggestions_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-	powerlevel10k_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 	if [ ! -d "$autosuggestions_dir" ]; then
 		git clone https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions_dir"
 	fi
 
-	if [ ! -d "$powerlevel10k_dir" ]; then
-		git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$powerlevel10k_dir"
-	fi
-
-	# install homebrew
-	if [ ! -d "$HOME/brew" ]; then
-		echo "Installing Homebrew..."
-		mkdir "$HOME/brew"
-		curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C "$HOME/brew"
-		echo "Homebrew installed successfully in $HOME/brew"
+	if [[ $(command -v brew) == "" ]]; then
+		echo "Installing Hombrew"
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	else
-		echo "Homebrew already exists in $HOME/brew"
+		echo "Updating Homebrew"
+		brew update
 	fi
-
-	export PATH=/usr/local/bin:$HOME/go/bin:$HOME/brew/bin
-
-	echo "Updating Homebrew"
-	brew update
 
 	echo "Installing brew packages"
 	brew bundle
 
-	echo "Configuring git and ssh key"
+	echo "Configuring ssh key"
 	if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 		echo "Generating ssh key"
 		ssh-keygen -t ed25519 -N "" -C "$EMAIL" -f "$HOME"/.ssh/id_ed25519
 	fi
 
+	echo "Configuring git settings"
 	git lfs install
 	git config --global user.email "$EMAIL"
 	git config --global user.name "plutov"
 	git config --global gpg.format ssh
 	git config --global commit.gpgsign true
 	git config --global user.signingkey "$HOME"/.ssh/id_ed25519.pub
+	git config --global pull.rebase true
 
-	echo "dotfiles installed."
+	echo "dotfiles installed and configured."
 }
 
 show_help() {
