@@ -6,11 +6,7 @@ default_layout "default"
 show_release_notes false
 show_startup_tips false
 
-keybinds {
-    normal {
-    }
-    locked {
-    }
+keybinds clear-defaults=true {
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
         bind "h" "Left" { Resize "Increase Left"; }
