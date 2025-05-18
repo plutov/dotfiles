@@ -21,7 +21,7 @@ plugins=(
 	fzf
 )
 
-PROMPT='%F{220} pluto@earth [%c]%{$reset_color%} '
+PROMPT='%F{227} pluto@earth [%c]%{$reset_color%} '
 RPROMPT=''
 
 source "$ZSH"/oh-my-zsh.sh
