@@ -10,12 +10,6 @@ vim.opt.shiftwidth = 2
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
-vim.keymap.set(
-	"n",
-	"<leader>fh",
-	":lua require('telescope.builtin').find_files({ find_command = { 'rg', '--files', '--iglob', '!.git', '--hidden' } })<cr>",
-	{ desc = "Find Hidden Files" }
-)
 vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
 vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Open Buffers" })
 local fk_opts = {
