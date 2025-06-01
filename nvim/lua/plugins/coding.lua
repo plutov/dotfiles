@@ -143,7 +143,7 @@ return {
 			notify_on_error = true,
 			format_on_save = function(bufnr)
 				return {
-					timeout_ms = 500,
+					timeout_ms = 1000,
 					lsp_format = "fallback",
 				}
 			end,
@@ -156,7 +156,7 @@ return {
 				typescript = {},
 				json = { "prettier" },
 				html = { "prettier" },
-				go = { "goimports", "gofumpt" },
+				go = { "goimports" },
 				sql = { "pg_format" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
