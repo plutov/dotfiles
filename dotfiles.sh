@@ -4,10 +4,10 @@ EMAIL="a.pliutau@gmail.com"
 
 DOTFILES=(
 	"$HOME/.zshrc:.zshrc"
-	"$HOME/.config/zed/settings.json:zed.json"
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.config/nvim:nvim"
 	"$HOME/.config/zellij:zellij"
+	"$HOME/.config/starship.toml:starship.toml"
 	"$HOME/.config/yazy/yazi.toml:yazi.toml"
 )
 
@@ -45,19 +45,8 @@ save() {
 }
 
 install() {
-	if [ ! -d "$HOME/.oh-my-zsh" ]; then
-		echo "Installing oh-my-zsh"
-		sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-	fi
-
-	autosuggestions_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-
-	if [ ! -d "$autosuggestions_dir" ]; then
-		git clone https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions_dir"
-	fi
-
 	if [[ $(command -v brew) == "" ]]; then
-		echo "Installing Hombrew"
+		echo "Installing Homebrew"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 		PATH="/opt/homebrew/bin:$PATH"
 	else

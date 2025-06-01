@@ -7,26 +7,23 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
+# Use nvim as editor
 export MANPAGER='nvim +Man!'
 export EDITOR="$(which nvim)"
 export VISUAL="$EDITOR"
 
+# Development settings
 export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 export GOPROXY="https://proxy.golang.org,direct"
 
-plugins=(
-	git
-	zsh-autosuggestions
-	fzf
-)
-
-PROMPT='%F{227} pluto@earth [%c]%{$reset_color%} '
-RPROMPT=''
-
-source "$ZSH"/oh-my-zsh.sh
+# Shell settings
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source <(fzf --zsh)
 source "$HOME/.env"
+eval "$(starship init zsh)"
 
+# Aliases
 alias vim="nvim"
 alias vi="nvim"
 alias cat="bat"
