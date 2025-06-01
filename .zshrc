@@ -27,3 +27,9 @@ eval "$(starship init zsh)"
 alias vim="nvim"
 alias vi="nvim"
 alias cat="bat"
+alias gaa='git add -A'
+alias gst='git status'
+alias gd='git diff'
+alias gl='git pull'
+alias gp='git push'
+alias gcsm='git commit -S -m'
