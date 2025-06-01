@@ -8,6 +8,7 @@ DOTFILES=(
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.config/nvim:nvim"
 	"$HOME/.config/zellij:zellij"
+	"$HOME/.config/yazy/yazi.toml:yazi.toml"
 )
 
 copy_with_mkdir() {
