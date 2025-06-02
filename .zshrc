@@ -28,6 +28,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias cat="bat"
 alias gaa='git add -A'
+alias gf='git fetch'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gst='git status'
