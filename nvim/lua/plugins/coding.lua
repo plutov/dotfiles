@@ -1,26 +1,11 @@
 return {
 	{
-		"ray-x/go.nvim",
-		dependencies = {
-			"ray-x/guihua.lua",
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()',
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
-		build = "make install_jsregexp",
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -95,29 +80,7 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local lspconfig = require("lspconfig")
-			lspconfig.yamlls.setup({
-				settings = {
-					yaml = {
-						validate = true,
-						hover = true,
-						completion = true,
-						format = {
-							enable = true,
-							singleQuote = false,
-							bracketSpacing = true,
-						},
-						editor = {
-							tabSize = 2,
-						},
-						schemaStore = {
-							enable = false,
-						},
-					},
-					editor = {
-						tabSize = 2,
-					},
-				},
-			})
+			lspconfig.yamlls.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
@@ -156,7 +119,7 @@ return {
 				typescript = {},
 				json = { "prettier" },
 				html = { "prettier" },
-				go = { "goimports" },
+				go = { "goimports", "gofumpt" },
 				sql = { "pg_format" },
 				zig = { "zigfmt" },
 				yaml = { "yamlfmt" },
