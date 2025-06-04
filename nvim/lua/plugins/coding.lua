@@ -122,7 +122,7 @@ return {
 				go = { "goimports", "gofumpt" },
 				sql = { "pg_format" },
 				zig = { "zigfmt" },
-				yaml = { "yamlfmt" },
+				yaml = {},
 			},
 		},
 	},
