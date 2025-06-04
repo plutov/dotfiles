@@ -6,7 +6,10 @@ return {
 		},
 		config = function()
 			require("telescope").setup({
-				defaults = { file_ignore_patterns = { "node_modules/", ".git/", "vendor/", "testdata/" } },
+				defaults = {
+					file_ignore_patterns = { "node_modules/", ".git/", "vendor/", "testdata/" },
+					ripgrep_arguments = { "-S" },
+				},
 				pickers = {
 					find_files = {
 						hidden = true,
