@@ -23,13 +23,13 @@ layout {
 				mode_move          "#[fg=#5ea1ff] move "
 				mode_prompt        "#[fg=#5ea1ff] promt "
 
-				tab_normal              "#[fg=#ffffff]{index} {name} "
-				tab_normal_fullscreen   "#[fg=#ffffff]{index} {name} "
-				tab_normal_sync         "#[fg=#ffffff]{index} {name} "
+				tab_normal              "#[fg=#ffffff][{index}:{name}] "
+				tab_normal_fullscreen   "#[fg=#ffffff][{index}:{name}] "
+				tab_normal_sync         "#[fg=#ffffff][{index}:{name}] "
 
-				tab_active              "#[fg=#ff5ef1]{index} {name} "
-				tab_active_fullscreen   "#[fg=#ff5ef1]{index} {name} "
-				tab_active_sync         "#[fg=#ff5ef1]{index} {name} "
+				tab_active              "#[fg=#ff5ef1][{index}:{name}] "
+				tab_active_fullscreen   "#[fg=#ff5ef1][{index}:{name}] "
+				tab_active_sync         "#[fg=#ff5ef1][{index}:{name}] "
 
 				tab_separator           " "
 
