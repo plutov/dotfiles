@@ -1,6 +1,3 @@
-tap "jesseduffield/lazydocker"
-tap "derailed/k9s"
-
 # terminal
 brew "neovim"
 brew "starship"
@@ -14,6 +11,7 @@ brew "bat"
 brew "zellij"
 brew "yazi"
 cask "font-jetbrains-mono"
+brew "cormacrelf/tap/dark-notify"
 
 # dev
 brew "golang"
