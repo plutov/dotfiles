@@ -1,21 +1,11 @@
 return {
 	{
-		"cormacrelf/dark-notify",
-		config = function()
-			require("dark_notify").run({
-				schemes = {
-					dark = "cyberdream",
-					light = {
-						colorscheme = "cyberdream-light",
-					},
-				},
-			})
-		end,
-	},
-	{
 		"scottmckendry/cyberdream.nvim",
 		lazy = true,
 		priority = 1000,
+		init = function()
+			vim.cmd.colorscheme("cyberdream")
+		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
