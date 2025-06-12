@@ -13,8 +13,7 @@ export EDITOR="$(which nvim)"
 export VISUAL="$EDITOR"
 
 # Development settings
-export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
-export TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
+#export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 export GOPROXY="https://proxy.golang.org,direct"
 
 # Shell settings
