@@ -6,7 +6,6 @@ DOTFILES=(
 	"$HOME/.zshrc:.zshrc"
 	"$HOME/.config/ghostty/config:ghostty.config"
 	"$HOME/.config/nvim:nvim"
-	"$HOME/.config/zellij:zellij"
 	"$HOME/.config/starship.toml:starship.toml"
 	"$HOME/.config/yazy/yazi.toml:yazi.toml"
 )

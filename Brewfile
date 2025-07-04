@@ -18,7 +18,6 @@ brew "zsh-autosuggestions"
 brew "lazygit"
 brew "btop"
 brew "bat"
-brew "zellij"
 brew "yazi"
 cask "font-jetbrains-mono"
 
