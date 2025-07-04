@@ -5,6 +5,7 @@ cask "discord"
 cask "brave-browser"
 cask "spotify"
 cask "obs"
+cask "slack"
 
 # terminal
 cask "ghostty"
