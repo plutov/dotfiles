@@ -1,4 +1,14 @@
+# mac apps
+cask "obsidian"
+cask "raycast"
+cask "discord"
+cask "brave-browser"
+cask "spotify"
+cask "obs"
+
 # terminal
+cask "ghostty"
+cask "font-jetbrains-mono"
 brew "neovim"
 brew "starship"
 brew "ripgrep"
@@ -11,7 +21,6 @@ brew "bat"
 brew "zellij"
 brew "yazi"
 cask "font-jetbrains-mono"
-brew "cormacrelf/tap/dark-notify"
 
 # dev
 brew "golang"
@@ -22,10 +31,9 @@ brew "git-lfs"
 brew "pgformatter"
 
 # containers
-brew "colima"
+cask "orbstack"
 brew "docker"
 brew "kubectl"
 brew "k9s"
 brew "lazydocker"
 cask "google-cloud-sdk"
-cask "orbstack"
