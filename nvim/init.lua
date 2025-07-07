@@ -8,6 +8,12 @@ vim.opt.shortmess:append("I")
 -- everything is unnamed
 vim.api.nvim_set_option("clipboard", "unnamed")
 
+-- split navigation
+vim.api.nvim_set_keymap("n", "<C-h>", ":wincmd h<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-j>", ":wincmd j<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-k>", ":wincmd k<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<C-l>", ":wincmd l<CR>", { silent = true })
+
 -- Setup tabs and spaces
 vim.opt.listchars = { space = "·", tab = "  " }
 vim.opt.list = true
