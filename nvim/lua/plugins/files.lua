@@ -7,7 +7,14 @@ return {
 		config = function()
 			require("telescope").setup({
 				defaults = {
-					file_ignore_patterns = { "node_modules/", ".git/", "vendor/", "testdata/", "**.sql.go" },
+					file_ignore_patterns = {
+						"node_modules/",
+						".git/",
+						"vendor/",
+						"testdata/",
+						"**.sql.go",
+						"**.gen.go",
+					},
 					ripgrep_arguments = { "-S" },
 				},
 				pickers = {
