@@ -30,6 +30,7 @@ brew "git"
 brew "git-lfs"
 brew "pgformatter"
 brew "sst/tap/opencode"
+brew "hugo"
 
 # containers
 cask "orbstack"
