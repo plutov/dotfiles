@@ -7,6 +7,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 	},
+	{ "qvalentin/helm-ls.nvim", ft = "helm" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -68,6 +69,7 @@ return {
 
 			local servers = {
 				yamlls = {},
+				helm_ls = {},
 				gopls = {},
 				zls = {},
 				ts_ls = {},
@@ -81,6 +83,7 @@ return {
 
 			local lspconfig = require("lspconfig")
 			lspconfig.yamlls.setup({})
+			lspconfig.helm_ls.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
