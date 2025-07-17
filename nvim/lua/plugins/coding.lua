@@ -69,7 +69,6 @@ return {
 
 			local servers = {
 				yamlls = {},
-				helm_ls = {},
 				gopls = {},
 				zls = {},
 				ts_ls = {},
@@ -83,7 +82,6 @@ return {
 
 			local lspconfig = require("lspconfig")
 			lspconfig.yamlls.setup({})
-			lspconfig.helm_ls.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
