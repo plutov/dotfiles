@@ -7,7 +7,6 @@ return {
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 	},
-	{ "qvalentin/helm-ls.nvim", ft = "helm" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {

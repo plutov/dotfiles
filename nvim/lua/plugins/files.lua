@@ -14,7 +14,6 @@ return {
 						"testdata/",
 						"**.sql.go",
 						"**.gen.go",
-						"**schema.json",
 					},
 					ripgrep_arguments = { "-S" },
 				},
