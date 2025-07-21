@@ -20,6 +20,7 @@ export GOPROXY="https://proxy.golang.org,direct"
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source <(fzf --zsh)
 source "$HOME/.env"
+source "$HOME/.cargo/env"
 eval "$(starship init zsh)"
 
 # Aliases
