@@ -2,8 +2,8 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
 		event = "InsertEnter",
+		cmd = "Copilot",
 		opts = {
 			-- The panel is useless.
 			panel = { enabled = false },

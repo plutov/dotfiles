@@ -1,4 +1,3 @@
-*.db
-*.mdb
-.config/nvim/lazy-lock.json
-.env
+OpenCode.md
+.opencode/
+.rgignore
