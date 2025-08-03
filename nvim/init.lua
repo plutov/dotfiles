@@ -17,9 +17,26 @@ vim.api.nvim_set_keymap("n", "<C-l>", ":wincmd l<CR>", { silent = true })
 -- Setup tabs and spaces
 vim.opt.listchars = { space = "·", tab = "  " }
 vim.opt.list = true
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+
+local indent_group = vim.api.nvim_create_augroup("IndentSettings", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = indent_group,
+	pattern = { "go", "make" },
+	callback = function()
+		vim.opt.expandtab = false
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+	group = indent_group,
+	pattern = { "js", "ts" },
+	callback = function()
+		vim.opt.expandtab = true
+	end,
+})
 
 -- Finder
 local builtin = require("telescope.builtin")
