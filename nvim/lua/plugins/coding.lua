@@ -2,11 +2,13 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		opts = { ensure_installed = { "helm" } },
 	},
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
 	},
+	{ "towolf/vim-helm", ft = "helm" },
 	{ "qvalentin/helm-ls.nvim", ft = "helm" },
 	{
 		"neovim/nvim-lspconfig",
@@ -69,6 +71,7 @@ return {
 
 			local servers = {
 				yamlls = {},
+				helm_ls = {},
 				gopls = {},
 				zls = {},
 				ts_ls = {},
@@ -81,12 +84,26 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local lspconfig = require("lspconfig")
-			lspconfig.yamlls.setup({})
+			lspconfig.yamlls.setup({
+				servers = {
+					yamlls = {
+						on_attach = function(client, buffer)
+							if vim.bo[buffer].filetype == "helm" then
+								vim.schedule(function()
+									vim.cmd("LspStop ++force yamlls")
+								end)
+							end
+						end,
+					},
+				},
+			})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
 			lspconfig.ts_ls.setup({})
 			lspconfig.eslint.setup({})
 			lspconfig.rust_analyzer.setup({})
+
+			require("helm-ls").setup()
 		end,
 	},
 	{
