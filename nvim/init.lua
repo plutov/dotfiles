@@ -44,6 +44,8 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
 vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "Find Git Files" })
 vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "Search Grep" })
 vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "Open Buffers" })
+vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "Find Symbols" })
+vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
 local fk_opts = {
 	cwd = "~/.config/nvim",
 	results_title = "Config",
