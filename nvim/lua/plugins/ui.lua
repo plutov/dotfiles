@@ -64,19 +64,18 @@ return {
 	{
 		"uga-rosa/ccc.nvim",
 		ft = colored_fts,
-		cmd = "CccPick",
-		opts = function()
+		config = function()
+			vim.opt.termguicolors = true
+
 			local ccc = require("ccc")
+			local mapping = ccc.mapping
 
-			ccc.output.hex.setup({ uppercase = true })
-			ccc.output.hex_short.setup({ uppercase = true })
-
-			return {
+			ccc.setup({
 				highlighter = {
 					auto_enable = true,
-					lsp = false,
+					lsp = true,
 				},
-			}
+			})
 		end,
 	},
 }
