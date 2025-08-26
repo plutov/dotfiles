@@ -1,6 +1,7 @@
 require("config.lazy")
 
 vim.wo.number = true
+vim.o.swapfile = false
 
 -- No welcome screen
 vim.opt.shortmess:append("I")
@@ -25,7 +26,7 @@ vim.opt.shiftwidth = 2
 local indent_group = vim.api.nvim_create_augroup("IndentSettings", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = indent_group,
-	pattern = { "go", "make" },
+	pattern = { "go", "make", "lua" },
 	callback = function()
 		vim.opt.expandtab = false
 	end,
@@ -54,13 +55,10 @@ vim.keymap.set("n", "<leader>fc", function()
 	builtin.find_files(fk_opts)
 end, { desc = "Search Config Files" })
 
--- Exit the terminal
-vim.api.nvim_set_keymap("t", "<ESC>", "<C-\\><C-n>", { noremap = true })
-
 -- Expand long diagnostics
-vim.api.nvim_set_keymap(
+vim.keymap.set(
 	"n",
-	"<Leader>d",
+	"<leader>d",
 	":lua vim.diagnostic.open_float()<CR>",
 	{ noremap = true, silent = true, desc = "Expand Diagnostics" }
 )
