@@ -4,6 +4,14 @@ return {
 		lazy = true,
 		priority = 1000,
 		init = function()
+			require("cyberdream").setup({
+				-- highlight groups
+				overrides = function(colors)
+					return {
+						Comment = { fg = colors.grey, bg = "NONE", italic = true },
+					}
+				end,
+			})
 			vim.cmd.colorscheme("cyberdream")
 		end,
 	},
