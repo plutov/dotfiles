@@ -60,6 +60,7 @@ return {
 				gopls = {},
 				zls = {},
 				ts_ls = {},
+				vue_ls = {},
 				eslint = {},
 				rust_analyzer = {},
 			}
@@ -69,6 +70,7 @@ return {
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			local lspconfig = require("lspconfig")
+
 			lspconfig.yamlls.setup({
 				servers = {
 					yamlls = {
@@ -84,7 +86,28 @@ return {
 			})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
-			lspconfig.ts_ls.setup({})
+
+			-- Typescript, Vue
+			local mason_registry = require("mason-registry")
+			local vue_language_server_path = vim.fn.expand("$MASON/packages")
+				.. "/vue-language-server"
+				.. "/node_modules/@vue/language-server"
+			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+			local vue_plugin = {
+				name = "@vue/typescript-plugin",
+				location = vue_language_server_path,
+				languages = { "vue" },
+				configNamespace = "typescript",
+			}
+			lspconfig.ts_ls.setup({
+				init_options = {
+					plugins = {
+						vue_plugin,
+					},
+				},
+				filetypes = tsserver_filetypes,
+			})
+			lspconfig.vue_ls.setup({})
 			lspconfig.eslint.setup({})
 			lspconfig.rust_analyzer.setup({})
 
