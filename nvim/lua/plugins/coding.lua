@@ -147,6 +147,7 @@ return {
 				javascriptreact = { "prettier" },
 				json = { "prettier" },
 				html = { "prettier" },
+				css = { "prettier" },
 				go = { "goimports", "gofumpt" },
 				sql = { "pg_format" },
 				zig = { "zigfmt" },
