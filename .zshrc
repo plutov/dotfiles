@@ -6,6 +6,7 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$(npm config get prefix)/bin:$PATH"
 
 # Use nvim as editor
 export MANPAGER='nvim +Man!'
