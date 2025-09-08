@@ -33,6 +33,7 @@ brew "pgformatter"
 brew "sst/tap/opencode"
 brew "hugo"
 brew "gh"
+brew "openjdk"
 
 # containers
 cask "orbstack"
