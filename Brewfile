@@ -21,6 +21,7 @@ brew "lazygit"
 brew "btop"
 brew "bat"
 brew "yazi"
+brew "fd"
 cask "font-jetbrains-mono"
 
 # dev
