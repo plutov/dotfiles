@@ -10,7 +10,7 @@
   "window.commandCenter": false,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "top",
   "workbench.editor.showTabs": "single",
   "explorer.decorations.colors": false,
   "explorer.compactFolders": false,
