@@ -6,12 +6,11 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "breadcrumbs.enabled": false,
-  "workbench.statusBar.visible": false,
   "window.commandCenter": false,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "all",
   "workbench.activityBar.location": "top",
-  "workbench.editor.showTabs": "single",
+  "workbench.editor.showTabs": "multiple",
   "explorer.decorations.colors": false,
   "explorer.compactFolders": false,
   "editor.bracketPairColorization.enabled": false,
@@ -23,5 +22,7 @@
   "editor.folding": false,
   "window.title": " ",
   "editor.cursorBlinking": "solid",
-  "editor.occurrencesHighlight": "off"
+  "editor.occurrencesHighlight": "off",
+  "workbench.statusBar.visible": false,
+  "explorer.confirmDelete": false
 }
