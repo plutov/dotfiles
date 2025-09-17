@@ -2,14 +2,10 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		opts = { ensure_installed = { "helm" } },
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		version = "v2.*",
 	},
-	{ "towolf/vim-helm", ft = "helm" },
-	{ "qvalentin/helm-ls.nvim", ft = "helm" },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -56,11 +52,9 @@ return {
 
 			local servers = {
 				yamlls = {},
-				helm_ls = {},
 				gopls = {},
 				zls = {},
 				ts_ls = {},
-				vue_ls = {},
 				eslint = {},
 				rust_analyzer = {},
 			}
@@ -71,47 +65,12 @@ return {
 
 			local lspconfig = require("lspconfig")
 
-			lspconfig.yamlls.setup({
-				servers = {
-					yamlls = {
-						on_attach = function(client, buffer)
-							if vim.bo[buffer].filetype == "helm" then
-								vim.schedule(function()
-									vim.cmd("LspStop ++force yamlls")
-								end)
-							end
-						end,
-					},
-				},
-			})
+			lspconfig.yamlls.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
-
-			-- Typescript, Vue
-			local mason_registry = require("mason-registry")
-			local vue_language_server_path = vim.fn.expand("$MASON/packages")
-				.. "/vue-language-server"
-				.. "/node_modules/@vue/language-server"
-			local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
-			local vue_plugin = {
-				name = "@vue/typescript-plugin",
-				location = vue_language_server_path,
-				languages = { "vue" },
-				configNamespace = "typescript",
-			}
-			lspconfig.ts_ls.setup({
-				init_options = {
-					plugins = {
-						vue_plugin,
-					},
-				},
-				filetypes = tsserver_filetypes,
-			})
-			lspconfig.vue_ls.setup({})
+			lspconfig.ts_ls.setup({})
 			lspconfig.eslint.setup({})
 			lspconfig.rust_analyzer.setup({})
-
-			require("helm-ls").setup()
 		end,
 	},
 	{
@@ -132,7 +91,7 @@ return {
 			notify_on_error = true,
 			format_on_save = function(bufnr)
 				return {
-					timeout_ms = 1000,
+					timeout_ms = 5000,
 					lsp_format = "fallback",
 				}
 			end,
@@ -159,7 +118,6 @@ return {
 	{
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
-		version = "1.*",
 		opts = {
 			keymap = {
 				preset = "default",

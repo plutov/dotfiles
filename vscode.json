@@ -24,5 +24,6 @@
   "editor.cursorBlinking": "solid",
   "editor.occurrencesHighlight": "off",
   "workbench.statusBar.visible": false,
-  "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false
 }

@@ -1,5 +1,7 @@
 require("config.lazy")
 
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 vim.wo.number = true
 vim.o.swapfile = false
 
