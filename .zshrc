@@ -36,3 +36,8 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 alias gcsm='git commit -S -m'
+
+# push current branch with an empty commit message
+function push() {
+  git add -A && git commit --allow-empty-message -m '' && git push
+}
