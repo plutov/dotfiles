@@ -9,7 +9,7 @@ DOTFILES=(
   "$HOME/.config/ghostty/config:ghostty.config"
   "$HOME/.config/nvim:nvim"
   "$HOME/.config/starship.toml:starship.toml"
-  "$HOME/.config/yazy/yazi.toml:yazi.toml"
+  "$HOME/.config/yazi/yazi.toml:yazi.toml"
   "$HOME/Library/Application Support/Code/User/settings.json:vscode.json"
 )
 
