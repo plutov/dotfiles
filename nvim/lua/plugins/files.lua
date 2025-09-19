@@ -15,6 +15,7 @@ return {
 						"**.sql.go",
 						"**.gen.go",
 						"**schema.json",
+						"package%-lock.json",
 					},
 					ripgrep_arguments = { "-S" },
 				},
