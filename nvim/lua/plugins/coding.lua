@@ -55,22 +55,33 @@ return {
 				gopls = {},
 				zls = {},
 				ts_ls = {},
-				eslint = {},
-				rust_analyzer = {},
 			}
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			require("mason").setup()
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+			-- vue
+			local vue_ls_path = vim.fn.expand("$MASON/packages/vue-language-server")
+			local vue_plugin_path = vue_ls_path .. "/node_modules/@vue/language-server"
+
 			local lspconfig = require("lspconfig")
 
 			lspconfig.yamlls.setup({})
 			lspconfig.gopls.setup({})
 			lspconfig.zls.setup({})
-			lspconfig.ts_ls.setup({})
-			lspconfig.eslint.setup({})
-			lspconfig.rust_analyzer.setup({})
+			lspconfig.ts_ls.setup({
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = vue_plugin_path,
+							languages = { "vue" },
+						},
+					},
+				},
+				filetypes = { "typescript", "javascript", "vue" },
+			})
 		end,
 	},
 	{
@@ -104,6 +115,7 @@ return {
 				typescript = { "prettier" },
 				typescriptreact = { "prettier" },
 				javascriptreact = { "prettier" },
+				vue = { "prettier" },
 				json = { "prettier" },
 				html = { "prettier" },
 				css = { "prettier" },
@@ -121,7 +133,7 @@ return {
 		opts = {
 			keymap = {
 				preset = "default",
-				["<C-y>"] = { "select_and_accept" },
+				["<C-Enter>"] = { "select_and_accept" },
 				["<Up>"] = { "select_prev", "fallback" },
 				["<Down>"] = { "select_next", "fallback" },
 			},
@@ -132,7 +144,6 @@ return {
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
-			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
 	},
