@@ -16,6 +16,7 @@ return {
 						"**.gen.go",
 						"**schema.json",
 						"package%-lock.json",
+						"coverage/",
 					},
 					ripgrep_arguments = { "-S" },
 				},

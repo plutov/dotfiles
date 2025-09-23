@@ -28,12 +28,12 @@ return {
 						vim.lsp.buf.hover({ border = "single" })
 					end, bufopts("Hover"))
 
-					map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("gd", require("telescope.builtin").lsp_definitions, "definitions")
+					map("gD", vim.lsp.buf.declaration, "declaration")
+					map("gr", require("telescope.builtin").lsp_references, "references")
+					map("gI", require("telescope.builtin").lsp_implementations, "implementations")
+					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "type definitions")
+					map("<leader>rn", vim.lsp.buf.rename, "rename")
 				end,
 			})
 
