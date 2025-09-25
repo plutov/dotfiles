@@ -59,7 +59,9 @@ install() {
   echo "Installing brew packages"
   brew bundle
 
-  echo "Configuring ssh key"
+  echo "Installing nvm"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+
   if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "Generating ssh key"
     ssh-keygen -t ed25519 -N "" -C "$EMAIL" -f "$HOME"/.ssh/id_ed25519
