@@ -41,6 +41,7 @@ alias gd='git diff'
 alias gl='git pull'
 alias gp='git push'
 alias gcsm='git commit -S -m'
+alias s='source ~/.zshrc'
 
 # push current branch with an empty commit message
 function push() {
