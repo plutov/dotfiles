@@ -50,6 +50,7 @@ vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep" })
 vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "buffers" })
 vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "symbols" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>")
+vim.keymap.set("n", "<leader>bx", "<cmd>:%bd<CR>")
 local fk_opts = {
 	cwd = "~/.config/nvim",
 	results_title = "Config",
