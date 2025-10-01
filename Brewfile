@@ -37,6 +37,7 @@ brew "openjdk"
 # containers
 cask "orbstack"
 brew "docker"
+brew "docker-compose"
 brew "kubectl"
 brew "k9s"
 brew "lazydocker"
