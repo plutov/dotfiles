@@ -33,6 +33,8 @@ brew "sst/tap/opencode"
 brew "hugo"
 brew "gh"
 brew "openjdk"
+brew "postgresql"
+cask "dbeaver-community"
 
 # containers
 cask "orbstack"

@@ -4,7 +4,6 @@ EMAIL="a.pliutau@gmail.com"
 
 DOTFILES=(
   "$HOME/.zshrc:.zshrc"
-  "$HOME/.ssh/config:.ssh_config"
   "$HOME/.gitignore:.gitignore"
   "$HOME/.config/ghostty/config:ghostty.config"
   "$HOME/.config/nvim:nvim"
