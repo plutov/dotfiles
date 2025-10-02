@@ -10,7 +10,6 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
@@ -29,10 +28,6 @@ return {
 					end, bufopts("Hover"))
 
 					map("gd", require("telescope.builtin").lsp_definitions, "definitions")
-					map("gD", vim.lsp.buf.declaration, "declaration")
-					map("gr", require("telescope.builtin").lsp_references, "references")
-					map("gI", require("telescope.builtin").lsp_implementations, "implementations")
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "type definitions")
 					map("<leader>rn", vim.lsp.buf.rename, "rename")
 				end,
 			})
@@ -50,27 +45,33 @@ return {
 				},
 			})
 
-			local servers = {
-				yamlls = {},
-				gopls = {},
-				zls = {},
-				ts_ls = {},
-			}
-
-			local ensure_installed = vim.tbl_keys(servers or {})
 			require("mason").setup()
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"gopls",
+					"zls",
+					"shfmt",
+					"stylua",
+					"prettier",
+					"yaml-language-server",
+					"typescript-language-server",
+					"vue-language-server",
+					"goimports",
+					"gofumpt",
+				},
+			})
 
 			-- vue
 			local vue_ls_path = vim.fn.expand("$MASON/packages/vue-language-server")
 			local vue_plugin_path = vue_ls_path .. "/node_modules/@vue/language-server"
 
-			local lspconfig = require("lspconfig")
-
-			lspconfig.yamlls.setup({})
-			lspconfig.gopls.setup({})
-			lspconfig.zls.setup({})
-			lspconfig.ts_ls.setup({
+			vim.lsp.enable({
+				"gopls",
+				"yamlls",
+				"zls",
+				"ts_ls",
+			})
+			vim.lsp.config("ts_ls", {
 				init_options = {
 					plugins = {
 						{
