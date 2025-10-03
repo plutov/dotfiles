@@ -68,6 +68,7 @@ install() {
 
   echo "Configuring git settings"
   git lfs install
+  git config --global core.excludesfile ~/.gitignore
   git config --global user.email "$EMAIL"
   git config --global user.name "plutov"
   git config --global gpg.format ssh
