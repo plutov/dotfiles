@@ -130,6 +130,8 @@ return {
 	{ "zapling/mason-conform.nvim" },
 	{
 		"saghen/blink.cmp",
+		build = "cargo build --release",
+		version = "1.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		opts = {
 			keymap = {
