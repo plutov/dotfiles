@@ -43,5 +43,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.editor.enablePreview": false,
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/yarn.lock": true
+  }
 }
