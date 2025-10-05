@@ -1,18 +1,9 @@
 {
-  "telemetry.telemetryLevel": "off",
-  "workbench.colorTheme": "GitHub Dark Default",
-  "update.showReleaseNotes": false,
+  // Editor
   "editor.fontFamily": "JetBrains Mono",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "breadcrumbs.enabled": false,
-  "window.commandCenter": false,
-  "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "all",
-  "workbench.activityBar.location": "top",
-  "workbench.editor.showTabs": "multiple",
-  "explorer.decorations.colors": false,
-  "explorer.compactFolders": false,
+  "editor.glyphMargin": false,
   "editor.bracketPairColorization.enabled": false,
   "editor.guides.highlightActiveBracketPair": false,
   "editor.guides.bracketPairsHorizontal": false,
@@ -20,12 +11,47 @@
   "editor.renderLineHighlight": "none",
   "editor.showFoldingControls": "never",
   "editor.folding": false,
-  "window.title": " ",
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "all",
   "editor.cursorBlinking": "solid",
   "editor.occurrencesHighlight": "off",
+  // Window
+  "window.nativeFullScreen": true,
+  "window.newWindowDimensions": "inherit",
+  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 1,
+  "window.title": " ",
+  "window.commandCenter": false,
+  "breadcrumbs.enabled": false,
+  // Workbench
+  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.editor.enablePreview": false,
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top",
+  "workbench.editor.showTabs": "multiple",
   "workbench.statusBar.visible": false,
+  // Explorer
+  "explorer.decorations.colors": false,
+  "explorer.compactFolders": false,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/yarn.lock": true
+  },
+  "files.enableTrash": false,
+  // Search
+  "search.smartCase": true,
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.json": true,
+    "**/public/*": true,
+    "**/vendor/*": true,
+    "**/yarn.lock": true
+  },
+  // Extensions
   "extensions.ignoreRecommendations": true,
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -42,10 +68,12 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editor.enablePreview": false,
-  "workbench.sideBar.location": "right",
-  "files.exclude": {
-    "**/node_modules": true,
-    "**/yarn.lock": true
+  // Misc
+  "telemetry.telemetryLevel": "off",
+  "update.showReleaseNotes": false,
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh"
+    }
   }
 }
