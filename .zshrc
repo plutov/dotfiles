@@ -6,6 +6,7 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Use nvim as editor
 export MANPAGER='nvim +Man!'
@@ -47,3 +48,6 @@ alias s='source ~/.zshrc'
 function push() {
   git add -A && git commit --allow-empty-message -m '' && git push
 }
+
+# amp
+export PATH="$HOME/.local/bin:$PATH"
