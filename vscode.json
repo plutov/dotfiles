@@ -36,6 +36,8 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.exclude": {
+    "**.snap": true,
+    "**/.yarn": true,
     "**/node_modules": true,
     "**/yarn.lock": true
   },
