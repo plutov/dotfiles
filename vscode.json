@@ -51,7 +51,8 @@
     "**/pnpm-lock.json": true,
     "**/public/*": true,
     "**/vendor/*": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/coverage/**": true,
   },
   // Extensions
   "extensions.ignoreRecommendations": true,
