@@ -45,3 +45,6 @@ brew "k9s"
 brew "lazydocker"
 brew "colima"
 brew "qemu"
+
+# llm
+cask "claude-code"
