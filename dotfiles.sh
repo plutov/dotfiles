@@ -11,7 +11,8 @@ DOTFILES=(
   "$HOME/.config/yazi/yazi.toml:yazi.toml"
   "$HOME/Library/Application Support/Code/User/settings.json:vscode.json"
   "$HOME/.config/zed/settings.json:zed.json"
-  "$HOME/.claude:claude"
+  "$HOME/.claude/settings.json:claude/settings.json"
+  "$HOME/.claude/statusline.sh:claude/statusline.sh"
 )
 
 copy_with_mkdir() {
