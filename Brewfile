@@ -7,6 +7,7 @@ cask "spotify"
 cask "obs"
 cask "slack"
 cask "telegram"
+brew "tw93/tap/mole"
 
 # terminal
 cask "ghostty"
