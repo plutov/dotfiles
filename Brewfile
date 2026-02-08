@@ -36,6 +36,7 @@ brew "gh"
 brew "openjdk"
 brew "postgresql"
 cask "dbeaver-community"
+cask "zed"
 
 # containers
 cask "orbstack"
