@@ -1,4 +1,7 @@
 {
+  "prettier": {
+    "allowed": true
+  },
   "title_bar": {
     "show_project_items": true,
     "show_branch_name": true
@@ -45,14 +48,6 @@
     "**/vendor"
   ],
   "languages": {
-    "SQL": {
-      "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "pg_format"
-        }
-      }
-    },
     "JavaScript": {
       "tab_size": 2,
       "formatter": {
@@ -97,9 +92,6 @@
     "Go": {
       "hard_tabs": true
     },
-    "Make": {
-      "hard_tabs": true
-    }
   },
   "lsp": {
     "yaml-language-server": {
@@ -181,13 +173,11 @@
   },
   "gutter": {
     "line_numbers": true,
-    "code_actions": false,
     "runnables": false,
     "folds": true
   },
   "preview_tabs": {
     "enabled": false,
-    "enable_preview_from__file_finder": false,
     "enable_keep_preview_on_code_navigation": false
   },
   "git": {
@@ -212,14 +202,8 @@
   "collaboration_panel": {
     "button": false
   },
-  "chat_panel": {
-    "button": "never"
-  },
   "notification_panel": {
     "button": false
-  },
-  "task": {
-    "show_status_indicator": false
   },
   "line_indicator_format": "short",
   "terminal": {
@@ -240,7 +224,6 @@
     "button": true,
     "line_height": "comfortable",
     "toolbar": {
-      "title": false,
       "breadcrumbs": false
     }
   }
