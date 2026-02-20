@@ -2,8 +2,6 @@
 cask "obsidian"
 cask "raycast"
 cask "discord"
-cask "brave-browser"
-cask "spotify"
 cask "obs"
 cask "slack"
 cask "telegram"
