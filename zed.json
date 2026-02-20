@@ -1,11 +1,27 @@
 {
+  "title_bar": {
+    "show_project_items": true,
+    "show_branch_name": true
+  },
+  "debugger": {
+    "button": false
+  },
+  "status_bar": {
+    "active_language_button": true
+  },
+  "git_panel": {
+    "button": false
+  },
+  "disable_ai": true,
+  "buffer_line_height": "standard",
+  "buffer_font_weight": 300.0,
   "vim_mode": false,
   "ui_font_size": 18,
-  "buffer_font_size": 18,
+  "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
-    "light": "Tokyo Night Light",
-    "dark": "Tokyo Night"
+    "light": "GitHub Dark",
+    "dark": "GitHub Dark"
   },
   "buffer_font_family": "JetBrains Mono",
   "tabs": {
@@ -42,7 +58,10 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       },
       "code_actions_on_format": {
@@ -54,7 +73,10 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       },
       "code_actions_on_format": {
@@ -65,7 +87,10 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       }
     },
@@ -90,17 +115,21 @@
     }
   },
   "file_types": {
-    "Helm": ["**/templates/*.yaml", "**/templates/*.yml"]
+    "Helm": [
+      "**/templates/*.yaml",
+      "**/templates/*.yml"
+    ]
   },
   "hard_tabs": false,
   "formatter": "language_server",
   "format_on_save": "off",
   "project_panel": {
+    "hide_gitignore": false,
     "indent_size": 30,
-    "default_width": 200,
+    "default_width": 220.0,
     "entry_spacing": "standard",
     "file_icons": true,
-    "folder_icons": false,
+    "folder_icons": true,
     "auto_fold_dirs": false,
     "auto_reveal_entries": true,
     "button": true,
@@ -122,11 +151,9 @@
   "inlay_hints": {
     "enabled": false
   },
-  "features": {
-    "edit_prediction_provider": "none"
-  },
   "soft_wrap": "editor_width",
   "edit_predictions": {
+    "provider": "none",
     "disabled_globs": []
   },
   "scrollbar": {
@@ -161,9 +188,10 @@
   "preview_tabs": {
     "enabled": false,
     "enable_preview_from__file_finder": false,
-    "enable_preview_from_code_navigation": false
+    "enable_keep_preview_on_code_navigation": false
   },
   "git": {
+    "disable_git": true,
     "git_gutter": "hide",
     "inline_blame": {
       "enabled": false
@@ -174,12 +202,12 @@
     "quick_actions": false,
     "selections_menu": false
   },
-  "assistant": {
-    "version": "2",
+  "agent": {
+    "button": false,
     "enabled": false
   },
   "outline_panel": {
-    "button": false
+    "button": true
   },
   "collaboration_panel": {
     "button": false
@@ -195,6 +223,8 @@
   },
   "line_indicator_format": "short",
   "terminal": {
+    "font_weight": 300.0,
+    "font_size": 14.0,
     "shell": {
       "program": "zsh"
     },
