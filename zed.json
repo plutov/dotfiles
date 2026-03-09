@@ -1,4 +1,5 @@
 {
+  "show_whitespaces": "all",
   "prettier": {
     "allowed": true
   },
