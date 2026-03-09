@@ -79,6 +79,33 @@
         "source.fixAll.eslint": true
       }
     },
+    "Vue.js": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "CSS": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "prettier",
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
+        }
+      }
+    },
     "HTML": {
       "formatter": {
         "external": {
@@ -93,25 +120,6 @@
     "Go": {
       "hard_tabs": true
     },
-  },
-  "lsp": {
-    "yaml-language-server": {
-      "settings": {
-        "yaml": {
-          "keyOrdering": false,
-          "format": {
-            "singleQuote": false
-          },
-          "schemas": {}
-        }
-      }
-    }
-  },
-  "file_types": {
-    "Helm": [
-      "**/templates/*.yaml",
-      "**/templates/*.yml"
-    ]
   },
   "hard_tabs": false,
   "formatter": "language_server",
