@@ -1,4 +1,8 @@
 {
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "base_keymap": "VSCode",
   "show_whitespaces": "all",
   "prettier": {
     "allowed": true
@@ -16,7 +20,7 @@
   "git_panel": {
     "button": false
   },
-  "disable_ai": true,
+  "disable_ai": false,
   "buffer_line_height": "standard",
   "buffer_font_weight": 300.0,
   "vim_mode": false,
@@ -154,7 +158,7 @@
   },
   "soft_wrap": "editor_width",
   "edit_predictions": {
-    "provider": "none",
+    "provider": "copilot",
     "disabled_globs": []
   },
   "scrollbar": {
