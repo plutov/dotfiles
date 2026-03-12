@@ -3,6 +3,7 @@
     "trust_all_worktrees": true
   },
   "base_keymap": "VSCode",
+  "inline_code_actions": false,
   "show_whitespaces": "all",
   "prettier": {
     "allowed": true
@@ -58,10 +59,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
       "code_actions_on_format": {
@@ -73,10 +71,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
       "code_actions_on_format": {
@@ -88,10 +83,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       },
       "code_actions_on_format": {
@@ -103,10 +95,7 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -114,16 +103,13 @@
       "formatter": {
         "external": {
           "command": "prettier",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
     "Go": {
       "hard_tabs": true
-    },
+    }
   },
   "hard_tabs": false,
   "formatter": "language_server",
@@ -185,6 +171,7 @@
     "include_warnings": false
   },
   "gutter": {
+    "breakpoints": false,
     "line_numbers": true,
     "runnables": false,
     "folds": true
@@ -201,7 +188,7 @@
     }
   },
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "quick_actions": false,
     "selections_menu": false
   },
