@@ -56,56 +56,22 @@
   "languages": {
     "JavaScript": {
       "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "formatter": "prettier",
     },
     "TypeScript": {
       "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "formatter": "prettier",
     },
     "Vue.js": {
       "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      },
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "formatter": "prettier",
     },
     "CSS": {
       "tab_size": 2,
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
+      "formatter": "prettier",
     },
     "HTML": {
-      "formatter": {
-        "external": {
-          "command": "prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
-        }
-      }
+      "formatter": "prettier",
     },
     "Go": {
       "hard_tabs": true
