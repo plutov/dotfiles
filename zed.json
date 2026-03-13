@@ -147,7 +147,9 @@
     "enable_keep_preview_on_code_navigation": false
   },
   "git": {
-    "disable_git": true,
+    "enable_status": true,
+    "enable_diff": false,
+    "disable_git": false,
     "git_gutter": "hide",
     "inline_blame": {
       "enabled": false
