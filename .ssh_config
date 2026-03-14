@@ -1,5 +1,4 @@
-Include /Users/alex/.colima/ssh_config
-
+Include ~/.colima/ssh_config
 Include ~/.orbstack/ssh/config
 
 Host *

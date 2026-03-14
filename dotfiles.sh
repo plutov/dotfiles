@@ -10,7 +10,9 @@ DOTFILES=(
   "$HOME/.config/starship.toml:starship.toml"
   "$HOME/.config/yazi/yazi.toml:yazi.toml"
   "$HOME/Library/Application Support/Code/User/settings.json:vscode.json"
-  "$HOME/.config/zed/settings.json:zed.json"
+  "$HOME/.config/zed/settings.json:zed/settings.json"
+  "$HOME/.config/zed/keymap.json:zed/keymap.json"
+  "$HOME/.config/opencode/AGENTS.md:opencode/AGENTS.md"
 )
 
 copy_with_mkdir() {
