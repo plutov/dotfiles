@@ -21,7 +21,6 @@
   "window.zoomLevel": 1,
   "window.title": " ",
   "window.commandCenter": false,
-  "breadcrumbs.enabled": false,
   // Workbench
   "workbench.colorTheme": "GitHub Dark Default",
   "workbench.editor.enablePreview": false,

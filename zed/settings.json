@@ -120,7 +120,7 @@
     "diagnostics": "error"
   },
   "search": {
-    "case_sensitive": true
+    "case_sensitive": false
   },
   "telemetry": {
     "diagnostics": false,
