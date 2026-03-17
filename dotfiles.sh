@@ -13,6 +13,7 @@ DOTFILES=(
   "$HOME/.config/zed/settings.json:zed/settings.json"
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:opencode/AGENTS.md"
+  "$HOME/.config/opencode/skills:opencode/skills"
 )
 
 copy_with_mkdir() {
