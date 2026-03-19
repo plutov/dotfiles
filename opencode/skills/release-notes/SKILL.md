@@ -29,7 +29,7 @@ If there is no previous release, use the first commit as the base.
 ```
 <release-tag>
 
-- [commit message](https://github.com/{owner}/{repo}/commit/{full_sha})
+- [commit_message](commit_url)
 ```
 
 - First line of commit message only, skip merge commits.
