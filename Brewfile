@@ -4,7 +4,7 @@ cask "raycast"
 cask "discord"
 cask "obs"
 cask "slack"
-cask "telegram"
+cask "notion"
 brew "tw93/tap/mole"
 
 # terminal
@@ -28,12 +28,10 @@ brew "protobuf"
 brew "git"
 brew "git-lfs"
 brew "pgformatter"
-brew "sst/tap/opencode"
 brew "hugo"
 brew "gh"
 brew "openjdk"
 brew "postgresql"
-cask "dbeaver-community"
 cask "zed"
 
 # containers
@@ -48,3 +46,5 @@ brew "qemu"
 
 # llm
 cask "claude-code"
+brew "sst/tap/opencode"
+
