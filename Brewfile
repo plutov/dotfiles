@@ -32,6 +32,7 @@ brew "hugo"
 brew "gh"
 brew "openjdk"
 brew "postgresql"
+brew "pnpm"
 cask "zed"
 
 # containers
