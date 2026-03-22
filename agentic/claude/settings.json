@@ -3,6 +3,19 @@
     "defaultMode": "acceptEdits"
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "high"
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/pluto/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      }
+    ]
+  }
 }

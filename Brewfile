@@ -47,5 +47,5 @@ brew "qemu"
 
 # llm
 cask "claude-code"
-brew "sst/tap/opencode"
-
+brew "anomalyco/tap/opencode"
+brew "rtk"
