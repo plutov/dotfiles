@@ -1,1 +1,5 @@
 .rgignore
+~/code/**/.claude
+~/code/**/opencode
+~/code/**/AGENTS.md
+~/code/**/CLAUDE.md

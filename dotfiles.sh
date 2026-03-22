@@ -12,8 +12,11 @@ DOTFILES=(
   "$HOME/Library/Application Support/Code/User/settings.json:vscode.json"
   "$HOME/.config/zed/settings.json:zed/settings.json"
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
-  "$HOME/.config/opencode/AGENTS.md:opencode/AGENTS.md"
-  "$HOME/.agents/skills:skills"
+  "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
+  "$HOME/.claude/CLAUDE.md:agentic/AGENTS.md"
+  "$HOME/.agents/skills:agentic/skills"
+  "$HOME/.claude/skills:agentic/skills"
+  "$HOME/.claude/settings.json:agentic/claude/settings.json"
 )
 
 copy_with_mkdir() {
