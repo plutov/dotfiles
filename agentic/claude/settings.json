@@ -1,6 +1,8 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits"
+    "defaultMode": "bypassPermissions",
+    "allow": ["Bash(*)", "Read", "Edit", "Write"],
+    "deny": []
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
@@ -19,3 +21,4 @@
     ]
   }
 }
+
