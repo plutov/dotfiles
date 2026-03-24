@@ -37,7 +37,7 @@
     "**.snap": true,
     "**/.yarn": true,
     "**/node_modules": true,
-    "**/yarn.lock": true,
+    "**/yarn.lock": true
   },
   "files.enableTrash": false,
   // Search
@@ -50,43 +50,20 @@
     "**/public/*": true,
     "**/vendor/*": true,
     "**/yarn.lock": true,
-    "**/coverage/**": true,
+    "**/coverage/**": true
   },
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "[vue]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
   // Misc
   "telemetry.telemetryLevel": "off",
   "update.showReleaseNotes": false,
   "terminal.integrated.profiles.osx": {
     "zsh": {
-      "path": "/bin/zsh",
-    },
-  },
-  "[handlebars]": {
-    "editor.defaultFormatter": "vscode.html-language-features",
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "path": "/bin/zsh"
+    }
   },
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "chat.extensionUnification.enabled": false,
   "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "oxc.oxc-vscode"
 }
