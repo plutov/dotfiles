@@ -34,6 +34,7 @@ brew "openjdk"
 brew "postgresql"
 brew "pnpm"
 cask "zed"
+brew "postgresql@17"
 
 # containers
 cask "orbstack"
