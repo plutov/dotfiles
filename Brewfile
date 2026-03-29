@@ -32,6 +32,7 @@ brew "hugo"
 brew "gh"
 brew "openjdk"
 brew "pnpm"
+brew "oxfmt"
 cask "zed"
 brew "postgresql@17"
 

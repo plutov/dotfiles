@@ -5,9 +5,6 @@
   "base_keymap": "VSCode",
   "inline_code_actions": false,
   "show_whitespaces": "all",
-  "prettier": {
-    "allowed": true
-  },
   "title_bar": {
     "show_project_items": true,
     "show_branch_name": true
@@ -56,22 +53,22 @@
   "languages": {
     "JavaScript": {
       "tab_size": 2,
-      "formatter": "prettier",
+      "formatter": "oxfmt",
     },
     "TypeScript": {
       "tab_size": 2,
-      "formatter": "prettier",
+      "formatter": "oxfmt",
     },
     "Vue.js": {
       "tab_size": 2,
-      "formatter": "prettier",
+      "formatter": "oxfmt",
     },
     "CSS": {
       "tab_size": 2,
-      "formatter": "prettier",
+      "formatter": "oxfmt",
     },
     "HTML": {
-      "formatter": "prettier",
+      "formatter": "oxfmt",
     },
     "Go": {
       "hard_tabs": true

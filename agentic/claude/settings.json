@@ -1,7 +1,7 @@
 {
   "permissions": {
-    "defaultMode": "bypassPermissions",
-    "allow": ["Bash(*)", "Read", "Edit", "Write"],
+    "defaultMode": "acceptEdits",
+    "allow": ["Bash(git *)", "Bash(npm *)", "Read", "Edit", "Write"],
     "deny": []
   },
   "alwaysThinkingEnabled": true,
@@ -21,4 +21,3 @@
     ]
   }
 }
-
