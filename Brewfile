@@ -35,6 +35,7 @@ brew "pnpm"
 brew "oxfmt"
 cask "zed"
 brew "postgresql@17"
+brew "redis"
 
 # containers
 cask "orbstack"
