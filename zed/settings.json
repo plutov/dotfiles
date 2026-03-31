@@ -53,22 +53,22 @@
   "languages": {
     "JavaScript": {
       "tab_size": 2,
-      "formatter": "oxfmt",
+      "formatter": "auto",
     },
     "TypeScript": {
       "tab_size": 2,
-      "formatter": "oxfmt",
+      "formatter": "auto",
     },
     "Vue.js": {
       "tab_size": 2,
-      "formatter": "oxfmt",
+      "formatter": "auto",
     },
     "CSS": {
       "tab_size": 2,
-      "formatter": "oxfmt",
+      "formatter": "auto",
     },
     "HTML": {
-      "formatter": "oxfmt",
+      "formatter": "auto",
     },
     "Go": {
       "hard_tabs": true
