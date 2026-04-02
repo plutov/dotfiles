@@ -1,7 +1,7 @@
 {
   "permissions": {
     "defaultMode": "acceptEdits",
-    "allow": ["Bash(git *)", "Bash(npm *)", "Read", "Edit", "Write", "Bash(yarn *)", "Bash(grep *)", "Bash(ls *)"],
+    "allow": ["Read", "Edit", "Write", "Bash(git *)", "Bash(npm *)", "Bash(yarn *)", "Bash(grep *)", "Bash(ls *)", "Bash(find *)"],
     "deny": []
   },
   "alwaysThinkingEnabled": true,
