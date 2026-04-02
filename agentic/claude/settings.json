@@ -14,11 +14,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/pluto/.claude/hooks/rtk-rewrite.sh"
-          },
-          {
-            "type": "command",
-            "command": "/Users/alex/.claude/hooks/rtk-rewrite.sh"
+            "command": "$HOME/.claude/hooks/rtk-rewrite.sh"
           }
         ]
       }
