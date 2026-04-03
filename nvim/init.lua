@@ -1,7 +1,7 @@
-require("config.lazy")
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+dofile(vim.fn.stdpath("config") .. "/pack.lua")
 vim.wo.number = true
 vim.o.swapfile = false
 
