@@ -50,5 +50,10 @@ function push() {
   git add -A && git commit --allow-empty-message -m '' && git push
 }
 
+# toggle macOS dark/light mode (all apps follow via system appearance)
+function toggle-mode() {
+  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
+}
+
 # amp
 export PATH="$HOME/.local/bin:$PATH"

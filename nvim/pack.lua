@@ -229,6 +229,7 @@ vim.keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file m
 
 -- Cyberdream
 require("cyberdream").setup({
+	variant = "auto",
 	overrides = function(colors)
 		return {
 			Comment = { fg = colors.grey, bg = "NONE", italic = true },
@@ -236,6 +237,7 @@ require("cyberdream").setup({
 	end,
 })
 vim.cmd.colorscheme("cyberdream")
+vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
 
 -- Lualine
 require("lualine").setup({

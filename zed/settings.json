@@ -26,7 +26,7 @@
   "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
-    "light": "GitHub Dark",
+    "light": "GitHub Light",
     "dark": "GitHub Dark"
   },
   "buffer_font_family": "JetBrains Mono",
