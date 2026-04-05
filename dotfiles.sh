@@ -16,6 +16,7 @@ DOTFILES=(
   "$HOME/.agents/skills:agentic/skills"
   "$HOME/.claude/skills:agentic/skills"
   "$HOME/.claude/settings.json:agentic/claude/settings.json"
+  "$HOME/.config/sol/scripts:sol/scripts"
 )
 
 copy_with_mkdir() {
