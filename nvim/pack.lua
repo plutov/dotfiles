@@ -12,9 +12,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 			end
 			vim.cmd("TSUpdate")
 		end
-		if name == "blink.cmp" and (kind == "install" or kind == "update") then
-			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
-		end
+
 	end,
 })
 
@@ -28,7 +26,7 @@ vim.pack.add({
 	gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
 	gh("stevearc/conform.nvim"),
 	gh("zapling/mason-conform.nvim"),
-	{ src = gh("saghen/blink.cmp"), version = vim.version.range("1.0") },
+	{ src = gh("saghen/blink.cmp"), version = vim.version.range("1.x") },
 	gh("rafamadriz/friendly-snippets"),
 	gh("windwp/nvim-autopairs"),
 	gh("stevearc/aerial.nvim"),

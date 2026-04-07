@@ -53,22 +53,37 @@
   "languages": {
     "JavaScript": {
       "tab_size": 2,
-      "formatter": "auto",
+      "formatter": {
+        "external": {
+          "command": "oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
     },
     "TypeScript": {
       "tab_size": 2,
-      "formatter": "auto",
+      "formatter": {
+        "external": {
+          "command": "oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
     },
     "Vue.js": {
       "tab_size": 2,
-      "formatter": "auto",
+      "formatter": {
+        "external": {
+          "command": "oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
     },
     "CSS": {
       "tab_size": 2,
-      "formatter": "auto",
+      "formatter": "auto"
     },
     "HTML": {
-      "formatter": "auto",
+      "formatter": "auto"
     },
     "Go": {
       "hard_tabs": true
