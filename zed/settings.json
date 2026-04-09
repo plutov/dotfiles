@@ -48,7 +48,12 @@
     "**/Thumbs.db",
     "**/.classpath",
     "**/.settings",
-    "**/vendor"
+    "**/vendor",
+    "**/.yarn",
+    "**/.turbo",
+    "**/coverage",
+    "**/dist",
+    "**.ts.snap",
   ],
   "languages": {
     "JavaScript": {
@@ -56,7 +61,10 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       }
     },
@@ -65,7 +73,10 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       }
     },
@@ -74,7 +85,10 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": [
+            "--stdin-filepath",
+            "{buffer_path}"
+          ]
         }
       }
     },
