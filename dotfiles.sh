@@ -12,10 +12,7 @@ DOTFILES=(
   "$HOME/.config/zed/settings.json:zed/settings.json"
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
-  "$HOME/.claude/CLAUDE.md:agentic/AGENTS.md"
   "$HOME/.agents/skills:agentic/skills"
-  "$HOME/.claude/skills:agentic/skills"
-  "$HOME/.claude/settings.json:agentic/claude/settings.json"
   "$HOME/.config/sol/scripts:sol/scripts"
 )
 

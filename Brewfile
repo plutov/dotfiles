@@ -48,6 +48,6 @@ brew "colima"
 brew "qemu"
 
 # llm
-cask "claude-code"
 brew "anomalyco/tap/opencode"
 brew "rtk"
+brew "codex"
