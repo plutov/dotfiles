@@ -1,5 +1,3 @@
-@RTK.md
-
 ### My personal code preference
 
 - Write concise code, avoid unnecessary checks

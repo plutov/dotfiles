@@ -30,6 +30,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+if command -v npm >/dev/null 2>&1; then
+  npm_global_bin="$(npm config get prefix -g 2>/dev/null)/bin"
+  if [ -d "$npm_global_bin" ]; then
+    export PATH="$npm_global_bin:$PATH"
+  fi
+fi
+
 # Aliases
 alias vim="nvim"
 alias vi="nvim"

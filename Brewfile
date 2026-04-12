@@ -49,5 +49,4 @@ brew "qemu"
 
 # llm
 brew "anomalyco/tap/opencode"
-brew "rtk"
 brew "codex"
