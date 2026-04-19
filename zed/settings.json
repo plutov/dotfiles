@@ -191,7 +191,8 @@
     "enabled": false
   },
   "outline_panel": {
-    "button": true
+    "button": true,
+    "dock": "left"
   },
   "collaboration_panel": {
     "button": false
