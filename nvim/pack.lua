@@ -12,7 +12,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 			end
 			vim.cmd("TSUpdate")
 		end
-
 	end,
 })
 
@@ -25,7 +24,6 @@ vim.pack.add({
 	gh("williamboman/mason.nvim"),
 	gh("WhoIsSethDaniel/mason-tool-installer.nvim"),
 	gh("stevearc/conform.nvim"),
-	gh("zapling/mason-conform.nvim"),
 	{ src = gh("saghen/blink.cmp"), version = vim.version.range("1.x") },
 	gh("rafamadriz/friendly-snippets"),
 	gh("windwp/nvim-autopairs"),
@@ -38,7 +36,6 @@ vim.pack.add({
 	gh("SmiteshP/nvim-navic"),
 	gh("nvim-tree/nvim-web-devicons"),
 	gh("mikavilpas/yazi.nvim"),
-	gh("folke/snacks.nvim"),
 
 	-- UI
 	gh("scottmckendry/cyberdream.nvim"),
@@ -59,7 +56,15 @@ vim.pack.add({
 
 -- Plugin configs
 
--- Treesitter: highlighting is handled via FileType autocmd by nvim-treesitter
+-- Treesitter
+local ts_ok, ts_configs = pcall(require, "nvim-treesitter.configs")
+if ts_ok then
+	ts_configs.setup({
+		highlight = { enable = true },
+		indent = { enable = true },
+		auto_install = true,
+	})
+end
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -135,7 +140,7 @@ vim.lsp.config("ts_ls", {
 -- Conform
 require("conform").setup({
 	notify_on_error = true,
-	format_on_save = function(bufnr)
+	format_on_save = function()
 		return {
 			timeout_ms = 5000,
 			lsp_format = "fallback",
@@ -235,7 +240,7 @@ require("cyberdream").setup({
 	end,
 })
 vim.cmd.colorscheme("cyberdream")
-vim.api.nvim_set_keymap("n", "<leader>tt", ":CyberdreamToggleMode<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>tt", "<cmd>CyberdreamToggleMode<CR>", { silent = true, desc = "Toggle theme mode" })
 
 -- Lualine
 require("lualine").setup({
@@ -257,6 +262,7 @@ require("which-key").setup({
 			mode = { "n", "v" },
 			{ "<leader>f", group = "file/find" },
 			{ "<leader>s", group = "search" },
+			{ "<leader>p", group = "plugins/pack" },
 			{
 				"<leader>b",
 				group = "buffer",
