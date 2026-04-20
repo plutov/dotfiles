@@ -80,6 +80,9 @@ install() {
   git config --global user.signingkey "$HOME"/.ssh/id_ed25519.pub
   git config --global pull.rebase true
 
+  echo "Installing pi extensions"
+  pi install npm:pi-system-theme
+
   echo "dotfiles installed and configured."
 }
 
