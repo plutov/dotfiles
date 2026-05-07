@@ -1,4 +1,21 @@
 {
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    }
+  },
   "session": {
     "trust_all_worktrees": true
   },
@@ -16,6 +33,7 @@
     "active_language_button": true
   },
   "git_panel": {
+    "dock": "left",
     "button": false
   },
   "disable_ai": false,
@@ -56,6 +74,9 @@
     "**.ts.snap",
   ],
   "languages": {
+    "Markdown": {
+      "show_edit_predictions": true
+    },
     "JavaScript": {
       "tab_size": 2,
       "formatter": {
@@ -136,6 +157,7 @@
   },
   "soft_wrap": "editor_width",
   "edit_predictions": {
+    "mode": "eager",
     "provider": "copilot",
     "disabled_globs": []
   },
@@ -187,6 +209,7 @@
     "selections_menu": false
   },
   "agent": {
+    "dock": "right",
     "button": false,
     "enabled": false
   },
@@ -195,6 +218,7 @@
     "dock": "left"
   },
   "collaboration_panel": {
+    "dock": "left",
     "button": false
   },
   "notification_panel": {
