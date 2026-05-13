@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.74.0",
+  "theme": "dark",
+  "packages": [
+    "npm:pi-system-theme",
+    "npm:pi-subagents",
+    "npm:amp-themes"
+  ],
+  "skills": [
+    "~/.agents/skills/caveman",
+    "~/.nvm/versions/node/*/lib/node_modules/pi-subagents/skills/pi-subagents"
+  ]
+}

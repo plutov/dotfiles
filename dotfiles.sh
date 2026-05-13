@@ -1,6 +1,7 @@
 #!/bin/bash
 
 EMAIL="a.pliutau@gmail.com"
+TARGET="personal"
 
 DOTFILES=(
   "$HOME/.zshrc:.zshrc"
@@ -13,6 +14,7 @@ DOTFILES=(
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
   "$HOME/.agents/skills:agentic/skills"
+  "$HOME/.pi/agent/AGENTS.md:pi/AGENTS.md"
   "$HOME/.config/sol/scripts:sol/scripts"
 )
 
@@ -30,12 +32,25 @@ copy_with_mkdir() {
   fi
 }
 
+pi_settings_source() {
+  case "$TARGET" in
+  personal) echo "pi/settings.personal.json" ;;
+  work) echo "pi/settings.work.json" ;;
+  *)
+    echo "Invalid --target: $TARGET (expected: work|personal)"
+    exit 1
+    ;;
+  esac
+}
+
 apply() {
   for dotfile in "${DOTFILES[@]}"; do
     destination="${dotfile%%:*}"
     source="${dotfile##*:}"
     copy_with_mkdir "$source" "$destination"
   done
+
+  copy_with_mkdir "$(pi_settings_source)" "$HOME/.pi/agent/settings.json"
 
   touch ~/.hushlogin
 }
@@ -46,6 +61,9 @@ save() {
     source="${dotfile##*:}"
     copy_with_mkdir "$destination" "$source"
   done
+
+  copy_with_mkdir "$HOME/.pi/agent/settings.json" "$(pi_settings_source)"
+
   echo "Dotfiles saved."
 }
 
@@ -87,11 +105,12 @@ install() {
 }
 
 show_help() {
-  echo "Usage: $0 [-i] [-s] [-h]"
-  echo "  -i   Install tools"
-  echo "  -a   Apply dotfiles"
-  echo "  -s   Save dotfiles"
-  echo "  -h   Show this help menu"
+  echo "Usage: $0 [-i|-a|-s] [--target work|personal] [-h]"
+  echo "  -i            Install tools"
+  echo "  -a            Apply dotfiles"
+  echo "  -s            Save dotfiles"
+  echo "  --target      Select pi settings target (default: personal)"
+  echo "  -h            Show this help menu"
 }
 
 if [ $# -eq 0 ]; then
@@ -99,15 +118,55 @@ if [ $# -eq 0 ]; then
   exit 0
 fi
 
-while getopts ":isah" opt; do
-  case $opt in
-  i) install ;;
-  s) save ;;
-  a) apply ;;
-  h)
+ACTIONS=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+  -i)
+    ACTIONS+=("install")
+    shift
+    ;;
+  -a)
+    ACTIONS+=("apply")
+    shift
+    ;;
+  -s)
+    ACTIONS+=("save")
+    shift
+    ;;
+  --target)
+    TARGET="$2"
+    if [[ -z "$TARGET" ]]; then
+      echo "Missing value for --target"
+      exit 1
+    fi
+    shift 2
+    ;;
+  --target=*)
+    TARGET="${1#*=}"
+    shift
+    ;;
+  -h | --help)
     show_help
     exit 0
     ;;
-  \?) echo "Invalid option -$OPTARG" ;;
+  *)
+    echo "Invalid option $1"
+    show_help
+    exit 1
+    ;;
+  esac
+done
+
+if [[ ${#ACTIONS[@]} -eq 0 ]]; then
+  show_help
+  exit 0
+fi
+
+for action in "${ACTIONS[@]}"; do
+  case "$action" in
+  install) install ;;
+  apply) apply ;;
+  save) save ;;
   esac
 done
