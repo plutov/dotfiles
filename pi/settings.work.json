@@ -3,23 +3,14 @@
   "defaultProvider": "azure-openai-responses",
   "defaultModel": "gpt-5.3-codex",
   "theme": "dark",
-  "packages": [
-    "npm:pi-system-theme",
-    "npm:pi-subagents",
-    "npm:amp-themes"
-  ],
-  "skills": [
-    "~/.agents/skills/caveman",
-    "~/.nvm/versions/node/*/lib/node_modules/pi-subagents/skills/pi-subagents"
-  ],
+  "packages": ["npm:pi-system-theme", "npm:pi-subagents", "npm:amp-themes"],
+  "skills": ["~/.agents/skills/caveman"],
   "subagents": {
     "agentOverrides": {
       "worker": {
         "model": "azure-openai-responses/gpt-5.3-codex",
         "thinking": "high",
-        "fallbackModels": [
-          "azure-openai-responses/gpt-5.4"
-        ]
+        "fallbackModels": ["azure-openai-responses/gpt-5.4"]
       },
       "reviewer": {
         "model": "azure-openai-responses/gpt-5.4",
