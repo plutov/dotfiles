@@ -46,7 +46,3 @@ brew "k9s"
 brew "lazydocker"
 brew "colima"
 brew "qemu"
-
-# llm
-brew "anomalyco/tap/opencode"
-brew "codex"
