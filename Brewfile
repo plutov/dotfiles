@@ -1,6 +1,5 @@
 # mac apps
 cask "obsidian"
-cask "sol"
 cask "discord"
 cask "obs"
 cask "slack"

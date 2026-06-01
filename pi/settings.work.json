@@ -4,7 +4,7 @@
   "defaultModel": "gpt-5.3-codex",
   "theme": "dark",
   "packages": ["npm:pi-system-theme", "npm:pi-subagents", "npm:amp-themes"],
-  "skills": ["~/.agents/skills/caveman"],
+  "skills": [],
   "subagents": {
     "agentOverrides": {
       "worker": {

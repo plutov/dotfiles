@@ -1,5 +1,4 @@
 format = """
-$kubernetes\
 $directory\
 $git_branch\
 $git_commit\
@@ -9,31 +8,14 @@ $git_status\
 $docker_context\
 $package\
 $golang\
-$helm\
 $lua\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$pulumi\
 $python\
-$rlang\
-$ruby\
 $rust\
-$scala\
-$solidity\
-$swift\
-$terraform\
 $typst\
-$vlang\
-$zig\
-$buf\
 $memory_usage\
-$nats\
 $direnv\
 $env_var\
-$mise\
-$crystal\
 $custom\
 $sudo\
 $cmd_duration\
@@ -47,9 +29,6 @@ $container\
 $netns\
 $shell\
 $character"""
-
-[buf]
-symbol = " "
 
 [bun]
 symbol = " "
