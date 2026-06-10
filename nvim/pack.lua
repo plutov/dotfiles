@@ -2,15 +2,48 @@ local gh = function(x)
 	return "https://github.com/" .. x
 end
 
+local function download_fff_binary()
+	local done = false
+	local fatal_error = nil
+
+	require("fff.download").ensure_downloaded({ force = true }, function(success, err)
+		if not success then
+			fatal_error = err or "unknown error"
+		end
+		done = true
+	end)
+
+	local ok, wait_err = vim.wait(1000 * 60 * 2, function()
+		return done
+	end, 100)
+	if not ok and wait_err == -2 then
+		error("fff.nvim: download_binary timed out")
+	end
+	if fatal_error then
+		error("Failed to download fff.nvim binary: " .. fatal_error)
+	end
+end
+
 -- Hooks
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "nvim-treesitter" and (kind == "install" or kind == "update") then
+		if kind ~= "install" and kind ~= "update" then
+			return
+		end
+
+		if name == "nvim-treesitter" then
 			if not ev.data.active then
 				vim.cmd.packadd("nvim-treesitter")
 			end
 			vim.cmd("TSUpdate")
+		end
+
+		if name == "fff.nvim" then
+			if not ev.data.active then
+				vim.cmd.packadd("fff.nvim")
+			end
+			download_fff_binary()
 		end
 	end,
 })
@@ -30,8 +63,7 @@ vim.pack.add({
 	gh("stevearc/aerial.nvim"),
 
 	-- Files
-	gh("nvim-telescope/telescope.nvim"),
-	gh("nvim-lua/plenary.nvim"),
+	gh("dmtrKovalenko/fff.nvim"),
 	gh("utilyre/barbecue.nvim"),
 	gh("SmiteshP/nvim-navic"),
 	gh("nvim-tree/nvim-web-devicons"),
@@ -81,7 +113,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.hover({ border = "single" })
 		end, bufopts("Hover"))
 
-		map("gd", require("telescope.builtin").lsp_definitions, "definitions")
+		map("gd", vim.lsp.buf.definition, "definitions")
 		map("<leader>rn", vim.lsp.buf.rename, "rename")
 	end,
 })
@@ -193,28 +225,24 @@ require("nvim-autopairs").setup()
 -- Aerial
 require("aerial").setup()
 
--- Telescope
-require("telescope").setup({
-	defaults = {
-		file_ignore_patterns = {
-			"node_modules/",
-			".git/",
-			"vendor/",
-			"testdata/",
-			"**.sql.go",
-			"**.gen.go",
-			"**schema.json",
-			"package%-lock.json",
-			"coverage/",
+-- FFF
+local fff_ok, fff = pcall(require, "fff")
+if fff_ok then
+	fff.setup({
+		prompt = " ",
+		layout = {
+			height = 0.85,
+			width = 0.85,
+			preview_position = "right",
 		},
-		ripgrep_arguments = { "-S" },
-	},
-	pickers = {
-		find_files = {
-			hidden = true,
+		preview = {
+			line_numbers = true,
 		},
-	},
-})
+		grep = {
+			modes = { "plain", "regex" },
+		},
+	})
+end
 
 -- Barbecue
 require("barbecue").setup()

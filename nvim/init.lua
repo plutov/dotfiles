@@ -36,21 +36,17 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Finder
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "files" })
-vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "git files" })
-vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "diagnostics" })
-vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep" })
-vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "buffers" })
+vim.keymap.set("n", "<leader>ff", function()
+	require("fff").find_files()
+end, { desc = "files" })
+vim.keymap.set("n", "<leader>sg", function()
+	require("fff").live_grep()
+end, { desc = "grep" })
+vim.keymap.set("n", "<leader>fc", function()
+	require("fff").find_files_in_dir(vim.fn.expand("~/.config/nvim"))
+end, { desc = "Search config files" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial toggle" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:%bd<CR>", { desc = "Close all buffers" })
-local fk_opts = {
-	cwd = "~/.config/nvim",
-	results_title = "Config",
-}
-vim.keymap.set("n", "<leader>fc", function()
-	builtin.find_files(fk_opts)
-end, { desc = "Search config files" })
 
 -- Expand long diagnostics
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true, desc = "Expand diagnostics" })
