@@ -11,12 +11,6 @@ vim.opt.shortmess:append("I")
 -- everything is unnamed
 vim.opt.clipboard = "unnamed"
 
--- split navigation
-vim.keymap.set("n", "<C-h>", "<cmd>wincmd h<CR>", { silent = true, desc = "Window left" })
-vim.keymap.set("n", "<C-j>", "<cmd>wincmd j<CR>", { silent = true, desc = "Window down" })
-vim.keymap.set("n", "<C-k>", "<cmd>wincmd k<CR>", { silent = true, desc = "Window up" })
-vim.keymap.set("n", "<C-l>", "<cmd>wincmd l<CR>", { silent = true, desc = "Window right" })
-
 -- Setup tabs and spaces
 vim.opt.listchars = { space = "·", tab = "  " }
 vim.opt.list = true
@@ -48,7 +42,6 @@ vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "git files" })
 vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "diagnostics" })
 vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "grep" })
 vim.keymap.set("n", "<leader>bf", builtin.buffers, { desc = "buffers" })
-vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = "symbols" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial toggle" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:%bd<CR>", { desc = "Close all buffers" })
 local fk_opts = {
@@ -66,15 +59,6 @@ vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true, des
 vim.keymap.set("n", "<leader>pu", function()
 	vim.pack.update()
 end, { desc = "Pack update (review)" })
-vim.keymap.set("n", "<leader>pU", function()
-	vim.pack.update(nil, { force = true })
-end, { desc = "Pack update (force)" })
-vim.keymap.set("n", "<leader>pl", function()
-	vim.pack.update(nil, { offline = true, target = "lockfile" })
-end, { desc = "Pack sync from lockfile" })
-vim.keymap.set("n", "<leader>pL", function()
-	vim.cmd.edit(vim.fs.joinpath(vim.fn.stdpath("log"), "nvim-pack.log"))
-end, { desc = "Open pack log" })
 
 -- Copilot keymaps
 vim.keymap.set("i", "<C-.>", 'copilot#Accept("\\<CR>")', {
