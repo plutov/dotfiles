@@ -12,16 +12,6 @@ local function download_fff_binary()
 		end
 		done = true
 	end)
-
-	local ok, wait_err = vim.wait(1000 * 60 * 2, function()
-		return done
-	end, 100)
-	if not ok and wait_err == -2 then
-		error("fff.nvim: download_binary timed out")
-	end
-	if fatal_error then
-		error("Failed to download fff.nvim binary: " .. fatal_error)
-	end
 end
 
 -- Hooks
