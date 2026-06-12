@@ -54,6 +54,7 @@ vim.pack.add({
 
 	-- Files
 	gh("dmtrKovalenko/fff.nvim"),
+	gh("nvim-lua/plenary.nvim"),
 	gh("utilyre/barbecue.nvim"),
 	gh("SmiteshP/nvim-navic"),
 	gh("nvim-tree/nvim-web-devicons"),
