@@ -1,7 +1,6 @@
 {
   "lastChangelogVersion": "0.75.4",
-  "theme": "dark",
+  "theme": "amp-dark",
   "packages": ["npm:pi-system-theme", "npm:pi-subagents", "npm:amp-themes"],
   "skills": []
 }
-

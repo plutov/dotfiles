@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.74.0",
   "defaultProvider": "azure-openai-responses",
   "defaultModel": "gpt-5.3-codex",
-  "theme": "dark",
+  "theme": "amp-dark",
   "packages": ["npm:pi-system-theme", "npm:pi-subagents", "npm:amp-themes"],
   "skills": [],
   "subagents": {
