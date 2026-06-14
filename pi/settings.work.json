@@ -3,7 +3,8 @@
   "defaultProvider": "azure-openai-responses",
   "defaultModel": "gpt-5.3-codex",
   "theme": "amp-dark",
-  "packages": ["npm:pi-system-theme", "npm:pi-subagents", "npm:amp-themes"],
+  "packages": ["npm:pi-subagents", "npm:amp-themes"],
+  "extensions": ["extensions/amp-system-theme.ts"],
   "skills": [],
   "subagents": {
     "agentOverrides": {
