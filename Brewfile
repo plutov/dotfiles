@@ -5,6 +5,7 @@ cask "obs"
 cask "slack"
 cask "notion"
 brew "tw93/tap/mole"
+cask "rectangle""
 
 # terminal
 cask "ghostty"
