@@ -15,7 +15,6 @@ DOTFILES=(
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
   "$HOME/.agents/skills:agentic/skills"
   "$HOME/.pi/agent/AGENTS.md:pi/AGENTS.md"
-  "$HOME/.pi/agent/extensions:pi/extensions"
 )
 
 copy_with_mkdir() {
