@@ -2,6 +2,9 @@ local gh = function(x)
 	return "https://github.com/" .. x
 end
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 local function download_fff_binary()
 	local done = false
 	local fatal_error = nil
@@ -58,7 +61,8 @@ vim.pack.add({
 	gh("utilyre/barbecue.nvim"),
 	gh("SmiteshP/nvim-navic"),
 	gh("nvim-tree/nvim-web-devicons"),
-	gh("mikavilpas/yazi.nvim"),
+	gh("MunifTanjim/nui.nvim"),
+	gh("nvim-neo-tree/neo-tree.nvim"),
 
 	-- UI
 	gh("scottmckendry/cyberdream.nvim"),
@@ -72,9 +76,6 @@ vim.pack.add({
 	-- Text
 	gh("gbprod/cutlass.nvim"),
 	gh("MagicDuck/grug-far.nvim"),
-
-	-- Copilot
-	gh("github/copilot.vim"),
 })
 
 -- Plugin configs
@@ -238,16 +239,41 @@ end
 -- Barbecue
 require("barbecue").setup()
 
--- Yazi
-require("yazi").setup({
-	open_for_directories = false,
-	keymaps = {
-		show_help = "<f1>",
+-- Neo-tree
+require("neo-tree").setup({
+	close_if_last_window = true,
+	filesystem = {
+		follow_current_file = { enabled = true },
+		hijack_netrw_behavior = "open_default",
+		filtered_items = {
+			visible = true,
+			hide_dotfiles = false,
+			hide_gitignored = false,
+			hide_hidden = false,
+			never_show = {},
+		},
+	},
+	window = {
+		position = "right",
+		width = 32,
 	},
 })
-vim.g.loaded_netrwPlugin = 1
-vim.keymap.set({ "n", "v" }, "<leader>-", "<cmd>Yazi<cr>", { desc = "Open yazi at the current file" })
-vim.keymap.set("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file manager in nvim's working directory" })
+
+local neotree = require("neo-tree.command")
+vim.keymap.set("n", "<leader>e", function()
+	neotree.execute({
+		toggle = true,
+		source = "filesystem",
+		position = "right",
+	})
+end, { desc = "Toggle file tree" })
+vim.keymap.set("n", "<leader>E", function()
+	neotree.execute({
+		reveal = true,
+		source = "filesystem",
+		position = "right",
+	})
+end, { desc = "Reveal current file in tree" })
 
 -- Cyberdream
 require("cyberdream").setup({
