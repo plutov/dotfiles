@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+
+  "app": {
+    "appearance": "dark",
+    "minimalMode": true
+  },
+
+  "workspaceColors": {
+    "indicatorStyle": "leftRail",
+    "selectionColor": "#7aa2f7",
+    "notificationBadgeColor": "#f7768e",
+    "colors": {
+      "Blue": "#7aa2f7",
+      "Aqua": "#7dcfff",
+      "Purple": "#bb9af7",
+      "Green": "#9ece6a",
+      "Amber": "#e0af68",
+      "Red": "#f7768e"
+    }
+  },
+
+  "sidebarAppearance": {
+    "tintColor": "#1a1b26",
+    "darkModeTintColor": "#1a1b26",
+    "tintOpacity": 0.9
+  },
+
+  "browser": {
+    "theme": "dark"
+  }
+}

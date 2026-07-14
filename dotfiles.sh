@@ -10,6 +10,8 @@ DOTFILES=(
   "$HOME/.config/nvim:nvim"
   "$HOME/.config/starship.toml:starship.toml"
   "$HOME/.config/yazi/yazi.toml:yazi.toml"
+  "$HOME/.config/btop/btop.conf:btop/btop.conf"
+  "$HOME/.config/cmux/cmux.json:cmux/cmux.json"
   "$HOME/.config/zed/settings.json:zed/settings.json"
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
