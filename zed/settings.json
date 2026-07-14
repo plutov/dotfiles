@@ -36,7 +36,7 @@
     "dock": "left",
     "button": false
   },
-  "disable_ai": false,
+  "disable_ai": true,
   "buffer_line_height": "standard",
   "buffer_font_weight": 300.0,
   "vim_mode": false,
@@ -157,9 +157,7 @@
   },
   "soft_wrap": "editor_width",
   "edit_predictions": {
-    "mode": "eager",
-    "provider": "copilot",
-    "disabled_globs": []
+    "mode": "none"
   },
   "scrollbar": {
     "git_diff": false,
