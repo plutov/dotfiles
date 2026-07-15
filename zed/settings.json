@@ -71,7 +71,7 @@
     "**/.turbo",
     "**/coverage",
     "**/dist",
-    "**.ts.snap",
+    "**.ts.snap"
   ],
   "languages": {
     "Markdown": {
@@ -82,10 +82,7 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -94,10 +91,7 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -106,10 +100,7 @@
       "formatter": {
         "external": {
           "command": "oxfmt",
-          "arguments": [
-            "--stdin-filepath",
-            "{buffer_path}"
-          ]
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
         }
       }
     },
@@ -156,9 +147,6 @@
     "enabled": false
   },
   "soft_wrap": "editor_width",
-  "edit_predictions": {
-    "mode": "none"
-  },
   "scrollbar": {
     "git_diff": false,
     "search_results": false,
