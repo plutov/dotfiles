@@ -8,8 +8,6 @@ brew "tw93/tap/mole"
 cask "rectangle""
 
 # terminal
-tap "manaflow-ai/cmux"
-cask "cmux"
 cask "ghostty"
 cask "font-jetbrains-mono"
 brew "neovim"
