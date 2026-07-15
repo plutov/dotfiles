@@ -45,6 +45,17 @@ end, { desc = "grep" })
 vim.keymap.set("n", "<leader>fc", function()
 	require("fff").find_files_in_dir(vim.fn.expand("~/.config/nvim"))
 end, { desc = "Search config files" })
+vim.keymap.set("n", "<leader>fp", function()
+	local path = vim.api.nvim_buf_get_name(0)
+	if path == "" then
+		vim.notify("No file path for current buffer", vim.log.levels.WARN)
+		return
+	end
+
+	local relative_path = vim.fn.fnamemodify(path, ":.")
+	vim.fn.setreg("+", relative_path)
+	vim.notify("Copied relative path: " .. relative_path)
+end, { desc = "Copy relative file path" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial toggle" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:%bd<CR>", { desc = "Close all buffers" })
 
