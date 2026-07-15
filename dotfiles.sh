@@ -1,7 +1,6 @@
 #!/bin/bash
 
 EMAIL="a.pliutau@gmail.com"
-TARGET="personal"
 
 DOTFILES=(
   "$HOME/.zshrc:.zshrc"
@@ -32,17 +31,6 @@ copy_with_mkdir() {
   fi
 }
 
-pi_settings_source() {
-  case "$TARGET" in
-  personal) echo "pi/settings.personal.json" ;;
-  work) echo "pi/settings.work.json" ;;
-  *)
-    echo "Invalid --target: $TARGET (expected: work|personal)"
-    exit 1
-    ;;
-  esac
-}
-
 apply() {
   for dotfile in "${DOTFILES[@]}"; do
     destination="${dotfile%%:*}"
@@ -50,7 +38,7 @@ apply() {
     copy_with_mkdir "$source" "$destination"
   done
 
-  copy_with_mkdir "$(pi_settings_source)" "$HOME/.pi/agent/settings.json"
+  copy_with_mkdir "pi/settings.json" "$HOME/.pi/agent/settings.json"
 
   touch ~/.hushlogin
 }
@@ -62,7 +50,7 @@ save() {
     copy_with_mkdir "$destination" "$source"
   done
 
-  copy_with_mkdir "$HOME/.pi/agent/settings.json" "$(pi_settings_source)"
+  copy_with_mkdir "$HOME/.pi/agent/settings.json" "pi/settings.json"
 
   echo "Dotfiles saved."
 }
@@ -105,11 +93,10 @@ install() {
 }
 
 show_help() {
-  echo "Usage: $0 [-i|-a|-s] [--target work|personal] [-h]"
+  echo "Usage: $0 [-i|-a|-s] [-h]"
   echo "  -i            Install tools"
   echo "  -a            Apply dotfiles"
   echo "  -s            Save dotfiles"
-  echo "  --target      Select pi settings target (default: personal)"
   echo "  -h            Show this help menu"
 }
 
@@ -132,18 +119,6 @@ while [[ $# -gt 0 ]]; do
     ;;
   -s)
     ACTIONS+=("save")
-    shift
-    ;;
-  --target)
-    TARGET="$2"
-    if [[ -z "$TARGET" ]]; then
-      echo "Missing value for --target"
-      exit 1
-    fi
-    shift 2
-    ;;
-  --target=*)
-    TARGET="${1#*=}"
     shift
     ;;
   -h | --help)

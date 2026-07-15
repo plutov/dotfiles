@@ -1,7 +1,0 @@
-{
-  "lastChangelogVersion": "0.74.0",
-  "defaultProvider": "azure-openai-responses",
-  "defaultModel": "gpt-5.3-codex",
-  "packages": ["npm:pi-subagents"],
-  "skills": []
-}

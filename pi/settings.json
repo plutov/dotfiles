@@ -1,0 +1,6 @@
+{
+  "lastChangelogVersion": "0.80.6",
+  "quietStartup": true,
+  "packages": ["npm:pi-subagents"],
+  "skills": []
+}

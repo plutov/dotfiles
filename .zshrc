@@ -17,6 +17,7 @@ export VISUAL="$EDITOR"
 # Development settings
 #export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 export GOPROXY="https://proxy.golang.org,direct"
+export PI_OFFLINE=1
 
 # Shell settings
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
