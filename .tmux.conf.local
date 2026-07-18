@@ -1,0 +1,19 @@
+# Oh my tmux! local overrides.
+# Main config: https://github.com/gpakosz/.tmux
+
+# Keep behavior close to stock Oh my tmux!, with only personal essentials.
+tmux_conf_new_window_retain_current_path=true
+
+set -g prefix C-a #!important
+unbind C-b #!important
+bind C-a send-prefix #!important
+set -g mouse on #!important
+set -g status-position bottom #!important
+set -g mode-keys vi #!important
+set -g status-keys vi #!important
+
+# Session shortcuts (<prefix> is C-a).
+bind s display-popup -E -w 80% -h 70% "$HOME/.config/tmux/session-manager.sh" #!important
+bind r command-prompt -I "#S" "rename-session -- '%%'" #!important
+bind k confirm-before -p "kill session #S? (y/n)" kill-session #!important
+bind S command-prompt -p "new session" "new-session -s '%%'" #!important

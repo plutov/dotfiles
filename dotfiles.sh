@@ -1,9 +1,13 @@
 #!/bin/bash
 
 EMAIL="a.pliutau@gmail.com"
+TMUX_REPO="https://github.com/gpakosz/.tmux.git"
+TMUX_DIR="$HOME/.tmux"
 
 DOTFILES=(
   "$HOME/.zshrc:.zshrc"
+  "$HOME/.tmux.conf.local:.tmux.conf.local"
+  "$HOME/.config/tmux/session-manager.sh:tmux/session-manager.sh"
   "$HOME/.config/ghostty/config:ghostty.config"
   "$HOME/.config/ghostty/themes:ghostty-themes"
   "$HOME/.config/nvim:nvim"
@@ -21,6 +25,11 @@ copy_with_mkdir() {
   source="$1"
   destination="$2"
 
+  if [[ ! -e "$source" ]]; then
+    echo "Skipping missing source: $source"
+    return 0
+  fi
+
   if [[ -d "$source" ]]; then
     mkdir -p "$destination"
     cp -Ra "$source"/* "$destination"
@@ -31,6 +40,17 @@ copy_with_mkdir() {
   fi
 }
 
+ensure_tmux_config() {
+  if [[ -d "$TMUX_DIR/.git" ]]; then
+    git -C "$TMUX_DIR" pull --ff-only
+  else
+    rm -rf "$TMUX_DIR"
+    git clone --depth 1 "$TMUX_REPO" "$TMUX_DIR"
+  fi
+
+  ln -sfn "$TMUX_DIR/.tmux.conf" "$HOME/.tmux.conf"
+}
+
 apply() {
   for dotfile in "${DOTFILES[@]}"; do
     destination="${dotfile%%:*}"
@@ -38,6 +58,7 @@ apply() {
     copy_with_mkdir "$source" "$destination"
   done
 
+  ensure_tmux_config
   copy_with_mkdir "pi/settings.json" "$HOME/.pi/agent/settings.json"
 
   touch ~/.hushlogin
@@ -70,6 +91,9 @@ install() {
 
   echo "Installing nvm"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+
+  echo "Installing tmux configuration"
+  ensure_tmux_config
 
   if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "Generating ssh key"
