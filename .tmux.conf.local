@@ -13,7 +13,6 @@ set -g mode-keys vi #!important
 set -g status-keys vi #!important
 
 # Session shortcuts (<prefix> is C-a).
-bind s display-popup -E -w 80% -h 70% "$HOME/.config/tmux/session-manager.sh" #!important
 bind r command-prompt -I "#S" "rename-session -- '%%'" #!important
 bind k confirm-before -p "kill session #S? (y/n)" kill-session #!important
 bind S command-prompt -p "new session" "new-session -s '%%'" #!important
