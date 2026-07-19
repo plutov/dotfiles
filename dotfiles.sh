@@ -10,6 +10,7 @@ DOTFILES=(
   "$HOME/.config/starship.toml:starship.toml"
   "$HOME/.config/yazi/yazi.toml:yazi.toml"
   "$HOME/.config/btop/btop.conf:btop/btop.conf"
+  "$HOME/.config/cmux/cmux.json:cmux/cmux.json"
   "$HOME/.config/zed/settings.json:zed/settings.json"
   "$HOME/.config/zed/keymap.json:zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
@@ -56,11 +57,20 @@ save() {
 }
 
 install() {
+  update_brew=false
+
   if [[ $(command -v brew) == "" ]]; then
     echo "Installing Homebrew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     PATH="/opt/homebrew/bin:$PATH"
   else
+    update_brew=true
+  fi
+
+  echo "Trusting the Mole Homebrew formula"
+  brew trust --formula tw93/tap/mole
+
+  if $update_brew; then
     echo "Updating Homebrew"
     brew update
   fi

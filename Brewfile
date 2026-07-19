@@ -5,9 +5,10 @@ cask "obs"
 cask "slack"
 cask "notion"
 brew "tw93/tap/mole"
-cask "rectangle""
+cask "rectangle"
 
 # terminal
+cask "cmux"
 cask "ghostty"
 cask "font-jetbrains-mono"
 brew "neovim"
