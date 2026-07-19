@@ -22,6 +22,7 @@ brew "btop"
 brew "bat"
 brew "yazi"
 brew "fd"
+brew "yt-dlp"
 
 # dev
 brew "golang"

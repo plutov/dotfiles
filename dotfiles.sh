@@ -7,7 +7,6 @@ TMUX_DIR="$HOME/.tmux"
 DOTFILES=(
   "$HOME/.zshrc:.zshrc"
   "$HOME/.tmux.conf.local:.tmux.conf.local"
-  "$HOME/.config/tmux/session-manager.sh:tmux/session-manager.sh"
   "$HOME/.config/ghostty/config:ghostty.config"
   "$HOME/.config/ghostty/themes:ghostty-themes"
   "$HOME/.config/nvim:nvim"
