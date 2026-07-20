@@ -18,6 +18,7 @@ tmux_conf_theme_status_right=' #{prefix}#{mouse}#{pairing}#{synchronized}#{?batt
 tmux_conf_theme_terminal_title='#S ● #I #W'
 
 # Session shortcuts (<prefix> is C-a).
+bind R source-file ~/.tmux.conf \; display-message "tmux config reloaded" #!important
 bind r command-prompt -I "#S" "rename-session -- '%%'" #!important
 bind k confirm-before -p "kill session #S? (y/n)" kill-session #!important
 bind S command-prompt -p "new session" "new-session -s '%%'" #!important
