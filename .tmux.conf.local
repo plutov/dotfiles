@@ -13,6 +13,10 @@ set -g mode-keys vi #!important
 set -g status-keys vi #!important
 set -g extended-keys-format csi-u # Pi: report modified keys using CSI-u
 
+# Keep tmux chrome compact.
+tmux_conf_theme_status_right=' #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} '
+tmux_conf_theme_terminal_title='#S ● #I #W'
+
 # Session shortcuts (<prefix> is C-a).
 bind r command-prompt -I "#S" "rename-session -- '%%'" #!important
 bind k confirm-before -p "kill session #S? (y/n)" kill-session #!important
