@@ -14,7 +14,7 @@ set -g status-keys vi #!important
 set -g extended-keys-format csi-u # Pi: report modified keys using CSI-u
 
 # Keep tmux chrome compact.
-tmux_conf_theme_status_right=' #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} '
+tmux_conf_theme_status_right=' #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_percentage, #{battery_percentage},} #(curl -fsS --max-time 2 "https://wttr.in/Berlin?format=1" 2>/dev/null || true) , %R , %d %b | #{username}#{root} '
 tmux_conf_theme_terminal_title='#S ● #I #W'
 
 # Session shortcuts (<prefix> is C-a).
