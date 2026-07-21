@@ -11,6 +11,7 @@ set -g mouse on #!important
 set -g status-position bottom #!important
 set -g mode-keys vi #!important
 set -g status-keys vi #!important
+set -g extended-keys on # Pi: preserve modified keys
 set -g extended-keys-format csi-u # Pi: report modified keys using CSI-u
 
 # Keep tmux chrome compact.

@@ -1,6 +1,7 @@
 {
   "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
+  "defaultThinkingLevel": "high",
   "packages": ["npm:pi-subagents"],
   "skills": []
 }
