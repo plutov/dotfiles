@@ -2,6 +2,6 @@
   "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
   "defaultThinkingLevel": "high",
-  "packages": ["npm:pi-subagents"],
+  "packages": ["npm:pi-subagents", "npm:pi-zentui"],
   "skills": []
 }

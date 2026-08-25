@@ -122,6 +122,7 @@ install() {
   echo "Installing pi extensions"
   pi install npm:pi-system-theme
   pi install npm:pi-subagents
+  pi install npm:pi-zentui
 
   echo "dotfiles installed and configured."
 }
