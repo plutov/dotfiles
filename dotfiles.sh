@@ -18,6 +18,7 @@ DOTFILES=(
   "$HOME/.config/opencode/AGENTS.md:agentic/AGENTS.md"
   "$HOME/.agents/skills:agentic/skills"
   "$HOME/.pi/agent/AGENTS.md:pi/AGENTS.md"
+  "$HOME/.pi/agent/extensions/subagent/config.json:pi/extensions/subagent/config.json"
 )
 
 copy_with_mkdir() {
@@ -120,6 +121,7 @@ install() {
 
   echo "Installing pi extensions"
   pi install npm:pi-system-theme
+  pi install npm:pi-subagents
 
   echo "dotfiles installed and configured."
 }
