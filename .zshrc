@@ -1,17 +1,19 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+if [[ "$OSTYPE" == darwin* ]]; then
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+  export PATH="/opt/homebrew/bin:$PATH"
+  export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+fi
+
+export GOPATH="${GOPATH:-$HOME/go}"
+export PATH="$GOPATH/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # Use nvim as editor
 export MANPAGER='nvim +Man!'
-export EDITOR="$(which nvim)"
+export EDITOR="$(command -v nvim || command -v vim || command -v vi)"
 export VISUAL="$EDITOR"
 
 # Development settings
@@ -20,11 +22,15 @@ export GOPROXY="https://proxy.golang.org,direct"
 export PI_OFFLINE=1
 
 # Shell settings
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source <(fzf --zsh)
-source "$HOME/.env"
-source "$HOME/.cargo/env"
-eval "$(starship init zsh)"
+if [[ "$OSTYPE" == darwin* ]]; then
+  [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+  [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+[[ -r "$HOME/.env" ]] && source "$HOME/.env"
+[[ -r "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -57,11 +63,3 @@ alias s='source ~/.zshrc'
 function push() {
   git add -A && git commit --allow-empty-message -m '' && git push
 }
-
-# toggle macOS dark/light mode (all apps follow via system appearance)
-function toggle-mode() {
-  osascript -e 'tell app "System Events" to tell appearance preferences to set dark mode to not dark mode'
-}
-
-# amp
-export PATH="$HOME/.local/bin:$PATH"

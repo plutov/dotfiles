@@ -1,0 +1,27 @@
+# shell and terminal
+zsh
+git
+git-lfs
+neovim
+tmux
+ripgrep
+luarocks
+fzf
+unzip
+zsh-autosuggestions
+btop
+bat
+yt-dlp
+ghostty
+jetbrains-mono-fonts
+
+# development
+golang
+protobuf-compiler
+hugo
+gh
+pnpm
+postgresql-server
+
+# containers and virtualization
+qemu
