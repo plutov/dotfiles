@@ -7,9 +7,11 @@ TMUX_REPO="https://github.com/gpakosz/.tmux.git"
 TMUX_DIR="$HOME/.tmux"
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FEDORA_PACKAGE_FILE="$REPO_DIR/Fedorafile"
+SNAP_PACKAGE_FILE="$REPO_DIR/Snapfile"
 
 # The same dotfiles are used on both platforms. Package names are kept in
-# Brewfile and Fedorafile because the package managers use different names.
+# Brewfile, Fedorafile, and Snapfile because the package managers use
+# different names.
 DOTFILES=(
   "$HOME/.zshrc:$REPO_DIR/.zshrc"
   "$HOME/.tmux.conf.local:$REPO_DIR/.tmux.conf.local"
@@ -23,7 +25,7 @@ DOTFILES=(
   "$HOME/.config/zed/keymap.json:$REPO_DIR/zed/keymap.json"
   "$HOME/.config/opencode/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
   "$HOME/.agents/skills:$REPO_DIR/agentic/skills"
-  "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/pi/AGENTS.md"
+  "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
   "$HOME/.pi/agent/extensions/diff.ts:$REPO_DIR/pi/extensions/diff.ts"
   "$HOME/.pi/agent/extensions/subagent/config.json:$REPO_DIR/pi/extensions/subagent/config.json"
 )
@@ -105,12 +107,54 @@ install_fedora() {
       echo "Warning: Fedora package '$package' is unavailable; skipping." >&2
     fi
   done <"$FEDORA_PACKAGE_FILE"
+  install_fedora_snap_packages
   install_fedora_extra_tools
   install_nvm
 }
 
+install_fedora_snap_packages() {
+  if ! command -v snap >/dev/null 2>&1; then
+    echo "snapd is not available; skipping Snap packages." >&2
+    return 0
+  fi
+
+  echo "Enabling snapd"
+  if ! sudo systemctl enable --now snapd.socket; then
+    echo "Warning: could not enable snapd.socket; skipping Snap packages." >&2
+    return 0
+  fi
+
+  if [[ ! -e /snap && ! -L /snap ]]; then
+    sudo ln -s /var/lib/snapd/snap /snap || {
+      echo "Warning: could not create /snap symlink; skipping Snap packages." >&2
+      return 0
+    }
+  fi
+
+  local package flag
+  while read -r package flag; do
+    [[ -z "$package" || "$package" == \#* ]] && continue
+    local snap_args=()
+    if [[ "$flag" == "--classic" ]]; then
+      snap_args+=(--classic)
+    elif [[ -n "$flag" ]]; then
+      echo "Warning: invalid Snap options for '$package'; skipping." >&2
+      continue
+    fi
+    if ! sudo snap install "${snap_args[@]}" "$package"; then
+      echo "Warning: Snap package '$package' could not be installed; skipping." >&2
+    fi
+  done <"$SNAP_PACKAGE_FILE"
+}
+
 install_fedora_extra_tools() {
   mkdir -p "$HOME/.local/bin"
+
+  if ! command -v zed >/dev/null 2>&1 && [[ ! -x "$HOME/.local/bin/zed" ]]; then
+    echo "Installing Zed from its official installer"
+    curl -fsSL https://zed.dev/install.sh | sh ||
+      echo "Warning: could not install Zed." >&2
+  fi
 
   if ! command -v starship >/dev/null 2>&1; then
     echo "Installing starship from its prebuilt installer"

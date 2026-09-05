@@ -25,3 +25,6 @@ postgresql-server
 
 # containers and virtualization
 qemu
+
+# snap
+snapd
