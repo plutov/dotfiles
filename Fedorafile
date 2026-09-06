@@ -14,7 +14,6 @@ bat
 yt-dlp
 ghostty
 jetbrains-mono-fonts
-https://linux.dropbox.com/packages/fedora/nautilus-dropbox-2026.05.06-1.fc44.x86_64.rpm
 
 # development
 golang
@@ -27,5 +26,4 @@ postgresql-server
 # containers and virtualization
 qemu
 
-# snap
-snapd
+flatpak

@@ -7,10 +7,10 @@ TMUX_REPO="https://github.com/gpakosz/.tmux.git"
 TMUX_DIR="$HOME/.tmux"
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FEDORA_PACKAGE_FILE="$REPO_DIR/Fedorafile"
-SNAP_PACKAGE_FILE="$REPO_DIR/Snapfile"
+FLATPAK_PACKAGE_FILE="$REPO_DIR/Flatpakfile"
 
 # The same dotfiles are used on both platforms. Package names are kept in
-# Brewfile, Fedorafile, and Snapfile because the package managers use
+# Brewfile, Fedorafile, and Flatpakfile because the package managers use
 # different names.
 DOTFILES=(
   "$HOME/.zshrc:$REPO_DIR/.zshrc"
@@ -107,44 +107,30 @@ install_fedora() {
       echo "Warning: Fedora package '$package' is unavailable; skipping." >&2
     fi
   done <"$FEDORA_PACKAGE_FILE"
-  install_fedora_snap_packages
+  install_fedora_flatpak_packages
   install_fedora_extra_tools
   install_nvm
 }
 
-install_fedora_snap_packages() {
-  if ! command -v snap >/dev/null 2>&1; then
-    echo "snapd is not available; skipping Snap packages." >&2
+install_fedora_flatpak_packages() {
+  if ! command -v flatpak >/dev/null 2>&1; then
+    echo "flatpak is not available; skipping Flatpak packages." >&2
     return 0
   fi
 
-  echo "Enabling snapd"
-  if ! sudo systemctl enable --now snapd.socket; then
-    echo "Warning: could not enable snapd.socket; skipping Snap packages." >&2
+  echo "Adding the Flathub remote"
+  if ! sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo; then
+    echo "Warning: could not add the Flathub remote; skipping Flatpak packages." >&2
     return 0
   fi
 
-  if [[ ! -e /snap && ! -L /snap ]]; then
-    sudo ln -s /var/lib/snapd/snap /snap || {
-      echo "Warning: could not create /snap symlink; skipping Snap packages." >&2
-      return 0
-    }
-  fi
-
-  local package flag
-  while read -r package flag; do
+  local package
+  while IFS= read -r package; do
     [[ -z "$package" || "$package" == \#* ]] && continue
-    local snap_args=()
-    if [[ "$flag" == "--classic" ]]; then
-      snap_args+=(--classic)
-    elif [[ -n "$flag" ]]; then
-      echo "Warning: invalid Snap options for '$package'; skipping." >&2
-      continue
+    if ! sudo flatpak install -y flathub "$package"; then
+      echo "Warning: Flatpak package '$package' could not be installed; skipping." >&2
     fi
-    if ! sudo snap install "${snap_args[@]}" "$package"; then
-      echo "Warning: Snap package '$package' could not be installed; skipping." >&2
-    fi
-  done <"$SNAP_PACKAGE_FILE"
+  done <"$FLATPAK_PACKAGE_FILE"
 }
 
 install_fedora_extra_tools() {
