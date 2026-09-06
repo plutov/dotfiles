@@ -65,7 +65,7 @@ vim.pack.add({
 	gh("nvim-neo-tree/neo-tree.nvim"),
 
 	-- UI
-	gh("scottmckendry/cyberdream.nvim"),
+	gh("ThorstenRhau/token"),
 	gh("nvim-lualine/lualine.nvim"),
 	gh("folke/which-key.nvim"),
 	gh("uga-rosa/ccc.nvim"),
@@ -276,17 +276,8 @@ vim.keymap.set("n", "<leader>E", function()
 	})
 end, { desc = "Reveal current file in tree" })
 
--- Cyberdream
-require("cyberdream").setup({
-	variant = "auto",
-	overrides = function(colors)
-		return {
-			Comment = { fg = colors.grey, bg = "NONE", italic = true },
-		}
-	end,
-})
-vim.cmd.colorscheme("cyberdream")
-vim.keymap.set("n", "<leader>tt", "<cmd>CyberdreamToggleMode<CR>", { silent = true, desc = "Toggle theme mode" })
+-- Token
+vim.cmd.colorscheme("token")
 
 -- Lualine
 require("lualine").setup({

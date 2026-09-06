@@ -44,8 +44,8 @@
   "buffer_font_size": 16.0,
   "theme": {
     "mode": "system",
-    "light": "GitHub Light",
-    "dark": "GitHub Dark"
+    "light": "Token Light",
+    "dark": "Token Dark"
   },
   "buffer_font_family": "JetBrains Mono",
   "tabs": {
