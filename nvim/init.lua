@@ -9,7 +9,7 @@ vim.o.swapfile = false
 vim.opt.shortmess:append("I")
 
 -- everything is unnamed
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -- Setup tabs and spaces
 vim.opt.listchars = { space = "·", tab = "  " }
