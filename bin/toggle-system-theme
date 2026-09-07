@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -u
+
+os_id=""
+[[ -r /etc/os-release ]] && . /etc/os-release && os_id="${ID:-}"
+[[ "$os_id" == fedora ]] || exit 0
+command -v gsettings >/dev/null 2>&1 || exit 1
+
+if [[ "$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null)" == *prefer-dark* ]]; then
+  gsettings set org.gnome.desktop.interface color-scheme prefer-light
+else
+  gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+fi

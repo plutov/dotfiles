@@ -3,8 +3,6 @@
 set -u
 
 EMAIL="a.pliutau@gmail.com"
-TMUX_REPO="https://github.com/gpakosz/.tmux.git"
-TMUX_DIR="$HOME/.tmux"
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FEDORA_PACKAGE_FILE="$REPO_DIR/Fedorafile"
 FLATPAK_PACKAGE_FILE="$REPO_DIR/Flatpakfile"
@@ -14,20 +12,16 @@ FLATPAK_PACKAGE_FILE="$REPO_DIR/Flatpakfile"
 # different names.
 DOTFILES=(
   "$HOME/.zshrc:$REPO_DIR/.zshrc"
-  "$HOME/.tmux.conf.local:$REPO_DIR/.tmux.conf.local"
   "$HOME/.config/ghostty/config:$REPO_DIR/ghostty.config"
   "$HOME/.config/ghostty/themes:$REPO_DIR/ghostty-themes"
   "$HOME/.config/nvim:$REPO_DIR/nvim"
   "$HOME/.config/starship.toml:$REPO_DIR/starship.toml"
-  "$HOME/.config/yazi/yazi.toml:$REPO_DIR/yazi.toml"
-  "$HOME/.config/btop/btop.conf:$REPO_DIR/btop/btop.conf"
   "$HOME/.config/zed/settings.json:$REPO_DIR/zed/settings.json"
   "$HOME/.config/zed/keymap.json:$REPO_DIR/zed/keymap.json"
+  "$HOME/.local/bin/toggle-system-theme:$REPO_DIR/bin/toggle-system-theme"
   "$HOME/.config/opencode/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
   "$HOME/.agents/skills:$REPO_DIR/agentic/skills"
   "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
-  "$HOME/.pi/agent/extensions/diff.ts:$REPO_DIR/pi/extensions/diff.ts"
-  "$HOME/.pi/agent/extensions/subagent/config.json:$REPO_DIR/pi/extensions/subagent/config.json"
 )
 
 copy_with_mkdir() {
@@ -45,16 +39,6 @@ copy_with_mkdir() {
   fi
 }
 
-ensure_tmux_config() {
-  if [[ -d "$TMUX_DIR/.git" ]]; then
-    git -C "$TMUX_DIR" pull --ff-only
-  else
-    rm -rf "$TMUX_DIR"
-    git clone --depth 1 "$TMUX_REPO" "$TMUX_DIR"
-  fi
-  ln -sfn "$TMUX_DIR/.tmux.conf" "$HOME/.tmux.conf"
-}
-
 apply() {
   local dotfile destination source
   for dotfile in "${DOTFILES[@]}"; do
@@ -62,9 +46,31 @@ apply() {
     source="${dotfile##*:}"
     copy_with_mkdir "$source" "$destination"
   done
-  ensure_tmux_config
+  rm -f "$HOME/.config/yazi/yazi.toml" "$HOME/.config/btop/btop.conf"
   copy_with_mkdir "$REPO_DIR/pi/settings.json" "$HOME/.pi/agent/settings.json"
+  configure_theme_hotkey
   touch "$HOME/.hushlogin"
+}
+
+configure_theme_hotkey() {
+  local os_id=""
+  local schema="org.gnome.settings-daemon.plugins.media-keys"
+  local path="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/toggle-system-theme/"
+  local keybindings
+
+  [[ -r /etc/os-release ]] && . /etc/os-release && os_id="${ID:-}"
+  [[ "$os_id" == fedora ]] || return 0
+  command -v gsettings >/dev/null 2>&1 || return 0
+  keybindings="$(gsettings get "$schema" custom-keybindings 2>/dev/null)" || return 0
+  if [[ "$keybindings" == "@as []" || "$keybindings" == "[]" ]]; then
+    keybindings="['$path']"
+  elif [[ "$keybindings" != *"$path"* ]]; then
+    keybindings="${keybindings%]}, '$path']"
+  fi
+  gsettings set "$schema" custom-keybindings "$keybindings"
+  gsettings set "$schema.custom-keybinding:$path" name 'Toggle system theme'
+  gsettings set "$schema.custom-keybinding:$path" command "$HOME/.local/bin/toggle-system-theme"
+  gsettings set "$schema.custom-keybinding:$path" binding '<Alt><Shift>l'
 }
 
 save() {
@@ -133,8 +139,33 @@ install_fedora_flatpak_packages() {
   done <"$FLATPAK_PACKAGE_FILE"
 }
 
+install_nerd_font() {
+  local font_dir="$HOME/.local/share/fonts/JetBrainsMonoNerdFont"
+  local archive
+  if find "$font_dir" -type f -name '*.ttf' -print -quit 2>/dev/null | grep -q .; then
+    return 0
+  fi
+  archive="$(mktemp)"
+  echo "Installing JetBrains Mono Nerd Font"
+  if curl -fsSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip -o "$archive" &&
+    mkdir -p "$font_dir" && unzip -oq "$archive" -d "$font_dir"; then
+    rm -f "$archive"
+    command -v fc-cache >/dev/null 2>&1 && fc-cache -f "$HOME/.local/share/fonts"
+  else
+    rm -f "$archive"
+    echo "Warning: could not install JetBrains Mono Nerd Font." >&2
+  fi
+}
+
 install_fedora_extra_tools() {
   mkdir -p "$HOME/.local/bin"
+  install_nerd_font
+
+  if ! command -v herdr >/dev/null 2>&1 && [[ ! -x "$HOME/.local/bin/herdr" ]]; then
+    echo "Installing Herdr from its official installer"
+    curl -fsSL https://herdr.dev/install.sh | sh ||
+      echo "Warning: could not install Herdr." >&2
+  fi
 
   if ! command -v zed >/dev/null 2>&1 && [[ ! -x "$HOME/.local/bin/zed" ]]; then
     echo "Installing Zed from its official installer"
@@ -176,8 +207,6 @@ install_common() {
     fi
   fi
 
-  echo "Installing tmux configuration"
-  ensure_tmux_config
   if [[ ! -f "$HOME/.ssh/id_ed25519" ]]; then
     echo "Generating ssh key"
     mkdir -p "$HOME/.ssh"

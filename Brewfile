@@ -10,9 +10,9 @@ cask "dropbox"
 
 # terminal
 cask "ghostty"
-cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
 brew "neovim"
-brew "tmux"
+brew "herdr"
 brew "starship"
 brew "ripgrep"
 brew "luarocks"

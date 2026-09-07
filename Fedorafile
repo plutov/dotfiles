@@ -3,7 +3,6 @@ zsh
 git
 git-lfs
 neovim
-tmux
 ripgrep
 luarocks
 fzf

@@ -18,6 +18,8 @@ Apply dotfiles:
 ./dotfiles.sh -a
 ```
 
+On Fedora GNOME, `Alt+Shift+L` toggles the system light/dark mode.
+
 Save local dotfiles back to this repository:
 
 ```bash

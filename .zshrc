@@ -22,6 +22,9 @@ export GOPROXY="https://proxy.golang.org,direct"
 export PI_OFFLINE=1
 
 # Shell settings
+autoload -Uz compinit
+compinit
+
 if [[ "$OSTYPE" == darwin* ]]; then
   [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
