@@ -127,6 +127,8 @@ install_fedora() {
       echo "Warning: Fedora package '$package' is unavailable; skipping." >&2
     fi
   done <"$FEDORA_PACKAGE_FILE"
+  sudo dnf -y remove golang golang-bin golang-src go-filesystem
+  install_fedora_go
   install_fedora_flatpak_packages
   install_fedora_extra_tools
   install_nvm
@@ -169,6 +171,13 @@ install_nerd_font() {
     rm -f "$archive"
     echo "Warning: could not install JetBrains Mono Nerd Font." >&2
   fi
+}
+
+install_fedora_go() {
+  local version
+  version="$(curl -fsSL 'https://go.dev/VERSION?m=text' | head -n 1)"
+  rm -rf "$HOME/.local/go"
+  curl -fsSL "https://go.dev/dl/${version}.linux-amd64.tar.gz" | tar -C "$HOME/.local" -xzf -
 }
 
 install_fedora_extra_tools() {

@@ -15,7 +15,6 @@ ghostty
 jetbrains-mono-fonts
 
 # development
-golang
 protobuf-compiler
 hugo
 gh

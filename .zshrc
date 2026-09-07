@@ -9,7 +9,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 export GOPATH="${GOPATH:-$HOME/go}"
-export PATH="$GOPATH/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/go/bin:$GOPATH/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # Use nvim as editor
 export MANPAGER='nvim +Man!'
