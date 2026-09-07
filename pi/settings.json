@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
-  "defaultProvider": "openai",
+  "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-luna",
   "defaultThinkingLevel": "high",
   "packages": ["npm:pi-subagents", "npm:pi-zentui"],

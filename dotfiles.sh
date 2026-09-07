@@ -49,7 +49,16 @@ apply() {
   rm -f "$HOME/.config/yazi/yazi.toml" "$HOME/.config/btop/btop.conf"
   copy_with_mkdir "$REPO_DIR/pi/settings.json" "$HOME/.pi/agent/settings.json"
   configure_theme_hotkey
+  configure_icon_theme
   touch "$HOME/.hushlogin"
+}
+
+configure_icon_theme() {
+  local os_id=""
+  [[ -r /etc/os-release ]] && . /etc/os-release && os_id="${ID:-}"
+  [[ "$os_id" == fedora ]] || return 0
+  command -v gsettings >/dev/null 2>&1 || return 0
+  gsettings set org.gnome.desktop.interface icon-theme 'MoreWaita'
 }
 
 configure_theme_hotkey() {
@@ -106,6 +115,11 @@ install_fedora() {
   if [[ ! -r "$FEDORA_PACKAGE_FILE" ]]; then
     echo "Missing Fedora package list: $FEDORA_PACKAGE_FILE" >&2
     return 1
+  fi
+  if ! sudo dnf -y install dnf-plugins-core; then
+    echo "Warning: could not install dnf-plugins-core; skipping MoreWaita repository setup." >&2
+  elif ! sudo dnf -y copr enable rivenirvana/morewaita-icon-theme; then
+    echo "Warning: could not enable MoreWaita COPR repository." >&2
   fi
   while IFS= read -r package; do
     [[ -z "$package" || "$package" == \#* ]] && continue

@@ -26,3 +26,6 @@ postgresql-server
 qemu
 
 flatpak
+dnf-plugins-core
+gnome-tweaks
+morewaita-icon-theme
