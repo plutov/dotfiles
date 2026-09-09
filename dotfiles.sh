@@ -22,6 +22,7 @@ DOTFILES=(
   "$HOME/.config/opencode/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
   "$HOME/.agents/skills:$REPO_DIR/agentic/skills"
   "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
+  "$HOME/.pi/agent/themes:$REPO_DIR/pi/themes"
 )
 
 copy_with_mkdir() {
@@ -248,9 +249,7 @@ install_common() {
 
   if command -v pi >/dev/null 2>&1; then
     echo "Installing pi extensions"
-    pi install npm:pi-system-theme
     pi install npm:pi-subagents
-    pi install npm:pi-zentui
   else
     echo "pi is not installed; skipping pi extensions."
   fi
