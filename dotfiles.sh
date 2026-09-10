@@ -6,6 +6,7 @@ EMAIL="a.pliutau@gmail.com"
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FEDORA_PACKAGE_FILE="$REPO_DIR/Fedorafile"
 FLATPAK_PACKAGE_FILE="$REPO_DIR/Flatpakfile"
+PI_THEME_URL="https://raw.githubusercontent.com/ThorstenRhau/token/main/contrib/pi"
 
 # The same dotfiles are used on both platforms. Package names are kept in
 # Brewfile, Fedorafile, and Flatpakfile because the package managers use
@@ -22,7 +23,6 @@ DOTFILES=(
   "$HOME/.config/opencode/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
   "$HOME/.agents/skills:$REPO_DIR/agentic/skills"
   "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
-  "$HOME/.pi/agent/themes:$REPO_DIR/pi/themes"
 )
 
 copy_with_mkdir() {
@@ -40,6 +40,14 @@ copy_with_mkdir() {
   fi
 }
 
+install_pi_themes() {
+  local theme
+  mkdir -p "$HOME/.pi/agent/themes"
+  for theme in token-light token-dark; do
+    curl -fsSL "$PI_THEME_URL/$theme.json" -o "$HOME/.pi/agent/themes/$theme.json"
+  done
+}
+
 apply() {
   local dotfile destination source
   for dotfile in "${DOTFILES[@]}"; do
@@ -49,6 +57,7 @@ apply() {
   done
   rm -f "$HOME/.config/yazi/yazi.toml" "$HOME/.config/btop/btop.conf"
   copy_with_mkdir "$REPO_DIR/pi/settings.json" "$HOME/.pi/agent/settings.json"
+  install_pi_themes
   configure_theme_hotkey
   configure_icon_theme
   touch "$HOME/.hushlogin"
