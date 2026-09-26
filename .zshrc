@@ -27,8 +27,10 @@ compinit
 
 if [[ "$OSTYPE" == darwin* ]]; then
   [[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  bindkey '^X^A' autosuggest-toggle
 else
   [[ -r /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  bindkey '^X^A' autosuggest-toggle
 fi
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 [[ -r "$HOME/.env" ]] && source "$HOME/.env"
