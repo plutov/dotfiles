@@ -2,7 +2,7 @@
   "lastChangelogVersion": "0.80.6",
   "quietStartup": true,
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "gpt-6-sol",
   "defaultThinkingLevel": "high",
   "packages": ["npm:pi-subagents"],
   "skills": [],
