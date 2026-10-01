@@ -50,3 +50,6 @@ brew "lazydocker"
 brew "colima"
 brew "qemu"
 cask "utm"
+
+# agents
+brew "herdr"
