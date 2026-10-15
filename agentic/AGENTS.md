@@ -18,3 +18,7 @@
 
 - Do not run any Git commands except `git diff`.
 - Do not commit or push code; I handle all Git actions myself.
+
+## Test coverage
+
+Do not run the full slow test coverage unless asked to.
