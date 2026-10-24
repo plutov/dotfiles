@@ -1,6 +1,7 @@
 # desktop applications
 md.obsidian.Obsidian
 com.obsproject.Studio
+com.obsproject.Studio.Plugin.AdvancedMasks
 com.dropbox.Client
 com.discordapp.Discord
 io.github.swordpuffin.rewaita
