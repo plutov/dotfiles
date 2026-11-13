@@ -5,18 +5,6 @@ end
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-local function download_fff_binary()
-	local done = false
-	local fatal_error = nil
-
-	require("fff.download").ensure_downloaded({ force = true }, function(success, err)
-		if not success then
-			fatal_error = err or "unknown error"
-		end
-		done = true
-	end)
-end
-
 -- Hooks
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
@@ -30,13 +18,6 @@ vim.api.nvim_create_autocmd("PackChanged", {
 				vim.cmd.packadd("nvim-treesitter")
 			end
 			vim.cmd("TSUpdate")
-		end
-
-		if name == "fff.nvim" then
-			if not ev.data.active then
-				vim.cmd.packadd("fff.nvim")
-			end
-			download_fff_binary()
 		end
 	end,
 })
@@ -56,7 +37,7 @@ vim.pack.add({
 	gh("stevearc/aerial.nvim"),
 
 	-- Files
-	gh("dmtrKovalenko/fff.nvim"),
+	gh("nvim-telescope/telescope.nvim"),
 	gh("nvim-lua/plenary.nvim"),
 	gh("utilyre/barbecue.nvim"),
 	gh("SmiteshP/nvim-navic"),
@@ -217,24 +198,16 @@ require("nvim-autopairs").setup()
 -- Aerial
 require("aerial").setup()
 
--- FFF
-local fff_ok, fff = pcall(require, "fff")
-if fff_ok then
-	fff.setup({
-		prompt = " ",
-		layout = {
+require("telescope").setup({
+	defaults = {
+		prompt_prefix = " ",
+		layout_strategy = "horizontal",
+		layout_config = {
 			height = 0.85,
 			width = 0.85,
-			preview_position = "right",
 		},
-		preview = {
-			line_numbers = true,
-		},
-		grep = {
-			modes = { "plain", "regex" },
-		},
-	})
-end
+	},
+})
 
 -- Barbecue
 require("barbecue").setup()
