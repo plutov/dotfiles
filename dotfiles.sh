@@ -6,7 +6,6 @@ EMAIL="a.pliutau@gmail.com"
 REPO_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 FEDORA_PACKAGE_FILE="$REPO_DIR/Fedorafile"
 FLATPAK_PACKAGE_FILE="$REPO_DIR/Flatpakfile"
-PI_THEME_URL="https://raw.githubusercontent.com/ThorstenRhau/token/main/contrib/pi"
 
 # The same dotfiles are used on both platforms. Package names are kept in
 # Brewfile, Fedorafile, and Flatpakfile because the package managers use
@@ -20,9 +19,6 @@ DOTFILES=(
   "$HOME/.config/zed/settings.json:$REPO_DIR/zed/settings.json"
   "$HOME/.config/zed/keymap.json:$REPO_DIR/zed/keymap.json"
   "$HOME/.local/bin/toggle-system-theme:$REPO_DIR/bin/toggle-system-theme"
-  "$HOME/.config/opencode/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
-  "$HOME/.agents/skills:$REPO_DIR/agentic/skills"
-  "$HOME/.pi/agent/AGENTS.md:$REPO_DIR/agentic/AGENTS.md"
 )
 
 copy_with_mkdir() {
@@ -40,14 +36,6 @@ copy_with_mkdir() {
   fi
 }
 
-install_pi_themes() {
-  local theme
-  mkdir -p "$HOME/.pi/agent/themes"
-  for theme in token-light token-dark; do
-    curl -fsSL "$PI_THEME_URL/$theme.json" -o "$HOME/.pi/agent/themes/$theme.json"
-  done
-}
-
 apply() {
   local dotfile destination source
   for dotfile in "${DOTFILES[@]}"; do
@@ -56,8 +44,6 @@ apply() {
     copy_with_mkdir "$source" "$destination"
   done
   rm -f "$HOME/.config/yazi/yazi.toml" "$HOME/.config/btop/btop.conf"
-  copy_with_mkdir "$REPO_DIR/pi/settings.json" "$HOME/.pi/agent/settings.json"
-  install_pi_themes
   configure_theme_hotkey
   configure_icon_theme
   touch "$HOME/.hushlogin"
@@ -99,7 +85,6 @@ save() {
     source="${dotfile##*:}"
     copy_with_mkdir "$destination" "$source"
   done
-  copy_with_mkdir "$HOME/.pi/agent/settings.json" "$REPO_DIR/pi/settings.json"
   echo "Dotfiles saved."
 }
 
@@ -256,12 +241,6 @@ install_common() {
   git config --global user.signingkey "$HOME/.ssh/id_ed25519.pub"
   git config --global pull.rebase true
 
-  if command -v pi >/dev/null 2>&1; then
-    echo "Installing pi extensions"
-    pi install npm:pi-subagents
-  else
-    echo "pi is not installed; skipping pi extensions."
-  fi
   echo "dotfiles installed and configured."
 }
 
