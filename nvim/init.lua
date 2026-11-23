@@ -58,6 +58,27 @@ end, { desc = "Copy relative file path" })
 vim.keymap.set("n", "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial toggle" })
 vim.keymap.set("n", "<leader>bx", "<cmd>:%bd<CR>", { desc = "Close all buffers" })
 
+vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<cr>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>tn", function()
+	local cwd = vim.fn.getcwd(-1, 0)
+	vim.cmd.tabnew()
+	vim.cmd.tcd({ args = { cwd }, magic = { file = false } })
+end, { desc = "New tab" })
+vim.keymap.set("n", "<leader>tr", function()
+	local tab = vim.api.nvim_get_current_tabpage()
+	vim.ui.input({ prompt = "Tab name: ", default = vim.t[tab].tabname or "" }, function(name)
+		if name == nil or not vim.api.nvim_tabpage_is_valid(tab) then
+			return
+		end
+		name = vim.trim(name)
+		vim.t[tab].tabname = name ~= "" and name or nil
+		require("lualine").refresh({ place = { "tabline" } })
+	end)
+end, { desc = "Rename tab" })
+vim.keymap.set("n", "<leader>td", ":<C-u>tcd ", { desc = "Change tab directory" })
+vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>", { desc = "Close tab" })
+
 -- Expand long diagnostics
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true, desc = "Expand diagnostics" })
 
@@ -65,4 +86,3 @@ vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true, des
 vim.keymap.set("n", "<leader>pu", function()
 	vim.pack.update()
 end, { desc = "Pack update (review)" })
-

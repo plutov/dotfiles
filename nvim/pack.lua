@@ -253,7 +253,26 @@ end, { desc = "Reveal current file in tree" })
 vim.cmd.colorscheme("token")
 
 -- Lualine
-require("lualine").setup({
+local lualine = require("lualine")
+lualine.setup({
+	tabline = {
+		lualine_a = {
+			{
+				"tabs",
+				mode = 2,
+				max_length = function()
+					return vim.o.columns
+				end,
+				fmt = function(name, tab)
+					if vim.t[tab.tabId].tabname then
+						return name
+					end
+					local dirname = vim.fs.basename(vim.fn.getcwd(-1, tab.tabnr))
+					return (dirname:gsub("%%", "%%%%"))
+				end,
+			},
+		},
+	},
 	options = { theme = "auto", section_separators = "", component_separators = "" },
 	sections = {
 		lualine_a = { "mode" },
@@ -263,6 +282,13 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
+})
+
+vim.api.nvim_create_autocmd("DirChanged", {
+	group = vim.api.nvim_create_augroup("TablineDirectory", { clear = true }),
+	callback = function()
+		lualine.refresh({ place = { "tabline" } })
+	end,
 })
 
 -- Which-key
@@ -292,6 +318,7 @@ require("which-key").setup({
 		},
 		{
 			mode = { "n" },
+			{ "<leader>t", group = "tabs" },
 			{ "<leader>bp", "<cmd>bprevvious<cr>", desc = "Prev Buffer" },
 			{ "<leader>bn", "<cmd>bnext<cr>", desc = "Next Buffer" },
 			{ "<leader>bb", "<cmd>e #<cr>", desc = "Switch to Other Buffer" },
